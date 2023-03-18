@@ -1,0 +1,78 @@
+{
+  "alert": {
+    "id": "291e16d1-d7b7-42f8-a993-c2a2ae291b5a",
+    "policy": {
+      "id": "45babb2e-c53d-4297-a729-b224124ae4a5",
+      "name": "vuln_test",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "1f2c61e3-c9bf-4458-8af4-b2e844c70510"
+      ],
+      "lastUpdated": "2023-03-18T15:32:40.577781572Z",
+      "SORTName": "vuln_test",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">5"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-ingress-canary",
+    "namespaceId": "42f94f98-71fa-4842-b820-5731fed5f3ca",
+    "deployment": {
+      "id": "e00be3f2-1fdc-4337-a0ed-a6a1291c1a2b",
+      "name": "ingress-canary",
+      "type": "DaemonSet",
+      "namespace": "openshift-ingress-canary",
+      "namespaceId": "42f94f98-71fa-4842-b820-5731fed5f3ca",
+      "labels": {
+        "ingress.openshift.io/canary": "canary_controller"
+      },
+      "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:6275a171f6d5a523627963860415ed0e43f1728f2dd897c49412600bf64bc9c3",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:6275a171f6d5a523627963860415ed0e43f1728f2dd897c49412600bf64bc9c3"
+            }
+          },
+          "name": "serve-healthcheck-canary"
+        }
+      ],
+      "annotations": {
+        "deprecated.daemonset.template.generation": "1"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:0594 (CVSS 9.8) (severity Important) found in component 'libksba' (version 1.3.5-8.el8_6.x86_64) in container 'serve-healthcheck-canary'"
+      }
+    ],
+    "time": "2023-03-18T15:32:41.169379651Z",
+    "firstOccurred": "2023-03-18T15:32:41.169379651Z"
+  }
+}

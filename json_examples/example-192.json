@@ -1,0 +1,96 @@
+{
+  "alert": {
+    "id": "5954c1ff-7077-4410-9470-54a92aff7787",
+    "policy": {
+      "id": "45babb2e-c53d-4297-a729-b224124ae4a5",
+      "name": "vuln_test",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "1f2c61e3-c9bf-4458-8af4-b2e844c70510"
+      ],
+      "lastUpdated": "2023-03-18T15:35:16.446828465Z",
+      "SORTName": "vuln_test",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">5"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-monitoring",
+    "namespaceId": "32247438-5bd4-413e-a0a7-84fe10d2b87a",
+    "deployment": {
+      "id": "68e61b55-2274-436c-8338-0c403dc0953f",
+      "name": "node-exporter",
+      "type": "DaemonSet",
+      "namespace": "openshift-monitoring",
+      "namespaceId": "32247438-5bd4-413e-a0a7-84fe10d2b87a",
+      "labels": {
+        "app.kubernetes.io/component": "exporter",
+        "app.kubernetes.io/managed-by": "cluster-monitoring-operator",
+        "app.kubernetes.io/name": "node-exporter",
+        "app.kubernetes.io/part-of": "openshift-monitoring",
+        "app.kubernetes.io/version": "1.4.0"
+      },
+      "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:c28f27a3a10df13e5e8c074e8734683a6603ebaccd9d67e2095070fb6859b1d6",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:c28f27a3a10df13e5e8c074e8734683a6603ebaccd9d67e2095070fb6859b1d6"
+            }
+          },
+          "name": "kube-rbac-proxy"
+        },
+        {
+          "image": {
+            "id": "sha256:7ecf76246d81adfe3f52fdb54a7bddf6b892ea6900521d71553d16f2918a2cac",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:7ecf76246d81adfe3f52fdb54a7bddf6b892ea6900521d71553d16f2918a2cac"
+            }
+          },
+          "name": "node-exporter"
+        }
+      ],
+      "annotations": {
+        "deprecated.daemonset.template.generation": "1"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:0594 (CVSS 9.8) (severity Important) found in component 'libksba' (version 1.3.5-8.el8_6.x86_64) in container 'kube-rbac-proxy'"
+      },
+      {
+        "message": "RHSA-2023:0594 (CVSS 9.8) (severity Important) found in component 'libksba' (version 1.3.5-8.el8_6.x86_64) in container 'node-exporter'"
+      }
+    ],
+    "time": "2023-03-18T15:35:16.843578804Z",
+    "firstOccurred": "2023-03-18T15:35:16.843578804Z"
+  }
+}

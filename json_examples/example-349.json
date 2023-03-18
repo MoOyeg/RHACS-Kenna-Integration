@@ -1,0 +1,87 @@
+{
+  "alert": {
+    "id": "6d9ed057-32ad-4058-aca8-691dcd91e064",
+    "policy": {
+      "id": "45babb2e-c53d-4297-a729-b224124ae4a5",
+      "name": "vuln_test",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "1f2c61e3-c9bf-4458-8af4-b2e844c70510"
+      ],
+      "lastUpdated": "2023-03-18T15:32:05.409198868Z",
+      "SORTName": "vuln_test",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">5"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-console",
+    "namespaceId": "2db4e87e-5163-4432-a5c4-3df5c0968efb",
+    "deployment": {
+      "id": "a0065ac4-b36d-450a-9348-bb609208628b",
+      "name": "console",
+      "type": "Deployment",
+      "namespace": "openshift-console",
+      "namespaceId": "2db4e87e-5163-4432-a5c4-3df5c0968efb",
+      "labels": {
+        "app": "console",
+        "component": "ui"
+      },
+      "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:45ce25aa01ce77d2d7ad8cc2914686e07e71489c8ec625bc920f14ef83b94f33",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:45ce25aa01ce77d2d7ad8cc2914686e07e71489c8ec625bc920f14ef83b94f33"
+            }
+          },
+          "name": "console"
+        }
+      ],
+      "annotations": {
+        "console.openshift.io/console-config-version": "8614575",
+        "console.openshift.io/image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:45ce25aa01ce77d2d7ad8cc2914686e07e71489c8ec625bc920f14ef83b94f33",
+        "console.openshift.io/infrastructure-config-version": "524",
+        "console.openshift.io/oauth-secret-version": "16048",
+        "console.openshift.io/oauth-serving-cert-config-version": "15787",
+        "console.openshift.io/proxy-config-version": "546",
+        "console.openshift.io/service-ca-config-version": "15943",
+        "console.openshift.io/trusted-ca-config-version": "15952",
+        "operator.openshift.io/spec-hash": "37b1c9ec0a02279346c302bbaeb8492ed1331ac893c2cf9dc8dd0d72f0a761b3"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:0594 (CVSS 9.8) (severity Important) found in component 'libksba' (version 1.3.5-8.el8_6.x86_64) in container 'console'"
+      }
+    ],
+    "time": "2023-03-18T15:32:06.619944450Z",
+    "firstOccurred": "2023-03-18T15:32:06.619944450Z"
+  }
+}

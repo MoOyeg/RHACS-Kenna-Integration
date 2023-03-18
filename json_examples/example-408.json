@@ -1,0 +1,299 @@
+{
+  "alert": {
+    "id": "75728a56-1826-470b-882b-bc03c51b7ac0",
+    "policy": {
+      "id": "45babb2e-c53d-4297-a729-b224124ae4a5",
+      "name": "vuln_test",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "1f2c61e3-c9bf-4458-8af4-b2e844c70510"
+      ],
+      "lastUpdated": "2023-03-18T15:32:40.577781572Z",
+      "SORTName": "vuln_test",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">5"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+    "clusterName": "local-cluster",
+    "namespace": "multicluster-engine",
+    "namespaceId": "4671dc27-83b7-43c2-847c-20841ae377a6",
+    "deployment": {
+      "id": "d2f19030-6256-41ef-836c-e5a0c7cc2b72",
+      "name": "provider-credential-controller",
+      "type": "Deployment",
+      "namespace": "multicluster-engine",
+      "namespaceId": "4671dc27-83b7-43c2-847c-20841ae377a6",
+      "labels": {
+        "backplaneconfig.name": "multiclusterengine"
+      },
+      "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:1c006413e1344eb6daa10bc2bc7a3a9cf418f80aec3d04583dd2baf1251b8f38",
+            "name": {
+              "registry": "registry.redhat.io",
+              "remote": "multicluster-engine/provider-credential-controller-rhel8",
+              "fullName": "registry.redhat.io/multicluster-engine/provider-credential-controller-rhel8@sha256:1c006413e1344eb6daa10bc2bc7a3a9cf418f80aec3d04583dd2baf1251b8f38"
+            }
+          },
+          "name": "old-provider-connection"
+        },
+        {
+          "image": {
+            "id": "sha256:1c006413e1344eb6daa10bc2bc7a3a9cf418f80aec3d04583dd2baf1251b8f38",
+            "name": {
+              "registry": "registry.redhat.io",
+              "remote": "multicluster-engine/provider-credential-controller-rhel8",
+              "fullName": "registry.redhat.io/multicluster-engine/provider-credential-controller-rhel8@sha256:1c006413e1344eb6daa10bc2bc7a3a9cf418f80aec3d04583dd2baf1251b8f38"
+            }
+          },
+          "name": "provider-credential-controller"
+        }
+      ]
+    },
+    "violations": [
+      {
+        "message": "CVE-2018-20839 (CVSS 6.4) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.2.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2018-20839 (CVSS 6.4) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.2.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2019-12904 (CVSS 5.9) (severity Moderate) found in component 'libgcrypt' (version 1.8.5-7.el8_6.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2019-12904 (CVSS 5.9) (severity Moderate) found in component 'libgcrypt' (version 1.8.5-7.el8_6.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2019-17543 (CVSS 8.1) (severity Moderate) found in component 'lz4-libs' (version 1.8.3-3.el8_4.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2019-17543 (CVSS 8.1) (severity Moderate) found in component 'lz4-libs' (version 1.8.3-3.el8_4.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2019-19244 (CVSS 7.5) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2019-19244 (CVSS 7.5) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2020-17049 (CVSS 7.2) (severity Moderate) found in component 'krb5-libs' (version 1.18.2-22.el8_7.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2020-17049 (CVSS 7.2) (severity Moderate) found in component 'krb5-libs' (version 1.18.2-22.el8_7.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2020-21674 (CVSS 7.5) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2020-21674 (CVSS 7.5) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2021-24032 (CVSS 5.5) (severity Low) found in component 'libzstd' (version 1.4.4-1.el8.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2021-24032 (CVSS 5.5) (severity Low) found in component 'libzstd' (version 1.4.4-1.el8.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2021-35937 (CVSS 6.3) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2021-35937 (CVSS 6.3) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2021-35937 (CVSS 6.3) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2021-35937 (CVSS 6.3) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2021-35938 (CVSS 6.5) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2021-35938 (CVSS 6.5) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2021-35938 (CVSS 6.5) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2021-35938 (CVSS 6.5) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2021-35939 (CVSS 6.5) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2021-35939 (CVSS 6.5) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2021-35939 (CVSS 6.5) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2021-35939 (CVSS 6.5) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2021-3997 (CVSS 5.5) (severity Low) found in component 'systemd-libs' (version 239-68.el8_7.2.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2021-3997 (CVSS 5.5) (severity Low) found in component 'systemd-libs' (version 239-68.el8_7.2.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2021-4209 (CVSS 6.5) (severity Low) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2021-4209 (CVSS 6.5) (severity Low) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2021-43618 (CVSS 6.2) (severity Low) found in component 'gmp' (version 1:6.1.2-10.el8.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2021-43618 (CVSS 6.2) (severity Low) found in component 'gmp' (version 1:6.1.2-10.el8.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2021-44568 (CVSS 6.3) (severity Low) found in component 'libsolv' (version 0.7.20-4.el8_7.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2021-44568 (CVSS 6.3) (severity Low) found in component 'libsolv' (version 0.7.20-4.el8_7.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2022-3219 (CVSS 6.2) (severity Low) found in component 'gnupg2' (version 2.2.20-3.el8_6.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2022-3219 (CVSS 6.2) (severity Low) found in component 'gnupg2' (version 2.2.20-3.el8_6.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2022-36227 (CVSS 5.9) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2022-36227 (CVSS 5.9) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2022-4304 (CVSS 5.9) (severity Moderate) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2022-4304 (CVSS 5.9) (severity Moderate) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2022-43552 (CVSS 5.9) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.1.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2022-43552 (CVSS 5.9) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.1.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2022-43552 (CVSS 5.9) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.1.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2022-43552 (CVSS 5.9) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.1.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2022-4450 (CVSS 5.9) (severity Moderate) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2022-4450 (CVSS 5.9) (severity Moderate) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2023-0215 (CVSS 5.9) (severity Moderate) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2023-0215 (CVSS 5.9) (severity Moderate) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2023-0286 (CVSS 7.4) (severity Moderate) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2023-0286 (CVSS 7.4) (severity Moderate) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2023-0361 (CVSS 7.4) (severity Moderate) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2023-0361 (CVSS 7.4) (severity Moderate) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "CVE-2023-26604 (CVSS 6.2) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.2.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "CVE-2023-26604 (CVSS 6.2) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.2.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "RHSA-2023:0837 (CVSS 5.5) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.2.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "RHSA-2023:0837 (CVSS 5.5) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.2.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "RHSA-2023:1140 (CVSS 6.5) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.1.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "RHSA-2023:1140 (CVSS 6.5) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.1.x86_64) in container 'provider-credential-controller'"
+      },
+      {
+        "message": "RHSA-2023:1140 (CVSS 6.5) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.1.x86_64) in container 'old-provider-connection'"
+      },
+      {
+        "message": "RHSA-2023:1140 (CVSS 6.5) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.1.x86_64) in container 'provider-credential-controller'"
+      }
+    ],
+    "time": "2023-03-18T15:32:41.815740845Z",
+    "firstOccurred": "2023-03-18T15:32:41.815740845Z"
+  }
+}

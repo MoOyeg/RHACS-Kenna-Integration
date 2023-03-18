@@ -1,0 +1,80 @@
+{
+  "alert": {
+    "id": "d73bceb6-e6a7-422b-ae2b-8def187cbdc4",
+    "policy": {
+      "id": "45babb2e-c53d-4297-a729-b224124ae4a5",
+      "name": "vuln_test",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "1f2c61e3-c9bf-4458-8af4-b2e844c70510"
+      ],
+      "lastUpdated": "2023-03-18T15:32:40.577781572Z",
+      "SORTName": "vuln_test",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">5"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-kube-scheduler-operator",
+    "namespaceId": "87d7b05f-6989-48f2-ab53-43279e947c93",
+    "deployment": {
+      "id": "a63598c6-3cd2-47a2-b6f0-3784c627a836",
+      "name": "openshift-kube-scheduler-operator",
+      "type": "Deployment",
+      "namespace": "openshift-kube-scheduler-operator",
+      "namespaceId": "87d7b05f-6989-48f2-ab53-43279e947c93",
+      "labels": {
+        "app": "openshift-kube-scheduler-operator"
+      },
+      "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:e045fad043f28570b754619999ffb356bedee81ff842c56a32b1b13588fc1651",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:e045fad043f28570b754619999ffb356bedee81ff842c56a32b1b13588fc1651"
+            }
+          },
+          "name": "kube-scheduler-operator-container"
+        }
+      ],
+      "annotations": {
+        "exclude.release.openshift.io/internal-openshift-hosted": "true",
+        "include.release.openshift.io/self-managed-high-availability": "true",
+        "include.release.openshift.io/single-node-developer": "true"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:0594 (CVSS 9.8) (severity Important) found in component 'libksba' (version 1.3.5-8.el8_6.x86_64) in container 'kube-scheduler-operator-container'"
+      }
+    ],
+    "time": "2023-03-18T15:32:41.181354881Z",
+    "firstOccurred": "2023-03-18T15:32:41.181354881Z"
+  }
+}
