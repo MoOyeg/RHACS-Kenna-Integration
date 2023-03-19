@@ -1,0 +1,75 @@
+{
+  "alert": {
+    "id": "e5c7ecf3-27f5-4de2-bec7-e05747465879",
+    "policy": {
+      "id": "45babb2e-c53d-4297-a729-b224124ae4a5",
+      "name": "vuln_test",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "1f2c61e3-c9bf-4458-8af4-b2e844c70510"
+      ],
+      "lastUpdated": "2023-03-18T15:35:16.446828465Z",
+      "SORTName": "vuln_test",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">5"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-dns",
+    "namespaceId": "c97b047d-cdc0-4d17-b89a-08c207063911",
+    "deployment": {
+      "id": "6f47a7e5-d4cf-4663-992e-66192b10b8c6",
+      "name": "node-resolver",
+      "type": "DaemonSet",
+      "namespace": "openshift-dns",
+      "namespaceId": "c97b047d-cdc0-4d17-b89a-08c207063911",
+      "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:1fc458ece66c8d4184b45b5c495a372a96b47432ae5a39844cd5837e3981685b",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:1fc458ece66c8d4184b45b5c495a372a96b47432ae5a39844cd5837e3981685b"
+            }
+          },
+          "name": "dns-node-resolver"
+        }
+      ],
+      "annotations": {
+        "deprecated.daemonset.template.generation": "1"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:0594 (CVSS 9.8) (severity Important) found in component 'libksba' (version 1.3.5-8.el8_6.x86_64) in container 'dns-node-resolver'"
+      }
+    ],
+    "time": "2023-03-18T15:35:16.562991220Z",
+    "firstOccurred": "2023-03-18T15:35:16.562991220Z"
+  }
+}

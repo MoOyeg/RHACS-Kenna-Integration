@@ -1,0 +1,571 @@
+{
+  "alert": {
+    "id": "ce4a3fcc-6d7e-4173-b503-7c499cd162c6",
+    "policy": {
+      "id": "45babb2e-c53d-4297-a729-b224124ae4a5",
+      "name": "vuln_test",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "1f2c61e3-c9bf-4458-8af4-b2e844c70510"
+      ],
+      "lastUpdated": "2023-03-18T15:32:40.577781572Z",
+      "SORTName": "vuln_test",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">5"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+    "clusterName": "local-cluster",
+    "namespace": "open-cluster-management",
+    "namespaceId": "2f338b5f-df31-4c08-87f9-5b8fd0ecd22c",
+    "deployment": {
+      "id": "4203469a-2144-4f84-a2a4-009756cc4303",
+      "name": "management-ingress-3291d",
+      "type": "Deployment",
+      "namespace": "open-cluster-management",
+      "namespaceId": "2f338b5f-df31-4c08-87f9-5b8fd0ecd22c",
+      "labels": {
+        "app": "management-ingress-3291d",
+        "app.kubernetes.io/instance": "management-ingress-3291d",
+        "app.kubernetes.io/managed-by": "Helm",
+        "app.kubernetes.io/name": "management-ingress-3291d",
+        "chart": "management-ingress-2.6.4",
+        "component": "management-ingress-3291d",
+        "helm.sh/chart": "management-ingress",
+        "heritage": "Helm",
+        "installer.name": "multiclusterhub",
+        "installer.namespace": "open-cluster-management",
+        "release": "management-ingress-3291d"
+      },
+      "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:767d8f81cd1ed697fafdc966cbc9e353f4ec6498bd55ce5ca49968a9623f3816",
+            "name": {
+              "registry": "registry.redhat.io",
+              "remote": "rhacm2/management-ingress-rhel8",
+              "fullName": "registry.redhat.io/rhacm2/management-ingress-rhel8@sha256:767d8f81cd1ed697fafdc966cbc9e353f4ec6498bd55ce5ca49968a9623f3816"
+            }
+          },
+          "name": "management-ingress-3291d"
+        },
+        {
+          "image": {
+            "id": "sha256:dd8f1ab14d0c137a675c09c22a538c03cbde85a56e29222f92365c5651533e66",
+            "name": {
+              "registry": "registry.redhat.io",
+              "remote": "openshift4/ose-oauth-proxy",
+              "fullName": "registry.redhat.io/openshift4/ose-oauth-proxy@sha256:dd8f1ab14d0c137a675c09c22a538c03cbde85a56e29222f92365c5651533e66"
+            }
+          },
+          "name": "oauth-proxy"
+        }
+      ],
+      "annotations": {
+        "meta.helm.sh/release-name": "management-ingress-3291d",
+        "meta.helm.sh/release-namespace": "open-cluster-management"
+      }
+    },
+    "violations": [
+      {
+        "message": "CVE-2005-2541 (CVSS 7) (severity Moderate) found in component 'tar' (version 2:1.30-6.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2007-4559 (CVSS 5.5) (severity Moderate) found in component 'platform-python' (version 3.6.8-48.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2007-4559 (CVSS 5.5) (severity Moderate) found in component 'python3-libs' (version 3.6.8-48.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2017-17095 (CVSS 7.5) (severity Moderate) found in component 'libtiff' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2017-17095 (CVSS 7.5) (severity Moderate) found in component 'libtiff-devel' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2018-1000876 (CVSS 7.8) (severity Moderate) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2018-10779 (CVSS 5.3) (severity Low) found in component 'libtiff' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2018-10779 (CVSS 5.3) (severity Low) found in component 'libtiff-devel' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2018-12934 (CVSS 5.5) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2018-15209 (CVSS 5.3) (severity Moderate) found in component 'libtiff' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2018-15209 (CVSS 5.3) (severity Moderate) found in component 'libtiff-devel' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2018-16335 (CVSS 5.3) (severity Moderate) found in component 'libtiff' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2018-16335 (CVSS 5.3) (severity Moderate) found in component 'libtiff-devel' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2018-20225 (CVSS 7.8) (severity Low) found in component 'platform-python-pip' (version 9.0.3-22.el8.noarch) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2018-20225 (CVSS 7.8) (severity Low) found in component 'python3-pip-wheel' (version 9.0.3-22.el8.noarch) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2018-20623 (CVSS 5.3) (severity Moderate) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2018-20671 (CVSS 5.3) (severity Moderate) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2018-20673 (CVSS 5.3) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2018-20839 (CVSS 6.4) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.2.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2019-12904 (CVSS 5.9) (severity Moderate) found in component 'libgcrypt' (version 1.8.5-7.el8_6.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2019-12904 (CVSS 5.9) (severity Moderate) found in component 'libgcrypt-devel' (version 1.8.5-7.el8_6.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2019-12972 (CVSS 5.5) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2019-17543 (CVSS 8.1) (severity Moderate) found in component 'lz4-libs' (version 1.8.3-3.el8_4.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2019-19244 (CVSS 7.5) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2019-2201 (CVSS 7.8) (severity Moderate) found in component 'libjpeg-turbo' (version 1.5.3-12.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2019-2201 (CVSS 7.8) (severity Moderate) found in component 'libjpeg-turbo-devel' (version 1.5.3-12.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2019-7317 (CVSS 5.3) (severity Low) found in component 'libpng' (version 2:1.6.34-5.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2019-7317 (CVSS 5.3) (severity Low) found in component 'libpng-devel' (version 2:1.6.34-5.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2019-9074 (CVSS 5.3) (severity Moderate) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2019-9075 (CVSS 5.3) (severity Moderate) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2019-9077 (CVSS 5.3) (severity Moderate) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2019-9674 (CVSS 7.5) (severity Low) found in component 'platform-python' (version 3.6.8-48.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2019-9674 (CVSS 7.5) (severity Low) found in component 'python3-libs' (version 3.6.8-48.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2020-13790 (CVSS 8.1) (severity Moderate) found in component 'libjpeg-turbo' (version 1.5.3-12.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2020-13790 (CVSS 8.1) (severity Moderate) found in component 'libjpeg-turbo-devel' (version 1.5.3-12.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2020-16156 (CVSS 7.8) (severity Moderate) found in component 'perl-CPAN' (version 2.18-397.el8.noarch) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2020-16598 (CVSS 5.5) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2020-17049 (CVSS 7.2) (severity Moderate) found in component 'krb5-devel' (version 1.18.2-22.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2020-17049 (CVSS 7.2) (severity Moderate) found in component 'krb5-libs' (version 1.18.2-22.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2020-17049 (CVSS 7.2) (severity Moderate) found in component 'libkadm5' (version 1.18.2-22.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2020-21674 (CVSS 7.5) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2020-35493 (CVSS 5.5) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2020-35494 (CVSS 6.1) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2020-35495 (CVSS 5.5) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2020-35496 (CVSS 5.5) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2020-35507 (CVSS 5.5) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2020-35538 (CVSS 5.5) (severity Low) found in component 'libjpeg-turbo' (version 1.5.3-12.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2020-35538 (CVSS 5.5) (severity Low) found in component 'libjpeg-turbo-devel' (version 1.5.3-12.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-24032 (CVSS 5.5) (severity Low) found in component 'libzstd' (version 1.4.4-1.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-35937 (CVSS 6.3) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-35937 (CVSS 6.3) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-35938 (CVSS 6.5) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-35938 (CVSS 6.5) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-35939 (CVSS 6.5) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-35939 (CVSS 6.5) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-3826 (CVSS 7.5) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-38593 (CVSS 7.5) (severity Moderate) found in component 'qt5-srpm-macros' (version 5.15.3-1.el8.noarch) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses' (version 6.1-9.20180224.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-3997 (CVSS 5.5) (severity Low) found in component 'systemd-libs' (version 239-68.el8_7.2.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-4209 (CVSS 6.5) (severity Low) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'cpp' (version 8.5.0-16.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'gcc' (version 8.5.0-16.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'gcc-c++' (version 8.5.0-16.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libgomp' (version 8.5.0-16.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libstdc++-devel' (version 8.5.0-16.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-43618 (CVSS 6.2) (severity Low) found in component 'gmp' (version 1:6.1.2-10.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-44568 (CVSS 6.3) (severity Low) found in component 'libsolv' (version 0.7.20-4.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2021-45078 (CVSS 7.8) (severity Moderate) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-0529 (CVSS 5.5) (severity Low) found in component 'unzip' (version 6.0-46.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-0530 (CVSS 5.5) (severity Low) found in component 'unzip' (version 6.0-46.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-1354 (CVSS 5.5) (severity Low) found in component 'libtiff' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-1354 (CVSS 5.5) (severity Low) found in component 'libtiff-devel' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-23990 (CVSS 6.5) (severity Moderate) found in component 'expat' (version 2.2.5-10.el8_7.1.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-23990 (CVSS 6.5) (severity Moderate) found in component 'expat-devel' (version 2.2.5-10.el8_7.1.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'cpp' (version 8.5.0-16.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'gcc' (version 8.5.0-16.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'gcc-c++' (version 8.5.0-16.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libgomp' (version 8.5.0-16.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libstdc++-devel' (version 8.5.0-16.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-3219 (CVSS 6.2) (severity Low) found in component 'gnupg2' (version 2.2.20-3.el8_6.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-3554 (CVSS 5.3) (severity Moderate) found in component 'libX11' (version 1.6.8-5.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-3554 (CVSS 5.3) (severity Moderate) found in component 'libX11-common' (version 1.6.8-5.el8.noarch) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-3554 (CVSS 5.3) (severity Moderate) found in component 'libX11-devel' (version 1.6.8-5.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-3554 (CVSS 5.3) (severity Moderate) found in component 'libX11-xcb' (version 1.6.8-5.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-3570 (CVSS 5.5) (severity Moderate) found in component 'libtiff' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-3570 (CVSS 5.5) (severity Moderate) found in component 'libtiff-devel' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-3598 (CVSS 5.5) (severity Moderate) found in component 'libtiff' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-3598 (CVSS 5.5) (severity Moderate) found in component 'libtiff-devel' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-3599 (CVSS 5.5) (severity Moderate) found in component 'libtiff' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-3599 (CVSS 5.5) (severity Moderate) found in component 'libtiff-devel' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-36227 (CVSS 5.9) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-3627 (CVSS 5.5) (severity Moderate) found in component 'libtiff' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-3627 (CVSS 5.5) (severity Moderate) found in component 'libtiff-devel' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-38533 (CVSS 5.5) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-3857 (CVSS 5.5) (severity Low) found in component 'libpng' (version 2:1.6.34-5.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-3857 (CVSS 5.5) (severity Low) found in component 'libpng-devel' (version 2:1.6.34-5.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-3970 (CVSS 8.8) (severity Moderate) found in component 'libtiff' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-3970 (CVSS 8.8) (severity Moderate) found in component 'libtiff-devel' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-4285 (CVSS 5.5) (severity Moderate) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-4304 (CVSS 5.9) (severity Moderate) found in component 'openssl' (version 1:1.1.1k-7.el8_6.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-4304 (CVSS 5.9) (severity Moderate) found in component 'openssl-devel' (version 1:1.1.1k-7.el8_6.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-4304 (CVSS 5.9) (severity Moderate) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-43552 (CVSS 5.9) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.1.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-43552 (CVSS 5.9) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.1.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-4450 (CVSS 5.9) (severity Moderate) found in component 'openssl' (version 1:1.1.1k-7.el8_6.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-4450 (CVSS 5.9) (severity Moderate) found in component 'openssl-devel' (version 1:1.1.1k-7.el8_6.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-4450 (CVSS 5.9) (severity Moderate) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-4645 (CVSS 6.1) (severity Moderate) found in component 'libtiff' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-4645 (CVSS 6.1) (severity Moderate) found in component 'libtiff-devel' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-48281 (CVSS 5.5) (severity Moderate) found in component 'libtiff' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2022-48281 (CVSS 5.5) (severity Moderate) found in component 'libtiff-devel' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0215 (CVSS 5.9) (severity Moderate) found in component 'openssl' (version 1:1.1.1k-7.el8_6.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0215 (CVSS 5.9) (severity Moderate) found in component 'openssl-devel' (version 1:1.1.1k-7.el8_6.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0215 (CVSS 5.9) (severity Moderate) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0286 (CVSS 7.4) (severity Moderate) found in component 'openssl' (version 1:1.1.1k-7.el8_6.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0286 (CVSS 7.4) (severity Moderate) found in component 'openssl-devel' (version 1:1.1.1k-7.el8_6.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0286 (CVSS 7.4) (severity Moderate) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0361 (CVSS 7.4) (severity Moderate) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0795 (CVSS 6.1) (severity Moderate) found in component 'libtiff' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0795 (CVSS 6.1) (severity Moderate) found in component 'libtiff-devel' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0796 (CVSS 6.1) (severity Moderate) found in component 'libtiff' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0796 (CVSS 6.1) (severity Moderate) found in component 'libtiff-devel' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0797 (CVSS 6.1) (severity Moderate) found in component 'libtiff' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0797 (CVSS 6.1) (severity Moderate) found in component 'libtiff-devel' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0798 (CVSS 6.1) (severity Moderate) found in component 'libtiff' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0798 (CVSS 6.1) (severity Moderate) found in component 'libtiff-devel' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0799 (CVSS 5.5) (severity Moderate) found in component 'libtiff' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0799 (CVSS 5.5) (severity Moderate) found in component 'libtiff-devel' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0800 (CVSS 6.1) (severity Moderate) found in component 'libtiff' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0800 (CVSS 6.1) (severity Moderate) found in component 'libtiff-devel' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0801 (CVSS 6.1) (severity Moderate) found in component 'libtiff' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0801 (CVSS 6.1) (severity Moderate) found in component 'libtiff-devel' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0802 (CVSS 6.1) (severity Moderate) found in component 'libtiff' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0802 (CVSS 6.1) (severity Moderate) found in component 'libtiff-devel' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0803 (CVSS 6.1) (severity Moderate) found in component 'libtiff' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0803 (CVSS 6.1) (severity Moderate) found in component 'libtiff-devel' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0804 (CVSS 6.1) (severity Moderate) found in component 'libtiff' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-0804 (CVSS 6.1) (severity Moderate) found in component 'libtiff-devel' (version 4.0.9-26.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-24329 (CVSS 7.5) (severity Important) found in component 'platform-python' (version 3.6.8-48.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-24329 (CVSS 7.5) (severity Important) found in component 'python3-libs' (version 3.6.8-48.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-25584 (CVSS 6.3) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-25587 (CVSS 7) (severity Moderate) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "CVE-2023-26604 (CVSS 6.2) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.2.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "RHSA-2023:0624 (CVSS 9.8) (severity Important) found in component 'libksba' (version 1.3.5-8.el8_4.x86_64) in container 'oauth-proxy'"
+      },
+      {
+        "message": "RHSA-2023:0833 (CVSS 7.5) (severity Moderate) found in component 'platform-python' (version 3.6.8-48.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "RHSA-2023:0833 (CVSS 7.5) (severity Moderate) found in component 'python3-libs' (version 3.6.8-48.el8_7.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "RHSA-2023:0835 (CVSS 5.9) (severity Moderate) found in component 'platform-python-setuptools' (version 39.2.0-6.el8.noarch) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "RHSA-2023:0835 (CVSS 5.9) (severity Moderate) found in component 'python3-setuptools-wheel' (version 39.2.0-6.el8.noarch) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "RHSA-2023:0837 (CVSS 5.5) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.2.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "RHSA-2023:0842 (CVSS 7.8) (severity Moderate) found in component 'tar' (version 2:1.30-6.el8.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "RHSA-2023:1140 (CVSS 6.5) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.1.x86_64) in container 'management-ingress-3291d'"
+      },
+      {
+        "message": "RHSA-2023:1140 (CVSS 6.5) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.1.x86_64) in container 'management-ingress-3291d'"
+      }
+    ],
+    "time": "2023-03-18T15:32:41.677914105Z",
+    "firstOccurred": "2023-03-18T15:32:41.677914105Z"
+  }
+}

@@ -1,0 +1,241 @@
+{
+  "alert": {
+    "id": "190e7c91-da0e-431d-9c3a-59b18dec5d9e",
+    "policy": {
+      "id": "45babb2e-c53d-4297-a729-b224124ae4a5",
+      "name": "vuln_test",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "1f2c61e3-c9bf-4458-8af4-b2e844c70510"
+      ],
+      "lastUpdated": "2023-03-18T15:35:16.446828465Z",
+      "SORTName": "vuln_test",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">5"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+    "clusterName": "local-cluster",
+    "namespace": "airflow",
+    "namespaceId": "f1c634f9-14ab-4d99-baa5-6d7967a24de3",
+    "deployment": {
+      "id": "c2d4568a-690e-4107-ae5f-bea4c23a41a0",
+      "name": "airflow-run-airflow-migrations",
+      "type": "Job",
+      "namespace": "airflow",
+      "namespaceId": "f1c634f9-14ab-4d99-baa5-6d7967a24de3",
+      "labels": {
+        "chart": "airflow-1.8.0",
+        "component": "run-airflow-migrations",
+        "heritage": "Helm",
+        "release": "airflow",
+        "tier": "airflow"
+      },
+      "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "name": {
+              "registry": "docker.io",
+              "remote": "apache/airflow",
+              "tag": "2.5.1",
+              "fullName": "docker.io/apache/airflow:2.5.1"
+            }
+          },
+          "name": "run-airflow-migrations"
+        }
+      ],
+      "annotations": {
+        "batch.kubernetes.io/job-tracking": "",
+        "helm.sh/hook": "post-install,post-upgrade",
+        "helm.sh/hook-delete-policy": "before-hook-creation,hook-succeeded",
+        "helm.sh/hook-weight": "1"
+      }
+    },
+    "violations": [
+      {
+        "message": "CVE-2005-2541 (CVSS 10) (severity Low) found in component 'tar' (version 1.34+dfsg-1) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2007-6755 (CVSS 5.8) (severity Low) found in component 'openssl' (version 1.1.1n-0+deb11u3) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2008-3234 (CVSS 6.5) (severity Low) found in component 'openssh' (version 1:8.4p1-5+deb11u1) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2011-4116 (CVSS 7.5) (severity Low) found in component 'perl' (version 5.32.1-4+deb11u2) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2013-0340 (CVSS 6.8) (severity Low) found in component 'expat' (version 2.2.10-2+deb11u5) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2015-20107 (CVSS 7.6) (severity Important) found in component 'python3.9' (version 3.9.2-1) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2016-20012 (CVSS 5.3) (severity Low) found in component 'openssh' (version 1:8.4p1-5+deb11u1) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2016-2781 (CVSS 6.5) (severity Low) found in component 'coreutils' (version 8.32-4) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2017-11164 (CVSS 7.5) (severity Low) found in component 'pcre3' (version 2:8.39-13) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2017-16231 (CVSS 5.5) (severity Low) found in component 'pcre3' (version 2:8.39-13) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2017-17740 (CVSS 7.5) (severity Low) found in component 'openldap' (version 2.4.57+dfsg-3+deb11u1) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2017-7245 (CVSS 7.8) (severity Low) found in component 'pcre3' (version 2:8.39-13) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2017-7246 (CVSS 7.8) (severity Low) found in component 'pcre3' (version 2:8.39-13) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2018-15919 (CVSS 5.3) (severity Low) found in component 'openssh' (version 1:8.4p1-5+deb11u1) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2018-20796 (CVSS 7.5) (severity Low) found in component 'glibc' (version 2.31-13+deb11u5) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2018-5709 (CVSS 7.5) (severity Low) found in component 'krb5' (version 1.18.3-6+deb11u3) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2018-6829 (CVSS 7.5) (severity Low) found in component 'libgcrypt20' (version 1.8.7-6) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2019-1010022 (CVSS 9.8) (severity Low) found in component 'glibc' (version 2.31-13+deb11u5) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2019-1010023 (CVSS 8.8) (severity Low) found in component 'glibc' (version 2.31-13+deb11u5) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2019-1010024 (CVSS 5.3) (severity Low) found in component 'glibc' (version 2.31-13+deb11u5) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2019-1010025 (CVSS 5.3) (severity Low) found in component 'glibc' (version 2.31-13+deb11u5) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2019-19882 (CVSS 7.8) (severity Low) found in component 'shadow' (version 1:4.8.1-1) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2019-20838 (CVSS 7.5) (severity Low) found in component 'pcre3' (version 2:8.39-13) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2019-6110 (CVSS 6.8) (severity Low) found in component 'openssh' (version 1:8.4p1-5+deb11u1) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2019-8457 (CVSS 9.8) (severity Critical) found in component 'db5.3' (version 5.3.28+dfsg1-0.8) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2019-9192 (CVSS 7.5) (severity Low) found in component 'glibc' (version 2.31-13+deb11u5) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2020-13529 (CVSS 6.1) (severity Low) found in component 'systemd' (version 247.3-7+deb11u1) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2020-14145 (CVSS 5.9) (severity Low) found in component 'openssh' (version 1:8.4p1-5+deb11u1) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2020-15778 (CVSS 7.8) (severity Low) found in component 'openssh' (version 1:8.4p1-5+deb11u1) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2020-16156 (CVSS 7.8) (severity Important) found in component 'perl' (version 5.32.1-4+deb11u2) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2020-27619 (CVSS 9.8) (severity Low) found in component 'python3.9' (version 3.9.2-1) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2021-22922 (CVSS 6.5) (severity Low) found in component 'curl' (version 7.74.0-1.3+deb11u3) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2021-22923 (CVSS 5.3) (severity Low) found in component 'curl' (version 7.74.0-1.3+deb11u3) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2021-29921 (CVSS 9.8) (severity Critical) found in component 'python3.9' (version 3.9.2-1) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2021-33560 (CVSS 7.5) (severity Important) found in component 'libgcrypt20' (version 1.8.7-6) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2021-34141 (CVSS 5.3) (severity Moderate) found in component 'numpy' (version 1.21.1) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2021-3426 (CVSS 5.7) (severity Low) found in component 'python3.9' (version 3.9.2-1) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2021-36690 (CVSS 7.5) (severity Low) found in component 'sqlite3' (version 3.34.1-3) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2021-3733 (CVSS 6.5) (severity Moderate) found in component 'python3.9' (version 3.9.2-1) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2021-3737 (CVSS 7.5) (severity Important) found in component 'python3.9' (version 3.9.2-1) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2021-41617 (CVSS 7) (severity Important) found in component 'openssh' (version 1:8.4p1-5+deb11u1) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2022-0391 (CVSS 7.5) (severity Important) found in component 'python3.9' (version 3.9.2-1) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2022-0563 (CVSS 5.5) (severity Low) found in component 'util-linux' (version 2.36.1-8+deb11u1) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2022-1304 (CVSS 7.8) (severity Important) found in component 'e2fsprogs' (version 1.46.2-2) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2022-2097 (CVSS 5.3) (severity Moderate) found in component 'openssl' (version 1.1.1n-0+deb11u3) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2022-23491 (CVSS 7.5) (severity Important) found in component 'certifi' (version 2022.12.7) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2022-29458 (CVSS 7.1) (severity Important) found in component 'ncurses' (version 6.2+20201114-2) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2022-33070 (CVSS 5.5) (severity Moderate) found in component 'protobuf-c' (version 1.3.3-1) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2022-40897 (CVSS 5.9) (severity Moderate) found in component 'setuptools' (version 57.5.0) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2023-23931 (CVSS 6.5) (severity Moderate) found in component 'cryptography' (version 38.0.4) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2023-25577 (CVSS 7.5) (severity Important) found in component 'werkzeug' (version 2.2.2) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2023-26302 (CVSS 5.5) (severity Moderate) found in component 'markdown-it-py' (version 2.1.0) in container 'run-airflow-migrations'"
+      },
+      {
+        "message": "CVE-2023-26303 (CVSS 5.5) (severity Moderate) found in component 'markdown-it-py' (version 2.1.0) in container 'run-airflow-migrations'"
+      }
+    ],
+    "time": "2023-03-18T15:35:16.831911706Z",
+    "firstOccurred": "2023-03-18T15:35:16.831911706Z"
+  }
+}

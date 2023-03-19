@@ -1,0 +1,127 @@
+{
+  "alert": {
+    "id": "07aaa40c-23b1-4eb0-ae66-fd08bbb0826f",
+    "policy": {
+      "id": "45babb2e-c53d-4297-a729-b224124ae4a5",
+      "name": "vuln_test",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "1f2c61e3-c9bf-4458-8af4-b2e844c70510"
+      ],
+      "lastUpdated": "2023-03-18T15:32:05.409198868Z",
+      "SORTName": "vuln_test",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">5"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-kube-controller-manager",
+    "namespaceId": "9c90ac25-5068-45c7-944b-38ca98fc1918",
+    "deployment": {
+      "id": "8c1fc5c3-bef8-4d47-adb3-58b463420bb8",
+      "name": "kube-controller-manager-master0",
+      "type": "Pod",
+      "namespace": "openshift-kube-controller-manager",
+      "namespaceId": "9c90ac25-5068-45c7-944b-38ca98fc1918",
+      "labels": {
+        "app": "kube-controller-manager",
+        "kube-controller-manager": "true",
+        "revision": "9"
+      },
+      "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:b9cf69b5d2fd7ddcfead1a23901c0b2b4d04aebad77094f1aeb150e1ad77bb52",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:b9cf69b5d2fd7ddcfead1a23901c0b2b4d04aebad77094f1aeb150e1ad77bb52"
+            }
+          },
+          "name": "cluster-policy-controller"
+        },
+        {
+          "image": {
+            "id": "sha256:662c00a50b8327cc39963577d3e11aa71458b3888ce06223a4501679a28fecd1",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:662c00a50b8327cc39963577d3e11aa71458b3888ce06223a4501679a28fecd1"
+            }
+          },
+          "name": "kube-controller-manager"
+        },
+        {
+          "image": {
+            "id": "sha256:81a043e61c07b8e93c6b082aa920d61ffa69762bcc2ef1018360026d62c11b18",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:81a043e61c07b8e93c6b082aa920d61ffa69762bcc2ef1018360026d62c11b18"
+            }
+          },
+          "name": "kube-controller-manager-cert-syncer"
+        },
+        {
+          "image": {
+            "id": "sha256:81a043e61c07b8e93c6b082aa920d61ffa69762bcc2ef1018360026d62c11b18",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:81a043e61c07b8e93c6b082aa920d61ffa69762bcc2ef1018360026d62c11b18"
+            }
+          },
+          "name": "kube-controller-manager-recovery-controller"
+        }
+      ],
+      "annotations": {
+        "kubectl.kubernetes.io/default-container": "kube-controller-manager",
+        "kubernetes.io/config.hash": "da529fe7d9d920d381e8fd10086d701d",
+        "kubernetes.io/config.mirror": "da529fe7d9d920d381e8fd10086d701d",
+        "kubernetes.io/config.seen": "2023-01-18T19:53:49.217156530Z",
+        "kubernetes.io/config.source": "file",
+        "target.workload.openshift.io/management": "{\"effect\": \"PreferredDuringScheduling\"}"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:0594 (CVSS 9.8) (severity Important) found in component 'libksba' (version 1.3.5-8.el8_6.x86_64) in container 'cluster-policy-controller'"
+      },
+      {
+        "message": "RHSA-2023:0594 (CVSS 9.8) (severity Important) found in component 'libksba' (version 1.3.5-8.el8_6.x86_64) in container 'kube-controller-manager'"
+      },
+      {
+        "message": "RHSA-2023:0594 (CVSS 9.8) (severity Important) found in component 'libksba' (version 1.3.5-8.el8_6.x86_64) in container 'kube-controller-manager-cert-syncer'"
+      },
+      {
+        "message": "RHSA-2023:0594 (CVSS 9.8) (severity Important) found in component 'libksba' (version 1.3.5-8.el8_6.x86_64) in container 'kube-controller-manager-recovery-controller'"
+      }
+    ],
+    "time": "2023-03-18T15:32:06.270234225Z",
+    "firstOccurred": "2023-03-18T15:32:06.270234225Z"
+  }
+}

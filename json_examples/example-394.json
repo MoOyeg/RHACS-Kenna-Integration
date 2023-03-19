@@ -1,0 +1,81 @@
+{
+  "alert": {
+    "id": "d8c8bef7-6147-499f-bee2-4eae1a9e023c",
+    "policy": {
+      "id": "45babb2e-c53d-4297-a729-b224124ae4a5",
+      "name": "vuln_test",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "1f2c61e3-c9bf-4458-8af4-b2e844c70510"
+      ],
+      "lastUpdated": "2023-03-18T15:32:40.577781572Z",
+      "SORTName": "vuln_test",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">5"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-authentication-operator",
+    "namespaceId": "feb13d29-412f-4ed3-b1c6-3958eaaabd81",
+    "deployment": {
+      "id": "e94722de-3f8e-48df-af7c-452ec15c813b",
+      "name": "authentication-operator",
+      "type": "Deployment",
+      "namespace": "openshift-authentication-operator",
+      "namespaceId": "feb13d29-412f-4ed3-b1c6-3958eaaabd81",
+      "labels": {
+        "app": "authentication-operator"
+      },
+      "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:3a1252ab4a94ef96c90c19a926c6c10b1c73186377f408414c8a3aa1949a0a75",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:3a1252ab4a94ef96c90c19a926c6c10b1c73186377f408414c8a3aa1949a0a75"
+            }
+          },
+          "name": "authentication-operator"
+        }
+      ],
+      "annotations": {
+        "config.openshift.io/inject-proxy": "authentication-operator",
+        "exclude.release.openshift.io/internal-openshift-hosted": "true",
+        "include.release.openshift.io/self-managed-high-availability": "true",
+        "include.release.openshift.io/single-node-developer": "true"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:0594 (CVSS 9.8) (severity Important) found in component 'libksba' (version 1.3.5-8.el8_6.x86_64) in container 'authentication-operator'"
+      }
+    ],
+    "time": "2023-03-18T15:32:41.336917170Z",
+    "firstOccurred": "2023-03-18T15:32:41.336917170Z"
+  }
+}

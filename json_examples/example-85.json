@@ -1,0 +1,353 @@
+{
+  "alert": {
+    "id": "f6e36173-f970-4213-95b3-358520f73396",
+    "policy": {
+      "id": "45babb2e-c53d-4297-a729-b224124ae4a5",
+      "name": "vuln_test",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "1f2c61e3-c9bf-4458-8af4-b2e844c70510"
+      ],
+      "lastUpdated": "2023-03-18T15:32:05.409198868Z",
+      "SORTName": "vuln_test",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">5"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+    "clusterName": "local-cluster",
+    "namespace": "open-cluster-management",
+    "namespaceId": "2f338b5f-df31-4c08-87f9-5b8fd0ecd22c",
+    "deployment": {
+      "id": "b3c8c75c-d1b8-4c7e-b33b-504e3cf6b562",
+      "name": "search-redisgraph",
+      "type": "StatefulSet",
+      "namespace": "open-cluster-management",
+      "namespaceId": "2f338b5f-df31-4c08-87f9-5b8fd0ecd22c",
+      "labels": {
+        "app": "search",
+        "component": "redisgraph",
+        "release": "search-prod-54a80"
+      },
+      "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:eb09248b5ec32b867c3432960adeaa96e8f2ebad6623a95545cb5f3a1f4b8f26",
+            "name": {
+              "registry": "registry.redhat.io",
+              "remote": "rhacm2/redisgraph-tls-rhel8",
+              "fullName": "registry.redhat.io/rhacm2/redisgraph-tls-rhel8@sha256:eb09248b5ec32b867c3432960adeaa96e8f2ebad6623a95545cb5f3a1f4b8f26"
+            }
+          },
+          "name": "redisgraph"
+        }
+      ]
+    },
+    "violations": [
+      {
+        "message": "CVE-2005-2541 (CVSS 7) (severity Moderate) found in component 'tar' (version 2:1.30-6.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2007-4559 (CVSS 5.5) (severity Moderate) found in component 'python2' (version 2.7.18-11.module+el8.7.0+15681+7a92afba.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2007-4559 (CVSS 5.5) (severity Moderate) found in component 'python2-libs' (version 2.7.18-11.module+el8.7.0+15681+7a92afba.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2018-1000876 (CVSS 7.8) (severity Moderate) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2018-12934 (CVSS 5.5) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2018-20623 (CVSS 5.3) (severity Moderate) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2018-20671 (CVSS 5.3) (severity Moderate) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2018-20673 (CVSS 5.3) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2018-20839 (CVSS 6.4) (severity Moderate) found in component 'systemd' (version 239-68.el8_7.2.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2018-20839 (CVSS 6.4) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.2.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2018-20839 (CVSS 6.4) (severity Moderate) found in component 'systemd-pam' (version 239-68.el8_7.2.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2019-12904 (CVSS 5.9) (severity Moderate) found in component 'libgcrypt' (version 1.8.5-7.el8_6.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2019-12972 (CVSS 5.5) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2019-17543 (CVSS 8.1) (severity Moderate) found in component 'lz4-libs' (version 1.8.3-3.el8_4.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2019-19244 (CVSS 7.5) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2019-9074 (CVSS 5.3) (severity Moderate) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2019-9075 (CVSS 5.3) (severity Moderate) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2019-9077 (CVSS 5.3) (severity Moderate) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2019-9674 (CVSS 7.5) (severity Low) found in component 'python2' (version 2.7.18-11.module+el8.7.0+15681+7a92afba.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2019-9674 (CVSS 7.5) (severity Low) found in component 'python2-libs' (version 2.7.18-11.module+el8.7.0+15681+7a92afba.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2020-10735 (CVSS 7.5) (severity Moderate) found in component 'python2' (version 2.7.18-11.module+el8.7.0+15681+7a92afba.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2020-10735 (CVSS 7.5) (severity Moderate) found in component 'python2-libs' (version 2.7.18-11.module+el8.7.0+15681+7a92afba.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2020-14422 (CVSS 5.9) (severity Moderate) found in component 'python2-pip-wheel' (version 9.0.3-19.module+el8.6.0+13001+ad200bd9.noarch) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2020-16598 (CVSS 5.5) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2020-17049 (CVSS 7.2) (severity Moderate) found in component 'krb5-libs' (version 1.18.2-22.el8_7.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2020-21674 (CVSS 7.5) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2020-35493 (CVSS 5.5) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2020-35494 (CVSS 6.1) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2020-35495 (CVSS 5.5) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2020-35496 (CVSS 5.5) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2020-35507 (CVSS 5.5) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2020-35512 (CVSS 7) (severity Low) found in component 'dbus' (version 1:1.12.8-23.el8_7.1.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2020-35512 (CVSS 7) (severity Low) found in component 'dbus-common' (version 1:1.12.8-23.el8_7.1.noarch) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2020-35512 (CVSS 7) (severity Low) found in component 'dbus-daemon' (version 1:1.12.8-23.el8_7.1.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2020-35512 (CVSS 7) (severity Low) found in component 'dbus-libs' (version 1:1.12.8-23.el8_7.1.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2020-35512 (CVSS 7) (severity Low) found in component 'dbus-tools' (version 1:1.12.8-23.el8_7.1.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2020-8492 (CVSS 6.5) (severity Moderate) found in component 'python2' (version 2.7.18-11.module+el8.7.0+15681+7a92afba.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2020-8492 (CVSS 6.5) (severity Moderate) found in component 'python2-libs' (version 2.7.18-11.module+el8.7.0+15681+7a92afba.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2021-24032 (CVSS 5.5) (severity Low) found in component 'libzstd' (version 1.4.4-1.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2021-31879 (CVSS 6.5) (severity Moderate) found in component 'wget' (version 1.19.5-10.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2021-35937 (CVSS 6.3) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2021-35937 (CVSS 6.3) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2021-35938 (CVSS 6.5) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2021-35938 (CVSS 6.5) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2021-35939 (CVSS 6.5) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2021-35939 (CVSS 6.5) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2021-3826 (CVSS 7.5) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2021-3997 (CVSS 5.5) (severity Low) found in component 'systemd' (version 239-68.el8_7.2.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2021-3997 (CVSS 5.5) (severity Low) found in component 'systemd-libs' (version 239-68.el8_7.2.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2021-3997 (CVSS 5.5) (severity Low) found in component 'systemd-pam' (version 239-68.el8_7.2.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2021-4209 (CVSS 6.5) (severity Low) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'cpp' (version 8.5.0-16.el8_7.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'gcc' (version 8.5.0-16.el8_7.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libgomp' (version 8.5.0-16.el8_7.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2021-43618 (CVSS 6.2) (severity Low) found in component 'gmp' (version 1:6.1.2-10.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2021-44568 (CVSS 6.3) (severity Low) found in component 'libsolv' (version 0.7.20-4.el8_7.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2021-45078 (CVSS 7.8) (severity Moderate) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2022-23990 (CVSS 6.5) (severity Moderate) found in component 'expat' (version 2.2.5-10.el8_7.1.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'cpp' (version 8.5.0-16.el8_7.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'gcc' (version 8.5.0-16.el8_7.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libgomp' (version 8.5.0-16.el8_7.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2022-3219 (CVSS 6.2) (severity Low) found in component 'gnupg2' (version 2.2.20-3.el8_6.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2022-36227 (CVSS 5.9) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2022-38533 (CVSS 5.5) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2022-4285 (CVSS 5.5) (severity Moderate) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2022-4304 (CVSS 5.9) (severity Moderate) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2022-43552 (CVSS 5.9) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.1.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2022-43552 (CVSS 5.9) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.1.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2022-4450 (CVSS 5.9) (severity Moderate) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2022-45061 (CVSS 7.5) (severity Moderate) found in component 'python2' (version 2.7.18-11.module+el8.7.0+15681+7a92afba.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2022-45061 (CVSS 7.5) (severity Moderate) found in component 'python2-libs' (version 2.7.18-11.module+el8.7.0+15681+7a92afba.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2023-0215 (CVSS 5.9) (severity Moderate) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2023-0286 (CVSS 7.4) (severity Moderate) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2023-0361 (CVSS 7.4) (severity Moderate) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2023-24329 (CVSS 7.5) (severity Important) found in component 'python2' (version 2.7.18-11.module+el8.7.0+15681+7a92afba.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2023-24329 (CVSS 7.5) (severity Important) found in component 'python2-libs' (version 2.7.18-11.module+el8.7.0+15681+7a92afba.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2023-25584 (CVSS 6.3) (severity Low) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2023-25587 (CVSS 7) (severity Moderate) found in component 'binutils' (version 2.30-117.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2023-26604 (CVSS 6.2) (severity Moderate) found in component 'systemd' (version 239-68.el8_7.2.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2023-26604 (CVSS 6.2) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.2.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "CVE-2023-26604 (CVSS 6.2) (severity Moderate) found in component 'systemd-pam' (version 239-68.el8_7.2.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "RHSA-2023:0837 (CVSS 5.5) (severity Moderate) found in component 'systemd' (version 239-68.el8_7.2.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "RHSA-2023:0837 (CVSS 5.5) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.2.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "RHSA-2023:0837 (CVSS 5.5) (severity Moderate) found in component 'systemd-pam' (version 239-68.el8_7.2.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "RHSA-2023:0842 (CVSS 7.8) (severity Moderate) found in component 'tar' (version 2:1.30-6.el8.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "RHSA-2023:1140 (CVSS 6.5) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.1.x86_64) in container 'redisgraph'"
+      },
+      {
+        "message": "RHSA-2023:1140 (CVSS 6.5) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.1.x86_64) in container 'redisgraph'"
+      }
+    ],
+    "time": "2023-03-18T15:32:06.015017472Z",
+    "firstOccurred": "2023-03-18T15:32:06.015017472Z"
+  }
+}

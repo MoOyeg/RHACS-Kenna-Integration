@@ -1,0 +1,79 @@
+{
+  "alert": {
+    "id": "e12affce-0fe5-4d2b-80ee-37bedc34d4b5",
+    "policy": {
+      "id": "45babb2e-c53d-4297-a729-b224124ae4a5",
+      "name": "vuln_test",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "1f2c61e3-c9bf-4458-8af4-b2e844c70510"
+      ],
+      "lastUpdated": "2023-03-18T15:35:16.446828465Z",
+      "SORTName": "vuln_test",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">5"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-marketplace",
+    "namespaceId": "b983017c-672f-40f1-8dec-89e509b88646",
+    "deployment": {
+      "id": "3f25651a-d32e-4de6-a666-cc200a5c1d8e",
+      "name": "9f80edc05961fc5c3d314c5a78d4c8b1fe16f97fe427f9c71bad4be78afe1a1",
+      "type": "Job",
+      "namespace": "openshift-marketplace",
+      "namespaceId": "b983017c-672f-40f1-8dec-89e509b88646",
+      "labels": {
+        "controller-uid": "3f25651a-d32e-4de6-a666-cc200a5c1d8e",
+        "job-name": "9f80edc05961fc5c3d314c5a78d4c8b1fe16f97fe427f9c71bad4be78afe1a1"
+      },
+      "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:46a0c17957b0dc426d81e29365727746d24784d83148457d1d846b5830d2d45d",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:46a0c17957b0dc426d81e29365727746d24784d83148457d1d846b5830d2d45d"
+            }
+          },
+          "name": "extract"
+        }
+      ],
+      "annotations": {
+        "batch.kubernetes.io/job-tracking": ""
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:0594 (CVSS 9.8) (severity Important) found in component 'libksba' (version 1.3.5-8.el8_6.x86_64) in container 'extract'"
+      }
+    ],
+    "time": "2023-03-18T15:35:16.488720585Z",
+    "firstOccurred": "2023-03-18T15:35:16.488720585Z"
+  }
+}

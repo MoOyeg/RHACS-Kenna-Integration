@@ -1,0 +1,79 @@
+{
+  "alert": {
+    "id": "7eea4efc-733c-4087-a5a7-fd28fa145aa5",
+    "policy": {
+      "id": "45babb2e-c53d-4297-a729-b224124ae4a5",
+      "name": "vuln_test",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "1f2c61e3-c9bf-4458-8af4-b2e844c70510"
+      ],
+      "lastUpdated": "2023-03-18T15:35:16.446828465Z",
+      "SORTName": "vuln_test",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">5"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-service-ca",
+    "namespaceId": "c5aaceef-077a-4183-9234-bacec654865b",
+    "deployment": {
+      "id": "2ad44d52-56d9-4bd7-b1bf-7f015792e496",
+      "name": "service-ca",
+      "type": "Deployment",
+      "namespace": "openshift-service-ca",
+      "namespaceId": "c5aaceef-077a-4183-9234-bacec654865b",
+      "labels": {
+        "app": "service-ca",
+        "service-ca": "true"
+      },
+      "clusterId": "1baaa6fd-bf18-4d39-89b9-58ab240b5944",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:14794ac4b4b5e1bb2728d253b939578a03730cf26ba5cf795c8e2d26b9737dd6",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:14794ac4b4b5e1bb2728d253b939578a03730cf26ba5cf795c8e2d26b9737dd6"
+            }
+          },
+          "name": "service-ca-controller"
+        }
+      ],
+      "annotations": {
+        "operator.openshift.io/spec-hash": "9a481bed1b51f72c768aa63ad015ef03b9ecc7551e44afbcfa60608b195a7cb5"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:0594 (CVSS 9.8) (severity Important) found in component 'libksba' (version 1.3.5-8.el8_6.x86_64) in container 'service-ca-controller'"
+      }
+    ],
+    "time": "2023-03-18T15:35:16.913073737Z",
+    "firstOccurred": "2023-03-18T15:35:16.913073737Z"
+  }
+}
