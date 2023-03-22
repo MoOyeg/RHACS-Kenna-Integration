@@ -4,9 +4,14 @@ import json
 import os
 
 client = TestClient(app)
+kde_output="kde_output_json"
+acs_output="acs_example_json"
+parent_dir=os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir))
+full_kde_output=os.path.join(parent_dir,kde_output)
+full_acs_output=os.path.join(parent_dir,acs_output)
 
 def test_simple_parsing():
-    f = open('./json_examples/acs_alert_example.json',"r")
+    f = open('{}/acs_alert_example.json'.format(full_acs_output),"r")
     jsondata = json.load(f)
     f.close()
     
@@ -18,14 +23,13 @@ def test_simple_parsing():
 
 
 def test_bulk_parsing():
-    directory="./json_examples"
     total_parsed_count=0
     total_parsed_pass_count=0
     total_failed_pass_count=0
        
-    for filename in os.listdir(directory):
+    for filename in os.listdir(full_acs_output):
       jsondata=None
-      filepath = os.path.join(directory, filename)
+      filepath = os.path.join(full_acs_output, filename)
       # checking if it is a file
       if os.path.isfile(filepath):
         f = open(filepath,"r")
