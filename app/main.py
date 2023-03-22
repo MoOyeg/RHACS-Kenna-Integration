@@ -7,23 +7,24 @@ from asyncio import get_event_loop
 from concurrent.futures import ThreadPoolExecutor
 from logging import getLogger, config
 from os import getenv
-from typing import Optional  # pylint: disable=import-error
-from pydantic import BaseModel,Extra  # pylint: disable=import-error
+from typing import TypeVar, Generic  # pylint: disable=import-error
+from pydantic import BaseModel,Extra,create_model  # pylint: disable=import-error
 from fastapi import FastAPI,Request,Body,Response # pylint: disable=import-error
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 from fastapi.encoders import jsonable_encoder
-from os import path
-import json
+from os import path,pardir
+import aiofiles
+import json ,re
 
 class KDEVulnDef(BaseModel):
-    scanner_type: str
+    scanner_type: str | None
     cve_identifiers: str | None
     wasc_identifiers: str | None
     cwe_identifiers: str | None
-    name: str
-    description: str
-    solution: str
+    name: str | None
+    description: str | None
+    solution: str = ""
 
 class KDEFinding(BaseModel):
     scanner_identifier: str
@@ -32,7 +33,7 @@ class KDEFinding(BaseModel):
     due_date: str | None
     last_seen_at: str
     severity: int | None
-    triage_state: str	 	
+    triage_state: str | None	
     additional_fields: list | None
     vuln_def_name: str
 
@@ -45,10 +46,10 @@ class KDEvuln(BaseModel):
     last_seen_at: str | None
     last_fixed_on: str | None
     status: str | None
-    port: int 
-    vuln_def_name: str    
-
-class KDElocator_field(BaseModel):
+    port: int | None
+    vuln_def_name: str
+    
+class KDEAsset(BaseModel,extra=Extra.allow):
     file: str | None
     ip_address: str | None
     mac_address: str | None
@@ -61,9 +62,6 @@ class KDElocator_field(BaseModel):
     container_id: str | None
     external_id: str | None	
     database: str | None
-
-class KDEAsset(BaseModel,extra=Extra.allow):
-    # KDElocator_field: KDElocator_field
     application: str | None
     tags: list[str] | None
     owner: str | None
@@ -71,20 +69,16 @@ class KDEAsset(BaseModel,extra=Extra.allow):
     os_version: str | None
     priority: str | None
     asset_type: str | None
-    vulns: str | None
-    findings: str | None
+    vulns: list[KDEvuln] 
+    findings: list[KDEFinding] | None
       
 class KDEJsonv2(BaseModel):
     skip_autoclose: bool = False
     version: int = 2
     assets: list[KDEAsset]
     reset_tags: bool = False
-    #Commenting to allow parsing at the moment,needs work.
-    # vulns: list[KDEvuln]
-    # findings:  list[KDEFinding]
-    
-   
-
+    vuln_defs: list[KDEVulnDef] | None
+ 
 class ACSViolations(BaseModel):
     message: str
     
@@ -128,7 +122,7 @@ class ACSPolicy(BaseModel):
     policyVersion: str 
     policySections: list
     
-class ACSAlert(BaseModel):  # pylint: disable=too-few-public-methods
+class ACSAlert(BaseModel,extra=Extra.allow):  # pylint: disable=too-few-public-methods
     '''Class For Alert Information from RHACS'''
     id: str
     policy: ACSPolicy
@@ -141,32 +135,150 @@ class ACSAlert(BaseModel):  # pylint: disable=too-few-public-methods
     time: str
     firstOccurred: str
 
+#App Init
+
+#Logging
 log_file_path = path.join(path.dirname(path.abspath(__file__)), 'logging.conf')
 config.fileConfig(log_file_path, disable_existing_loggers=False)
 logger = getLogger("logger_root")
+
+#Output Folder Directories
+kde_output="kde_output_json"
+acs_output="acs_example_json"
+parent_dir=path.abspath(path.join(path.dirname(path.abspath(__file__)), pardir))
+full_kde_output=path.join(parent_dir,kde_output)
+full_acs_output=path.join(parent_dir,acs_output)
+
+#Other Variables
+scanner_type="rhacs_scanner"
 count=0
-# Declare App as a FastApi Object
+
+#Declare App as a FastApi Object
 app = FastAPI()
 
-# Instance Hostname is global
+#Instance Hostname is global
 instance_hostname = ""
+
+async def async_write_file(fullfilepath,content,mode="w+"):
+    """ Method to Asynchonously write to Files"""
+
+async def return_scanner_type() -> str:
+    """Returns ACS Scanner Type, In future might implement logic to filter ACS Instances"""
+    global scanner_type
+    return scanner_type
+
+async def acs_alert_message_parser(msg) -> dict:
+    """Function to parse ACS Policy Violation Message to Get Vulnerability Information"""
+    return_dict={}
+    regex_pal1 = "(^\w+-[0-9\-\:]+)\s\(CVSS\s([0-9\.]+)\)\s\(severity\s(\w+)\)\sfound in component\s\'[\w\-\+\_\*]+\'\s\(([\w\s\-\.\_\:]+)\)\sin\scontainer\s\'([\w\-]+)\'"
+    output=re.findall(regex_pal1, str(msg))
+    if output is not None:
+        try:
+            return_dict.update({"cvss_name":output[0][0]})
+            return_dict.update({"cvss_score":output[0][1]})
+            return_dict.update({"vuln_severity":output[0][2]})
+            return_dict.update({"vuln_affected_image_version":output[0][3]})
+            return_dict.update({"vuln_affected_container_name":output[0][4]})
+            return return_dict
+        except:
+            logger.error("Could not correctly parse msg -- {}".format(msg))            
+    return None
 
 #Write Output To KDE
 async def write_out_kde(acsalert:ACSAlert):
     """ Write Received ACS Alert to KDE File"""
     
+    #Create ACS Vulnerability in KDE
+    
+    #Vuln And Vuldef Storage
+    temp_kde_vuln=[]
+    temp_kde_vuln_def=[]
+    temp_kde_finding=[]
+    
+    #Vuln and VulnDev List for Lookback to avoid duplicate
+    temp_kde_vuln_name=[]
+    temp_kde_vuln_def_name=[]
+    for violation in acsalert.violations:
+        output = await acs_alert_message_parser(violation.message)
+        
+        if output is None:
+            logger.error("Could not correctly parse {}".format(acsalert.id))
+            return None
+        
+        #With Data From ACS Message Parsing Update our Variables
+        try:            
+            cvss_name=output["cvss_name"]
+            cvss_score=output["cvss_score"]
+            vuln_severity=output["vuln_severity"]
+            vuln_affected_image_version=output["vuln_affected_image_version"]
+            vuln_affected_container_name=output["vuln_affected_container_name"]
+        except KeyError:
+            logger.error("Could not correctly parse ACS Alert -- {}".format(acsalert.id))
+            logger.error("Cannot Output KDE for {}".format(acsalert.id))
+            return None
+            
+        #In case CVSS Score is a float try
+        try:
+            cvss_score=int(cvss_score)
+        except ValueError:
+            try:
+                cvss_score=float(cvss_score)
+                cvss_score=int(cvss_score)
+            except:
+                logger.error("Could not convert CVSS Score into Int for KDE - {}".format(acsalert.id))
+                return None
+            
+        #Add Vuln Definition into KDE,Check if already added
+        if cvss_name not in temp_kde_vuln_def_name:
+            new_vuln_def = KDEVulnDef(name=cvss_name
+                                      ,scanner_type=await return_scanner_type()
+                                      ,cve_identifiers = cvss_name
+                                      ,description = vuln_severity)
+            temp_kde_vuln_def.append(new_vuln_def)
+            temp_kde_vuln_def_name.append(cvss_name)
+        
+        if cvss_name not in temp_kde_vuln_name:
+            new_vuln = KDEvuln(scanner_identifier = acsalert.acs_instance_ip
+                               ,scanner_type = await return_scanner_type()
+                               ,scanner_score = cvss_score
+                               ,last_seen_at = acsalert.firstOccurred
+                               ,status = "open"
+                               ,vuln_def_name = cvss_name)
+            temp_kde_vuln.append(new_vuln)
+            temp_kde_vuln_name.append(cvss_name)
+            
+            new_finding= KDEFinding(scanner_identifier = acsalert.acs_instance_ip
+                               ,scanner_type = await return_scanner_type()
+                               ,scanner_score = cvss_score
+                               ,last_seen_at = acsalert.firstOccurred
+                               ,vuln_def_name = cvss_name)
+            temp_kde_finding.append(new_finding)
+    
     #Create Deployment As KDE Assets
-    new_kdeasset=KDEAsset(external_id=acsalert.deployment.id)
+    new_kdeasset=KDEAsset(external_id=acsalert.deployment.id,vulns=temp_kde_vuln,findings=temp_kde_finding)
+
+
+    #Pass Deployment Labels to Asset Tags
     if acsalert.deployment.labels is not None:
         if new_kdeasset.tags is None:
             new_kdeasset.tags = []
         for key in acsalert.deployment.labels:
             new_kdeasset.tags.append("{}:{}".format(key,acsalert.deployment.labels[key]))
-    new_kdejson=KDEJsonv2(assets=[new_kdeasset])
     
-    f = open('./kde_output/{}.json'.format(acsalert.deployment.id),"a")  
-    f.write(json.dumps(jsonable_encoder(new_kdejson),indent=2))
-    f.close()
+    #Create KDEJson File
+    new_kdejson=KDEJsonv2(assets=[new_kdeasset],vuln_defs=temp_kde_vuln_def)
+    #TODO -Move to using .json() option
+    #print(new_kdejson.json(exclude_none=True))   
+      
+    #Asynchronous Write using aiofiles    
+    filehandle = await aiofiles.open('{}/{}.json'.format(full_kde_output,acsalert.deployment.id), mode='w+')
+    await filehandle.write(json.dumps(jsonable_encoder(new_kdejson),indent=2))
+    filehandle.close
+    
+    #Synchronous Write
+    # f = open('./kde_output/{}.json'.format(acsalert.deployment.id),"a")  
+    # f.write(json.dumps(jsonable_encoder(new_kdejson),indent=2))
+    # f.close()
     
 # Get Startup Information
 @app.on_event("startup")
@@ -196,7 +308,7 @@ async def determine_metadata(request: Request):
     json_formatted_str = json.dumps(json_temp, indent=2)
     print(f"\n")
     print(json_formatted_str)
-    f = open("./json_examples/example-{}.json".format(count), "a")
+    f = open("{}/example-{}.json".format(full_acs_output,count), "a")
     f.write(json_formatted_str)
     f.close()
     print(f"\n")
@@ -205,17 +317,11 @@ async def determine_metadata(request: Request):
 
 @app.post("/recieve_acs_vuln_alert")
 async def determine_metadata(response: Response,request: Request,alert: ACSAlert=Body(embed=True)):
+    alert.acs_instance_ip=request.client.host
     await write_out_kde(alert)
+    
     return {"status": "OK"}
 
-def register_exception(app: FastAPI):
-    @app.exception_handler(RequestValidationError)
-    async def validation_exception_handler(request: Request, exc: RequestValidationError):
-
-        exc_str = f'{exc}'.replace('\n', ' ').replace('   ', ' ')
-        # or logger.error(f'{exc}')
-        logger.error(request, exc_str)
-        content = {'status_code': 10422, 'message': exc_str, 'data': None}
-        print(content)
-        return JSONResponse(content=content, status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
-    
+@app.get("/obtain_kde_output_files")
+async def obtain_kde_files(kdealert:KDEJsonv2=None):
+    return None
