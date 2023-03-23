@@ -7,15 +7,24 @@ from asyncio import get_event_loop
 from concurrent.futures import ThreadPoolExecutor
 from logging import getLogger, config
 from os import getenv
-from typing import TypeVar, Generic  # pylint: disable=import-error
+from typing import Union,TypeVar, Generic  # pylint: disable=import-error
 from pydantic import BaseModel,Extra,create_model  # pylint: disable=import-error
 from fastapi import FastAPI,Request,Body,Response # pylint: disable=import-error
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
+from pathlib import Path, _ignore_error as pathlib_ignore_error
 from fastapi.encoders import jsonable_encoder
 from os import path,pardir
-import aiofiles
+from aiofiles import os as async_os,open as async_open
 import json ,re
+
+
+class AppModel(BaseModel):
+    
+  def dict(self, *args, **kwargs):
+    if kwargs and kwargs.get("exclude_none") is not None:
+      kwargs["exclude_none"] = True
+      return BaseModel.dict(self, *args, **kwargs)
 
 class KDEVulnDef(BaseModel):
     scanner_type: str | None
@@ -72,7 +81,7 @@ class KDEAsset(BaseModel,extra=Extra.allow):
     vulns: list[KDEvuln] 
     findings: list[KDEFinding] | None
       
-class KDEJsonv2(BaseModel):
+class KDEJsonv2(AppModel):
     skip_autoclose: bool = False
     version: int = 2
     assets: list[KDEAsset]
@@ -159,9 +168,33 @@ app = FastAPI()
 #Instance Hostname is global
 instance_hostname = ""
 
-async def async_write_file(fullfilepath,content,mode="w+"):
-    """ Method to Asynchonously write to Files"""
+def sync_write_file(fullfilepath,acsalert=None,kdeobject=None,content=None,mode="w+"):
+    """ Method to synchonously write to Files"""
+    
+async def path_exists(path: Union[Path, str]) -> bool:
+    try:
+        await async_os.stat(str(path))
+    except OSError as e:
+        if not pathlib_ignore_error(e):
+            raise
+        return False
+    except ValueError:
+        # Non-encodable path
+        return False
+    return True    
 
+async def async_write_file(fullfilepath,acsalert=None,kdeobject=None,content=None,mode="w+"):
+    """ Method to Asynchonously write to Files"""
+    if kdeobject is not None and acsalert is not None:
+        tempfullfilepath='{}/{}.json'.format(fullfilepath,acsalert.deployment.id)
+        count=1
+        while await path_exists(tempfullfilepath):            
+            tempfullfilepath='{}/{}_{}.json'.format(fullfilepath,acsalert.deployment.id,count)
+            count += 1
+        filehandle = await async_open(tempfullfilepath, mode='w+')
+        await filehandle.write(json.dumps(jsonable_encoder(kdeobject),indent=2))
+        filehandle.close
+    
 async def return_scanner_type() -> str:
     """Returns ACS Scanner Type, In future might implement logic to filter ACS Instances"""
     global scanner_type
@@ -170,7 +203,7 @@ async def return_scanner_type() -> str:
 async def acs_alert_message_parser(msg) -> dict:
     """Function to parse ACS Policy Violation Message to Get Vulnerability Information"""
     return_dict={}
-    regex_pal1 = "(^\w+-[0-9\-\:]+)\s\(CVSS\s([0-9\.]+)\)\s\(severity\s(\w+)\)\sfound in component\s\'[\w\-\+\_\*]+\'\s\(([\w\s\-\.\_\:]+)\)\sin\scontainer\s\'([\w\-]+)\'"
+    regex_pal1 = "(^\w+-[0-9\-\:]+)\s\(CVSS\s([0-9\.]+)\)\s\(severity\s(\w+)\)\sfound in component\s\'[\w\-\+\_\*\.]*\'\s\(([\w\s\-\.\_\:\+]*)\)\sin\scontainer\s\'([\w\-]+)\'"
     output=re.findall(regex_pal1, str(msg))
     if output is not None:
         try:
@@ -267,19 +300,10 @@ async def write_out_kde(acsalert:ACSAlert):
     
     #Create KDEJson File
     new_kdejson=KDEJsonv2(assets=[new_kdeasset],vuln_defs=temp_kde_vuln_def)
-    #TODO -Move to using .json() option
-    #print(new_kdejson.json(exclude_none=True))   
-      
-    #Asynchronous Write using aiofiles    
-    filehandle = await aiofiles.open('{}/{}.json'.format(full_kde_output,acsalert.deployment.id), mode='w+')
-    await filehandle.write(json.dumps(jsonable_encoder(new_kdejson),indent=2))
-    filehandle.close
-    
-    #Synchronous Write
-    # f = open('./kde_output/{}.json'.format(acsalert.deployment.id),"a")  
-    # f.write(json.dumps(jsonable_encoder(new_kdejson),indent=2))
-    # f.close()
-    
+    await async_write_file(full_kde_output
+                     ,acsalert
+                     ,new_kdejson)
+   
 # Get Startup Information
 @app.on_event("startup")
 async def startup_event():
@@ -316,10 +340,13 @@ async def determine_metadata(request: Request):
     return {"status": "OK"}
 
 @app.post("/recieve_acs_vuln_alert")
-async def determine_metadata(response: Response,request: Request,alert: ACSAlert=Body(embed=True)):
+async def determine_metadata(response: Response,request: Request,return_flag:str=None,alert: ACSAlert=Body(embed=True)):
     alert.acs_instance_ip=request.client.host
     await write_out_kde(alert)
-    
+    if return_flag == "message":
+        return alert.json(include={'violations'})
+    if return_flag == "all":
+        return alert.json()
     return {"status": "OK"}
 
 @app.get("/obtain_kde_output_files")
