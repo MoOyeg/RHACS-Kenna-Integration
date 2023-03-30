@@ -3,30 +3,26 @@
 Version 1: Prototype
 '''
 
-from asyncio import get_event_loop
+from asyncio import get_event_loop,Lock as AsyncLock
 from concurrent.futures import ThreadPoolExecutor
 from logging import getLogger, config
 from os import getenv
 from typing import Union,TypeVar, Generic  # pylint: disable=import-error
-from pydantic import BaseModel,Extra,create_model  # pylint: disable=import-error
-from fastapi import FastAPI,Request,Body,Response # pylint: disable=import-error
+from pydantic import BaseModel,Extra  # pylint: disable=import-error
+from fastapi import FastAPI,Request,Body,Response,BackgroundTasks # pylint: disable=import-error
 from fastapi.responses import JSONResponse
-from fastapi.exceptions import RequestValidationError
 from pathlib import Path, _ignore_error as pathlib_ignore_error
 from fastapi.encoders import jsonable_encoder
 from os import path,pardir
 from aiofiles import os as async_os,open as async_open
 import json ,re
+from .config import settings
 
 
-class AppModel(BaseModel):
-    
-  def dict(self, *args, **kwargs):
-    if kwargs and kwargs.get("exclude_none") is not None:
-      kwargs["exclude_none"] = True
-      return BaseModel.dict(self, *args, **kwargs)
-
+#Class Definitions
+#--------------------------------------------------------------------------------------------------
 class KDEVulnDef(BaseModel):
+    """KDE Vulnerability Definition"""
     scanner_type: str | None
     cve_identifiers: str | None
     wasc_identifiers: str | None
@@ -35,7 +31,17 @@ class KDEVulnDef(BaseModel):
     description: str | None
     solution: str = ""
 
-class KDEFinding(BaseModel):
+class HashableKDEFinding(BaseModel):
+    """Subclass of BaseModel that is hashable for KDEFinding"""
+    def __hash__(self):  # make hashable BaseModel subclass
+        """Hash function for KDEFinding, used for finding unique findings"""
+        return hash((type(self),) 
+                    + tuple(self.scanner_identifier) 
+                    + tuple(self.scanner_type)
+                    + tuple(self.last_seen_at)
+                    + tuple(self.vuln_def_name))
+        
+class KDEFinding(HashableKDEFinding):
     scanner_identifier: str
     scanner_type: str
     created_at: str | None
@@ -46,7 +52,16 @@ class KDEFinding(BaseModel):
     additional_fields: list | None
     vuln_def_name: str
 
-class KDEvuln(BaseModel):
+class HashableKDEVuln(BaseModel):
+    """Subclass of BaseModel that is hashable for KDEVuln"""
+    def __hash__(self):  # make hashable BaseModel subclass
+        return hash((type(self),) 
+                    + tuple(self.scanner_identifier) 
+                    + tuple(self.scanner_type)
+                    + tuple(self.last_seen_at)
+                    + tuple(self.vuln_def_name))
+        
+class KDEVuln(HashableKDEVuln):
     scanner_identifier: str
     scanner_type: str 
     scanner_score: int
@@ -57,8 +72,15 @@ class KDEvuln(BaseModel):
     status: str | None
     port: int | None
     vuln_def_name: str
-    
-class KDEAsset(BaseModel,extra=Extra.allow):
+
+class HashableKDEAsset(BaseModel):
+    def __hash__(self):  # make hashable BaseModel subclass
+        return hash((type(self),) 
+                    + tuple(self.external_id or "") 
+                    + tuple(self.file or "")
+                    + tuple(self.container_id or ""))
+
+class KDEAsset(HashableKDEAsset,extra=Extra.allow):
     file: str | None
     ip_address: str | None
     mac_address: str | None
@@ -72,22 +94,29 @@ class KDEAsset(BaseModel,extra=Extra.allow):
     external_id: str | None	
     database: str | None
     application: str | None
-    tags: list[str] | None
+    tags: set[str] | None
     owner: str | None
     os: str | None
     os_version: str | None
     priority: str | None
     asset_type: str | None
-    vulns: list[KDEvuln] 
-    findings: list[KDEFinding] | None
-      
+    vulns: set[KDEVuln] 
+    findings: set[KDEFinding] | None
+
+class AppModel(BaseModel): 
+  def dict(self, *args, **kwargs):
+    if kwargs and kwargs.get("exclude_none") is not None:
+      kwargs["exclude_none"] = True
+      return BaseModel.dict(self, *args, **kwargs)
+       
 class KDEJsonv2(AppModel):
     skip_autoclose: bool = False
     version: int = 2
-    assets: list[KDEAsset]
+    assets: set[KDEAsset]
     reset_tags: bool = False
     vuln_defs: list[KDEVulnDef] | None
- 
+
+   
 class ACSViolations(BaseModel):
     message: str
     
@@ -144,8 +173,56 @@ class ACSAlert(BaseModel,extra=Extra.allow):  # pylint: disable=too-few-public-m
     time: str
     firstOccurred: str
 
-#App Init
+class KDEJsoncontainer():
+    """Container for all KDEJsonv2 Objects we are managing state for"""
+    _initalized = False
+       
+    def __init__(self,):
+        logger.debug("Initializing KDEJsoncontainer")
+        self.kde_json_dict = {}
+        self.kde_json_lock_dict = {}
+        self.kde_json_alert_id_dict = {}        
+        self.lock = AsyncLock()
+        KDEJsoncontainer._initalized = True
+        logger.debug("Finished Initializing KDEJsoncontainer")
 
+    async def return_kde_exists_by_cluster_id(self,cluster_id:str):
+        logger.debug(f"return_kde_exists_by_cluster_id({cluster_id})")
+        if cluster_id in self.kde_json_dict.keys():
+            return True
+        else:
+            return False
+ 
+    async def return_kde_by_cluster_id(self,cluster_id:str):
+        logger.debug(f"return_kde_by_cluster_id({cluster_id})")
+        return self.kde_json_dict.get(cluster_id)
+    
+    async def return_kde_lock_by_cluster_id(self,cluster_id:str):
+        """Return the lock for a given cluster_id"""
+        logger.debug(f"return_kde_lock_by_cluster_id({cluster_id})")
+        return self.kde_json_lock_dict.get(cluster_id)        
+           
+    async def add_kdejson(self,KDEJsonv2:KDEJsonv2,acsalert:ACSAlert):
+        """Add a new KDEJsonv2 Object to the container"""
+        logger.debug(f"add_kdejson({acsalert.id})")
+             
+        if await self.return_kde_exists_by_cluster_id(acsalert.clusterId):
+            logger.info(f"KDEJsonv2 for cluster {acsalert.clusterId} already exists will update")
+        else:
+            logger.info(f"KDEJsonv2 for cluster {acsalert.clusterId} does not exist will create")
+            async with self.lock:
+                logger.debug(f"add_kdejson({acsalert.clusterId}) acquired lock")
+                logger.debug(f"Creating New KDE for ({acsalert.clusterId})")
+                self.kde_json_dict.update({acsalert.clusterId:KDEJsonv2})
+                self.kde_json_lock_dict.update({acsalert.clusterId:AsyncLock()})
+            logger.debug(f"add_kdejson({acsalert.clusterId}) released lock")
+
+    def __repr__(self):
+        return self.__str__()
+#------------------------------------------------------------------------------------------------
+
+#App Init and Global Variables
+#------------------------------------------------------------------------------------------------
 #Logging
 log_file_path = path.join(path.dirname(path.abspath(__file__)), 'logging.conf')
 config.fileConfig(log_file_path, disable_existing_loggers=False)
@@ -160,6 +237,7 @@ full_acs_output=path.join(parent_dir,acs_output)
 
 #Other Variables
 scanner_type="rhacs_scanner"
+container_object=""
 count=0
 
 #Declare App as a FastApi Object
@@ -167,9 +245,13 @@ app = FastAPI()
 
 #Instance Hostname is global
 instance_hostname = ""
+#------------------------------------------------------------------------------------------------
+#Methods and Routes
+#------------------------------------------------------------------------------------------------
 
 def sync_write_file(fullfilepath,acsalert=None,kdeobject=None,content=None,mode="w+"):
     """ Method to synchonously write to Files"""
+    pass
     
 async def path_exists(path: Union[Path, str]) -> bool:
     try:
@@ -186,10 +268,10 @@ async def path_exists(path: Union[Path, str]) -> bool:
 async def async_write_file(fullfilepath,acsalert=None,kdeobject=None,content=None,mode="w+"):
     """ Method to Asynchonously write to Files"""
     if kdeobject is not None and acsalert is not None:
-        tempfullfilepath='{}/{}.json'.format(fullfilepath,acsalert.deployment.id)
+        tempfullfilepath='{}/{}.json'.format(fullfilepath,acsalert.clusterName)
         count=1
         while await path_exists(tempfullfilepath):            
-            tempfullfilepath='{}/{}_{}.json'.format(fullfilepath,acsalert.deployment.id,count)
+            tempfullfilepath='{}/{}.json'.format(fullfilepath,acsalert.clusterName)
             count += 1
         filehandle = await async_open(tempfullfilepath, mode='w+')
         await filehandle.write(json.dumps(jsonable_encoder(kdeobject),indent=2))
@@ -217,12 +299,11 @@ async def acs_alert_message_parser(msg) -> dict:
             logger.error("Could not correctly parse msg -- {}".format(msg))            
     return None
 
-#Write Output To KDE
-async def write_out_kde(acsalert:ACSAlert):
-    """ Write Received ACS Alert to KDE File"""
-    
-    #Create ACS Vulnerability in KDE
-    
+async def initiate_kde_conversion(acsalert:ACSAlert):
+    """ Determine then write recieved info from ACS Alert to KDE File""" 
+    logger.info("Initiating KDE Conversion for {}".format(acsalert.id))
+    global container_object
+           
     #Vuln And Vuldef Storage
     temp_kde_vuln=[]
     temp_kde_vuln_def=[]
@@ -232,12 +313,13 @@ async def write_out_kde(acsalert:ACSAlert):
     temp_kde_vuln_name=[]
     temp_kde_vuln_def_name=[]
     for violation in acsalert.violations:
+        
         output = await acs_alert_message_parser(violation.message)
         
         if output is None:
             logger.error("Could not correctly parse {}".format(acsalert.id))
             return None
-        
+       
         #With Data From ACS Message Parsing Update our Variables
         try:            
             cvss_name=output["cvss_name"]
@@ -269,9 +351,10 @@ async def write_out_kde(acsalert:ACSAlert):
                                       ,description = vuln_severity)
             temp_kde_vuln_def.append(new_vuln_def)
             temp_kde_vuln_def_name.append(cvss_name)
+            logger.debug("Added Vuln Def {} to KDE".format(cvss_name))
         
         if cvss_name not in temp_kde_vuln_name:
-            new_vuln = KDEvuln(scanner_identifier = acsalert.acs_instance_ip
+            new_vuln = KDEVuln(scanner_identifier = acsalert.acs_instance_ip
                                ,scanner_type = await return_scanner_type()
                                ,scanner_score = cvss_score
                                ,last_seen_at = acsalert.firstOccurred
@@ -279,6 +362,7 @@ async def write_out_kde(acsalert:ACSAlert):
                                ,vuln_def_name = cvss_name)
             temp_kde_vuln.append(new_vuln)
             temp_kde_vuln_name.append(cvss_name)
+            logger.debug("Added Vuln {} to KDE".format(cvss_name))
             
             new_finding= KDEFinding(scanner_identifier = acsalert.acs_instance_ip
                                ,scanner_type = await return_scanner_type()
@@ -286,31 +370,56 @@ async def write_out_kde(acsalert:ACSAlert):
                                ,last_seen_at = acsalert.firstOccurred
                                ,vuln_def_name = cvss_name)
             temp_kde_finding.append(new_finding)
-    
-    #Create Deployment As KDE Assets
-    new_kdeasset=KDEAsset(external_id=acsalert.deployment.id,vulns=temp_kde_vuln,findings=temp_kde_finding)
+            logger.debug("Added Finding {} to KDE".format(cvss_name))            
 
+    if settings.aggregation_logic.lower() == "cluster_level":
+        #Will attempt to create a KDE Output File Per Cluster
+        new_kdeasset=KDEAsset(file=acsalert.clusterName
+                            ,container_id=acsalert.deployment.id
+                            ,external_id=acsalert.id
+                            ,vulns=temp_kde_vuln
+                            ,findings=temp_kde_finding)
+        logger.debug("Created KDE Asset for Deployment {}".format(acsalert.deployment.id))
+        
+        #Create Deployment As KDE Assets
+        new_kdeasset=KDEAsset(external_id=acsalert.deployment.id,vulns=temp_kde_vuln,findings=temp_kde_finding)
+        logger.debug("Updated KDE Asset for Deployment {}".format(acsalert.deployment.id))
+        
+        #Pass Deployment Labels to Asset Tags
+        if acsalert.deployment.labels is not None:
+            if new_kdeasset.tags is None:
+                new_kdeasset.tags = []
+            for key in acsalert.deployment.labels:
+                new_kdeasset.tags.append("{}:{}".format(key,acsalert.deployment.labels[key]))
+        logger.debug("Added Deployment Labels to KDE Asset for Deployment {}".format(acsalert.deployment.id))   
 
-    #Pass Deployment Labels to Asset Tags
-    if acsalert.deployment.labels is not None:
-        if new_kdeasset.tags is None:
-            new_kdeasset.tags = []
-        for key in acsalert.deployment.labels:
-            new_kdeasset.tags.append("{}:{}".format(key,acsalert.deployment.labels[key]))
-    
-    #Create KDEJson File
-    new_kdejson=KDEJsonv2(assets=[new_kdeasset],vuln_defs=temp_kde_vuln_def)
-    await async_write_file(full_kde_output
-                     ,acsalert
-                     ,new_kdejson)
+        new_kdejson=KDEJsonv2(assets=set([new_kdeasset]),vuln_defs=temp_kde_vuln_def)
+        logger.debug("Created KDE Json for Deployment {}".format(acsalert.deployment.id))
+        
+        
+        await container_object.add_kdejson(new_kdejson,acsalert)
+    # await async_write_file(full_kde_output
+    #                  ,acsalert
+    #                  ,new_kdejson)
    
 # Get Startup Information
 @app.on_event("startup")
 async def startup_event():
     '''Startup Function'''
     logger.info("Starting up ACS/Kenna Integration Service")
-    global instance_hostname  # pylint: disable=global-statement
+    global instance_hostname  #pylint: disable=global-statement
+    global container_object #pylint: disable=global-statement
+    
     instance_hostname = getenv('HOSTNAME')
+    logger.info("Instance Hostname: {}".format(instance_hostname))
+    
+    #Initialize KDEJsoncontainer Object
+    if settings.storage_type.lower() == "memory":
+        if not KDEJsoncontainer._initalized:
+            logger.info("Initializing KDEJsoncontainer Object to Store Data")
+            container_object=KDEJsoncontainer()    
+        else:
+            logger.debug("KDEJsoncontainer Object Already Initialized")
 
 
 @app.get("/")
@@ -322,7 +431,7 @@ async def read_root():
 @app.get("/health")
 async def read_root():
     '''Application Health URL'''
-    logger.info("Health Url was Called")
+    logger.debug("Health Url '/health' was Called")
     return {"status": "OK"}
 
 @app.post("/recieve_acs_vuln_alert_load")
@@ -340,15 +449,26 @@ async def determine_metadata(request: Request):
     return {"status": "OK"}
 
 @app.post("/recieve_acs_vuln_alert")
-async def determine_metadata(response: Response,request: Request,return_flag:str=None,alert: ACSAlert=Body(embed=True)):
+async def determine_metadata(background_tasks: BackgroundTasks,response: Response,request: Request,return_flag:str=None,alert: ACSAlert=Body(embed=True)):
+    logger.info("Recieved Alert with ID: {}".format(alert.id))
     alert.acs_instance_ip=request.client.host
-    await write_out_kde(alert)
-    if return_flag == "message":
-        return alert.json(include={'violations'})
-    if return_flag == "all":
-        return alert.json()
-    return {"status": "OK"}
+    logger.debug("Alert with ID: {} was recieved from IP: {}".format(alert.id,alert.acs_instance_ip))
+    
+    if return_flag is not None:
+        await initiate_kde_conversion(alert)
+        if return_flag == "message":
+            logger.debug("Returning Message for Alert with ID: {}".format(alert.id))
+            return alert.json(include={'violations'})
+        if return_flag == "all":
+            logger.debug("Returning Alert for Alert with ID: {}".format(alert.id))
+            return alert.json()
+    else:
+        logger.debug("Adding Alert with ID: {} to Background Tasks".format(alert.id))
+        background_tasks.add_task(initiate_kde_conversion,alert)
+        logger.debug("Added Alert with ID: {} to Background Tasks".format(alert.id))
+        return {"status": "Recieved Alert with ID: {}".format(alert.id)}
 
 @app.get("/obtain_kde_output_files")
 async def obtain_kde_files(kdealert:KDEJsonv2=None):
     return None
+

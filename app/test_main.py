@@ -109,7 +109,7 @@ def test_bulk_recieve_valid_json():
       
     assert total_serializable_fail_count == 0
     assert total_serializable_pass_count == total_serializable_count
-    
+        
 def test_bulk_acs_alert_message_parser():
     """ Testing that when we send a correct json our parser can correctly parse messages"""
     total_regexable_count=0
