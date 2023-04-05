@@ -1,0 +1,88 @@
+{
+  "alert": {
+    "id": "3db1b1f6-106e-4663-be8e-948e6d4fa8f2",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T02:43:10.684115964Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-machine-api",
+    "namespaceId": "64d97a90-b872-427c-ad06-26b9765a289f",
+    "deployment": {
+      "id": "da6fff77-7067-47f8-b41a-f791616f0823",
+      "name": "metal3-image-customization",
+      "type": "Deployment",
+      "namespace": "openshift-machine-api",
+      "namespaceId": "64d97a90-b872-427c-ad06-26b9765a289f",
+      "labels": {
+        "baremetal.openshift.io/cluster-baremetal-operator": "metal3-image-customization-service",
+        "k8s-app": "metal3"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:7a005843530d9087b22e8dd4b6c37dc23ddbbcee9600fdf3b6028bf5eb9528e0",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:7a005843530d9087b22e8dd4b6c37dc23ddbbcee9600fdf3b6028bf5eb9528e0"
+            }
+          },
+          "name": "machine-image-customization-controller"
+        }
+      ],
+      "annotations": {
+        "operator.openshift.io/spec-hash": "051ea7bf9bec75ac706d47d4e89ca6d05a3dd39150d52437ee6bae75200191a7"
+      }
+    },
+    "violations": [
+      {
+        "message": "CVE-2014-125042 (CVSS 7.5) (severity Moderate) found in component 'NetworkManager' (version 1:1.36.0-12.el8_6.x86_64) in container 'machine-image-customization-controller'"
+      },
+      {
+        "message": "CVE-2014-125043 (CVSS 5.5) (severity Moderate) found in component 'NetworkManager' (version 1:1.36.0-12.el8_6.x86_64) in container 'machine-image-customization-controller'"
+      },
+      {
+        "message": "CVE-2021-20297 (CVSS 5.5) (severity Moderate) found in component 'NetworkManager' (version 1:1.36.0-12.el8_6.x86_64) in container 'machine-image-customization-controller'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'machine-image-customization-controller'"
+      }
+    ],
+    "time": "2023-04-03T02:43:10.911009737Z",
+    "firstOccurred": "2023-04-03T02:43:10.911009737Z"
+  }
+}

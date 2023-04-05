@@ -9,6 +9,7 @@ import os
 client = TestClient(app)
 kde_output="kde_output_json"
 acs_output="acs_example_json"
+
 #Logging
 log_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'logging.conf')
 config.fileConfig(log_file_path, disable_existing_loggers=False)
@@ -25,25 +26,25 @@ def is_jsonseriazable(x):
         return False
 
 def test_receive():
-    """ Testing that when we send a correct json we recieve a 200"""
+    """ Testing that when we send a correct json we receive a 200"""
     f = open('{}/acs_alert_example.json'.format(full_acs_output),"r")
     jsondata = json.load(f)
     f.close()
     
     response = client.post(
-        "/recieve_acs_vuln_alert",
+        "/receive_acs_vuln_alert",
         json=jsondata,
     )
     assert response.status_code == 200
 
 def test_receive_valid_json():
-    """ Testing that when we send a correct jsonand ask for a result we recieve a valid json response"""
+    """ Testing that when we send a correct jsonand ask for a result we receive a valid json response"""
     f = open('{}/acs_alert_example.json'.format(full_acs_output),"r")
     jsondata = json.load(f)
     f.close()
     
     response = client.post(
-        "/recieve_acs_vuln_alert/?return_flag=all",
+        "/receive_acs_vuln_alert/?return_flag=all",
         json=jsondata,
     )
     
@@ -71,7 +72,7 @@ def test_bulk_receive():
         total_parsed_count += 1
       
       if jsondata is not None:
-        response = client.post("/recieve_acs_vuln_alert",json=jsondata,)
+        response = client.post("/receive_acs_vuln_alert",json=jsondata,)
         if response.status_code == 200:
             total_parsed_pass_count += 1
         else:
@@ -80,7 +81,7 @@ def test_bulk_receive():
     assert total_parsed_fail_count == 0
     assert total_parsed_pass_count == total_parsed_count
     
-def test_bulk_recieve_valid_json():
+def test_bulk_receive_valid_json():
     total_serializable_count=0
     total_serializable_pass_count=0
     total_serializable_fail_count=0
@@ -101,7 +102,7 @@ def test_bulk_recieve_valid_json():
         total_serializable_count += 1
       
       if jsondata is not None:
-        response = client.post("/recieve_acs_vuln_alert/?return_flag=all",json=jsondata,)
+        response = client.post("/receive_acs_vuln_alert/?return_flag=all",json=jsondata,)
         if is_jsonseriazable(response.json()):
             total_serializable_pass_count += 1
         else:
@@ -131,7 +132,7 @@ def test_bulk_acs_alert_message_parser():
         f.close()
 
       if jsondata is not None:            
-        response = client.post("/recieve_acs_vuln_alert/?return_flag=message",json=jsondata,)
+        response = client.post("/receive_acs_vuln_alert/?return_flag=message",json=jsondata,)
         violation=json.loads(response.json())
         for message in violation["violations"]:
           try:

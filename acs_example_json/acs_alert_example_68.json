@@ -1,0 +1,75 @@
+{
+  "alert": {
+    "id": "ac3ce7ca-cc6f-43ad-872b-052aa108b3ac",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T02:43:10.684115964Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-cluster-storage-operator",
+    "namespaceId": "9ff09b74-b89c-4208-84e3-73c7fac8a5de",
+    "deployment": {
+      "id": "6cfd3e4a-4944-45e1-b0ed-a4f8c79c12c7",
+      "name": "csi-snapshot-webhook",
+      "type": "Deployment",
+      "namespace": "openshift-cluster-storage-operator",
+      "namespaceId": "9ff09b74-b89c-4208-84e3-73c7fac8a5de",
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:de963f1428feac490c87122a5b46b18dfb9013e648c16f9ca7d77ee4abc9d99f",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:de963f1428feac490c87122a5b46b18dfb9013e648c16f9ca7d77ee4abc9d99f"
+            }
+          },
+          "name": "webhook"
+        }
+      ],
+      "annotations": {
+        "operator.openshift.io/spec-hash": "ba8e7a7d1d883286304837ef5bc79f4c0fda3a71b148e85254f2d366d45c3019"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'webhook'"
+      }
+    ],
+    "time": "2023-04-03T02:43:11.056869793Z",
+    "firstOccurred": "2023-04-03T02:43:11.056869793Z"
+  }
+}

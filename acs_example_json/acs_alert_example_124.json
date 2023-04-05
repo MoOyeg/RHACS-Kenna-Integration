@@ -1,0 +1,78 @@
+{
+  "alert": {
+    "id": "23e0266e-7ec9-4f85-a1bf-529dca28bca3",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T02:43:10.684115964Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-operator-lifecycle-manager",
+    "namespaceId": "c04879a9-bc55-43d7-82bf-fec990d7035c",
+    "deployment": {
+      "id": "46f2ca0b-c07d-49bb-bd64-16c562e5ac2d",
+      "name": "packageserver",
+      "type": "Deployment",
+      "namespace": "openshift-operator-lifecycle-manager",
+      "namespaceId": "c04879a9-bc55-43d7-82bf-fec990d7035c",
+      "labels": {
+        "olm.deployment-spec-hash": "9f8798d77",
+        "olm.owner": "packageserver",
+        "olm.owner.kind": "ClusterServiceVersion",
+        "olm.owner.namespace": "openshift-operator-lifecycle-manager"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:bdd35c8a4b981ad9457adc97bfea1b84d82480327a1e13e754e61be5ea123f02",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:bdd35c8a4b981ad9457adc97bfea1b84d82480327a1e13e754e61be5ea123f02"
+            }
+          },
+          "name": "packageserver"
+        }
+      ]
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'packageserver'"
+      }
+    ],
+    "time": "2023-04-03T02:43:11.452573411Z",
+    "firstOccurred": "2023-04-03T02:43:11.452573411Z"
+  }
+}

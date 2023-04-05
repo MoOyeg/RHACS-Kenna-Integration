@@ -1,0 +1,75 @@
+{
+  "alert": {
+    "id": "b23a76d8-f3a7-4321-8f93-631a18708519",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T03:06:14.877062758Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-kube-controller-manager",
+    "namespaceId": "11cc0786-d19e-4c27-bf5a-3aeaa844e820",
+    "deployment": {
+      "id": "f0661428-f2ff-439b-8670-7407d5acfe35",
+      "name": "kube-controller-manager-guard-master1",
+      "type": "Pod",
+      "namespace": "openshift-kube-controller-manager",
+      "namespaceId": "11cc0786-d19e-4c27-bf5a-3aeaa844e820",
+      "labels": {
+        "app": "guard"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:c02faeabfee8822cb5d2b1f408307cdac460f67a60068e254b63fc1dd8495e05",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:c02faeabfee8822cb5d2b1f408307cdac460f67a60068e254b63fc1dd8495e05"
+            }
+          },
+          "name": "guard"
+        }
+      ]
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'guard'"
+      }
+    ],
+    "time": "2023-04-03T03:06:15.023475508Z",
+    "firstOccurred": "2023-04-03T03:06:15.023475508Z"
+  }
+}

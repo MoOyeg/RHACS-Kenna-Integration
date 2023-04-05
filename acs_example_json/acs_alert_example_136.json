@@ -1,0 +1,80 @@
+{
+  "alert": {
+    "id": "a8202271-da09-4897-85a1-1749aa0f5405",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T02:43:10.684115964Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-multus",
+    "namespaceId": "6760e90a-82aa-48ec-9ad6-15ceac1c635c",
+    "deployment": {
+      "id": "dd692a24-74a8-407c-b3c0-268430a280bc",
+      "name": "multus",
+      "type": "DaemonSet",
+      "namespace": "openshift-multus",
+      "namespaceId": "6760e90a-82aa-48ec-9ad6-15ceac1c635c",
+      "labels": {
+        "networkoperator.openshift.io/generates-operator-status": "stand-alone"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:1ddf54d7b799419bdcc8e691043e9702eec03405de3f53e87ac01282a6ca2ea1",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:1ddf54d7b799419bdcc8e691043e9702eec03405de3f53e87ac01282a6ca2ea1"
+            }
+          },
+          "name": "kube-multus"
+        }
+      ],
+      "annotations": {
+        "deprecated.daemonset.template.generation": "1",
+        "kubernetes.io/description": "This daemon set launches the Multus networking component on each node.\n",
+        "release.openshift.io/version": "4.12.8"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'kube-multus'"
+      }
+    ],
+    "time": "2023-04-03T02:43:11.569807188Z",
+    "firstOccurred": "2023-04-03T02:43:11.569807188Z"
+  }
+}

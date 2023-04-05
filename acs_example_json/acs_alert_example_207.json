@@ -1,0 +1,86 @@
+{
+  "alert": {
+    "id": "fda6dd81-0c0d-4a6a-9256-c8f764f51e2e",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T03:06:14.877062758Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-machine-config-operator",
+    "namespaceId": "293154e5-a9ec-45de-8923-7523db1cbe27",
+    "deployment": {
+      "id": "32e0391a-65a1-4944-9bc4-61175ee498b6",
+      "name": "machine-config-controller",
+      "type": "Deployment",
+      "namespace": "openshift-machine-config-operator",
+      "namespaceId": "293154e5-a9ec-45de-8923-7523db1cbe27",
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:d78dcc3b137011f21ea0888efd0ca68cb9a90b5caca8dde4ab5a0e32d4045db2",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:d78dcc3b137011f21ea0888efd0ca68cb9a90b5caca8dde4ab5a0e32d4045db2"
+            }
+          },
+          "name": "machine-config-controller"
+        },
+        {
+          "image": {
+            "id": "sha256:9c0cf8f4d56f16d74534c21a67cab0bbc524da3ef38a84116c4080bdc00e46ca",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:9c0cf8f4d56f16d74534c21a67cab0bbc524da3ef38a84116c4080bdc00e46ca"
+            }
+          },
+          "name": "oauth-proxy"
+        }
+      ]
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'machine-config-controller'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'oauth-proxy'"
+      }
+    ],
+    "time": "2023-04-03T03:06:14.941290671Z",
+    "firstOccurred": "2023-04-03T03:06:14.941290671Z"
+  }
+}

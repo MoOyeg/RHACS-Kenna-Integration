@@ -1,0 +1,102 @@
+{
+  "alert": {
+    "id": "9660a3ef-0fe5-4bbf-8061-492ffba50af3",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T02:43:10.684115964Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-apiserver",
+    "namespaceId": "77513cdb-b394-4a64-be73-b377d5669c52",
+    "deployment": {
+      "id": "6dc36010-ee1b-49e2-8066-fd0d80cdf0d5",
+      "name": "apiserver",
+      "type": "Deployment",
+      "namespace": "openshift-apiserver",
+      "namespaceId": "77513cdb-b394-4a64-be73-b377d5669c52",
+      "labels": {
+        "apiserver": "true",
+        "app": "openshift-apiserver",
+        "revision": "1"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:3596e6199256b514a6d6fa405ffc3d89167570cd86d1ae42d78ee953900886e0",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:3596e6199256b514a6d6fa405ffc3d89167570cd86d1ae42d78ee953900886e0"
+            }
+          },
+          "name": "openshift-apiserver"
+        },
+        {
+          "image": {
+            "id": "sha256:87317b5b7f1670e170c7c771b8a7fa071b90c0fec42d351aef145c46607b35e2",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:87317b5b7f1670e170c7c771b8a7fa071b90c0fec42d351aef145c46607b35e2"
+            }
+          },
+          "name": "openshift-apiserver-check-endpoints"
+        }
+      ],
+      "annotations": {
+        "openshiftapiservers.operator.openshift.io/operator-pull-spec": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:298ed00f372bba27a19a74b1c8e54a9c34906e6cdb95772444c1839cc55a0bf5",
+        "openshiftapiservers.operator.openshift.io/pull-spec": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:3596e6199256b514a6d6fa405ffc3d89167570cd86d1ae42d78ee953900886e0",
+        "operator.openshift.io/dep-desired.generation": "5",
+        "operator.openshift.io/dep-openshift-apiserver.config.configmap": "yM6xhA==",
+        "operator.openshift.io/dep-openshift-apiserver.etcd-client.secret": "l7JkDA==",
+        "operator.openshift.io/dep-openshift-apiserver.etcd-serving-ca.configmap": "oAryqA==",
+        "operator.openshift.io/dep-openshift-apiserver.image-import-ca.configmap": "OUXnWA==",
+        "operator.openshift.io/dep-openshift-apiserver.trusted-ca-bundle.configmap": "O1lK1A==",
+        "operator.openshift.io/spec-hash": "d41c028b7c48f43b49d96f88a20350894a68258fa0ff781d1ea6fbb223fe3332"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'openshift-apiserver'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'openshift-apiserver-check-endpoints'"
+      }
+    ],
+    "time": "2023-04-03T02:43:11.829297747Z",
+    "firstOccurred": "2023-04-03T02:43:11.829297747Z"
+  }
+}
