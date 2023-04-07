@@ -28,9 +28,9 @@ class Settings(BaseSettings):
     
     #auto_overwrite logic - RHACS can send an information in more than 1 alert.
     #By default, we will merge vulnerability information for all alerts on each asset(deployment)
-    #If enabled - we will overwrite old vulnerability information with new vulnerability information, if old vulnerability information is older than acs_auto_overwrite_timer
+    #If enabled - we will overwrite the vulnerability information for each asset(deployment) with the latest alert information
     acs_auto_overwrite_enabled = os.environ.get('ACS_AUTOCLOSE_ENABLED') or True
-    acs_auto_overwrite_timer = os.environ.get('ACS_AUTO_OVERWRITE_TIMER') or 3600
+    acs_auto_overwrite_timer = os.environ.get('ACS_AUTO_OVERWRITE_TIMER') or 60
     
     #TODO - Use Mongo for Storage and Syncing
     #monogodb_uri = os.environ.get('MONGODB_URI') or 'mongodb://localhost:27017'
