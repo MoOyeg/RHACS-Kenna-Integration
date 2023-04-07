@@ -1,0 +1,94 @@
+{
+  "alert": {
+    "id": "f9d2fffa-b2c1-405d-8771-d155174c9a4c",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T02:43:10.684115964Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-machine-api",
+    "namespaceId": "64d97a90-b872-427c-ad06-26b9765a289f",
+    "deployment": {
+      "id": "2ee70486-73d0-43fa-bf67-6205aec734ff",
+      "name": "machine-api-operator",
+      "type": "Deployment",
+      "namespace": "openshift-machine-api",
+      "namespaceId": "64d97a90-b872-427c-ad06-26b9765a289f",
+      "labels": {
+        "k8s-app": "machine-api-operator"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58"
+            }
+          },
+          "name": "kube-rbac-proxy"
+        },
+        {
+          "image": {
+            "id": "sha256:f4682b41a33496af8b7ddec325f3593ac760bafc92f379ef4c211e50031a87f2",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:f4682b41a33496af8b7ddec325f3593ac760bafc92f379ef4c211e50031a87f2"
+            }
+          },
+          "name": "machine-api-operator"
+        }
+      ],
+      "annotations": {
+        "exclude.release.openshift.io/internal-openshift-hosted": "true",
+        "include.release.openshift.io/self-managed-high-availability": "true",
+        "include.release.openshift.io/single-node-developer": "true"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'kube-rbac-proxy'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'machine-api-operator'"
+      }
+    ],
+    "time": "2023-04-03T02:43:12.097807598Z",
+    "firstOccurred": "2023-04-03T02:43:12.097807598Z"
+  }
+}

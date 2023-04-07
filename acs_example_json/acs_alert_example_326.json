@@ -1,0 +1,78 @@
+{
+  "alert": {
+    "id": "3f25d6f4-7079-4add-bfc5-d5ceea996b58",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T03:06:14.877062758Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-cluster-node-tuning-operator",
+    "namespaceId": "46351012-259d-401a-a5f4-ac6d9325d063",
+    "deployment": {
+      "id": "e3e04d7c-665c-4100-85a6-96aeb18b81c0",
+      "name": "tuned",
+      "type": "DaemonSet",
+      "namespace": "openshift-cluster-node-tuning-operator",
+      "namespaceId": "46351012-259d-401a-a5f4-ac6d9325d063",
+      "labels": {
+        "openshift-app": "tuned"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:73b4722b819b1780a3800be23a4c2a5e78ba9b614f7c6c536927850b8facbe72",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:73b4722b819b1780a3800be23a4c2a5e78ba9b614f7c6c536927850b8facbe72"
+            }
+          },
+          "name": "tuned"
+        }
+      ],
+      "annotations": {
+        "deprecated.daemonset.template.generation": "1"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'tuned'"
+      }
+    ],
+    "time": "2023-04-03T03:06:15.878791792Z",
+    "firstOccurred": "2023-04-03T03:06:15.878791792Z"
+  }
+}

@@ -1,0 +1,799 @@
+{
+  "alert": {
+    "id": "13501efe-3b79-40ae-b0de-f8794593a79d",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T03:06:14.877062758Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "stackrox",
+    "namespaceId": "300efbe7-0bda-4ab1-a981-3ae3acf53a34",
+    "deployment": {
+      "id": "8cebd429-c451-4495-aaba-f1c7565f1ea7",
+      "name": "scanner-db",
+      "type": "Deployment",
+      "namespace": "stackrox",
+      "namespaceId": "300efbe7-0bda-4ab1-a981-3ae3acf53a34",
+      "labels": {
+        "app": "scanner-db",
+        "app.kubernetes.io/component": "scanner",
+        "app.kubernetes.io/instance": "stackrox-central-services",
+        "app.kubernetes.io/managed-by": "Helm",
+        "app.kubernetes.io/name": "stackrox",
+        "app.kubernetes.io/part-of": "stackrox-central-services",
+        "app.kubernetes.io/version": "3.74.1",
+        "helm.sh/chart": "stackrox-central-services-74.1.0"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:c0457eb9abc42996cee8527e0c05134451107ecd502ea1f6ffb0ca6a10537780",
+            "name": {
+              "registry": "registry.redhat.io",
+              "remote": "advanced-cluster-security/rhacs-scanner-db-rhel8",
+              "fullName": "registry.redhat.io/advanced-cluster-security/rhacs-scanner-db-rhel8@sha256:c0457eb9abc42996cee8527e0c05134451107ecd502ea1f6ffb0ca6a10537780"
+            }
+          },
+          "name": "db"
+        }
+      ],
+      "annotations": {
+        "email": "support@stackrox.com",
+        "meta.helm.sh/release-name": "stackrox-central-services",
+        "meta.helm.sh/release-namespace": "stackrox",
+        "owner": "stackrox"
+      }
+    },
+    "violations": [
+      {
+        "message": "CVE-2005-2541 (CVSS 7) (severity Moderate) found in component 'tar' (version 2:1.30-6.el8_7.1.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2007-4559 (CVSS 5.5) (severity Moderate) found in component 'platform-python' (version 3.6.8-48.el8_7.1.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2007-4559 (CVSS 5.5) (severity Moderate) found in component 'python3-libs' (version 3.6.8-48.el8_7.1.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2016-4607 (CVSS 4.3) (severity Moderate) found in component 'libxslt' (version 1.1.32-6.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2018-1000654 (CVSS 4) (severity Low) found in component 'libtasn1' (version 4.13-4.el8_7.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2018-1000879 (CVSS 3.3) (severity Low) found in component 'bsdtar' (version 3.3.3-4.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2018-1000879 (CVSS 3.3) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2018-1000880 (CVSS 3.3) (severity Low) found in component 'bsdtar' (version 3.3.3-4.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2018-1000880 (CVSS 3.3) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2018-1121 (CVSS 3.9) (severity Low) found in component 'procps-ng' (version 3.3.15-9.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2018-19211 (CVSS 4.7) (severity Low) found in component 'ncurses' (version 6.1-9.20180224.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2018-19211 (CVSS 4.7) (severity Low) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2018-19211 (CVSS 4.7) (severity Low) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2018-19217 (CVSS 4.7) (severity Low) found in component 'ncurses' (version 6.1-9.20180224.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2018-19217 (CVSS 4.7) (severity Low) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2018-19217 (CVSS 4.7) (severity Low) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2018-20225 (CVSS 7.8) (severity Low) found in component 'python3-pip-wheel' (version 9.0.3-22.el8.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2018-20657 (CVSS 3.3) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2018-20657 (CVSS 3.3) (severity Low) found in component 'libgomp' (version 8.5.0-16.el8_7.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2018-20657 (CVSS 3.3) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2018-20786 (CVSS 5.3) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2018-20786 (CVSS 5.3) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2018-20839 (CVSS 6.4) (severity Moderate) found in component 'systemd' (version 239-68.el8_7.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2018-20839 (CVSS 6.4) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2018-20839 (CVSS 6.4) (severity Moderate) found in component 'systemd-pam' (version 239-68.el8_7.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2019-12900 (CVSS 4) (severity Low) found in component 'bzip2-libs' (version 1.0.6-26.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2019-12904 (CVSS 5.9) (severity Moderate) found in component 'libgcrypt' (version 1.8.5-7.el8_6.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2019-13117 (CVSS 3.3) (severity Low) found in component 'libxslt' (version 1.1.32-6.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2019-13118 (CVSS 4) (severity Low) found in component 'libxslt' (version 1.1.32-6.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2019-14250 (CVSS 3.3) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2019-14250 (CVSS 3.3) (severity Low) found in component 'libgomp' (version 8.5.0-16.el8_7.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2019-14250 (CVSS 3.3) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2019-17543 (CVSS 8.1) (severity Moderate) found in component 'lz4-libs' (version 1.8.3-3.el8_4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2019-19244 (CVSS 7.5) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2019-8905 (CVSS 4.4) (severity Low) found in component 'file-libs' (version 5.33-21.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2019-8906 (CVSS 4.4) (severity Low) found in component 'file-libs' (version 5.33-21.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2019-9674 (CVSS 7.5) (severity Low) found in component 'platform-python' (version 3.6.8-48.el8_7.1.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2019-9674 (CVSS 7.5) (severity Low) found in component 'python3-libs' (version 3.6.8-48.el8_7.1.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2019-9923 (CVSS 3.3) (severity Low) found in component 'tar' (version 2:1.30-6.el8_7.1.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2019-9936 (CVSS 3.3) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2019-9937 (CVSS 3.3) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2020-17049 (CVSS 7.2) (severity Moderate) found in component 'krb5-libs' (version 1.18.2-22.el8_7.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2020-21674 (CVSS 7.5) (severity Low) found in component 'bsdtar' (version 3.3.3-4.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2020-21674 (CVSS 7.5) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2020-28241 (CVSS 6.5) (severity Moderate) found in component 'libmaxminddb' (version 1.2.0-10.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2020-35512 (CVSS 7) (severity Low) found in component 'dbus' (version 1:1.12.8-23.el8_7.1.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2020-35512 (CVSS 7) (severity Low) found in component 'dbus-common' (version 1:1.12.8-23.el8_7.1.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2020-35512 (CVSS 7) (severity Low) found in component 'dbus-daemon' (version 1:1.12.8-23.el8_7.1.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2020-35512 (CVSS 7) (severity Low) found in component 'dbus-libs' (version 1:1.12.8-23.el8_7.1.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2020-35512 (CVSS 7) (severity Low) found in component 'dbus-tools' (version 1:1.12.8-23.el8_7.1.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2021-20193 (CVSS 3.3) (severity Low) found in component 'tar' (version 2:1.30-6.el8_7.1.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2021-24032 (CVSS 5.5) (severity Low) found in component 'libzstd' (version 1.4.4-1.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2021-3826 (CVSS 7.5) (severity Low) found in component 'gdb-gdbserver' (version 8.2-19.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2021-3927 (CVSS 7.3) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2021-3927 (CVSS 7.3) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses' (version 6.1-9.20180224.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2021-3974 (CVSS 2.9) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2021-3974 (CVSS 2.9) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2021-3997 (CVSS 5.5) (severity Low) found in component 'systemd' (version 239-68.el8_7.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2021-3997 (CVSS 5.5) (severity Low) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2021-3997 (CVSS 5.5) (severity Low) found in component 'systemd-pam' (version 239-68.el8_7.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2021-4166 (CVSS 7.1) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2021-4166 (CVSS 7.1) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2021-4209 (CVSS 6.5) (severity Low) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2021-4217 (CVSS 3.3) (severity Low) found in component 'unzip' (version 6.0-46.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libgomp' (version 8.5.0-16.el8_7.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2021-43618 (CVSS 6.2) (severity Low) found in component 'gmp' (version 1:6.1.2-10.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-0235 (CVSS 6.1) (severity Moderate) found in component 'python3-cloud-what' (version 1.28.32-1.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-0235 (CVSS 6.1) (severity Moderate) found in component 'python3-subscription-manager-rhsm' (version 1.28.32-1.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-0235 (CVSS 6.1) (severity Moderate) found in component 'python3-syspurpose' (version 1.28.32-1.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-0235 (CVSS 6.1) (severity Moderate) found in component 'subscription-manager' (version 1.28.32-1.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-0235 (CVSS 6.1) (severity Moderate) found in component 'subscription-manager-rhsm-certificates' (version 1.28.32-1.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-0351 (CVSS 6.6) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-0351 (CVSS 6.6) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-0529 (CVSS 5.5) (severity Low) found in component 'unzip' (version 6.0-46.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-0530 (CVSS 5.5) (severity Low) found in component 'unzip' (version 6.0-46.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-1619 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-1619 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-1720 (CVSS 6.1) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-1720 (CVSS 6.1) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2124 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2124 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2125 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2125 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2126 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2126 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2129 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2129 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2175 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2175 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2182 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2182 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2183 (CVSS 3.3) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2183 (CVSS 3.3) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2206 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2206 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2207 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2207 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2208 (CVSS 3.3) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2208 (CVSS 3.3) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2210 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2210 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2284 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2284 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2285 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2285 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2286 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2286 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2287 (CVSS 7.1) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2287 (CVSS 7.1) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2343 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2343 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2344 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2344 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2345 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2345 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-23990 (CVSS 6.5) (severity Moderate) found in component 'expat' (version 2.2.5-10.el8_7.1.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2522 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2522 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libgomp' (version 8.5.0-16.el8_7.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2795 (CVSS 5.3) (severity Moderate) found in component 'bind-libs' (version 32:9.11.36-5.el8_7.2.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2795 (CVSS 5.3) (severity Moderate) found in component 'bind-libs-lite' (version 32:9.11.36-5.el8_7.2.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2795 (CVSS 5.3) (severity Moderate) found in component 'bind-license' (version 32:9.11.36-5.el8_7.2.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2795 (CVSS 5.3) (severity Moderate) found in component 'bind-utils' (version 32:9.11.36-5.el8_7.2.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2795 (CVSS 5.3) (severity Moderate) found in component 'python3-bind' (version 32:9.11.36-5.el8_7.2.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2819 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2819 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2845 (CVSS 2.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2845 (CVSS 2.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2849 (CVSS 2.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2849 (CVSS 2.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2923 (CVSS 5.5) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2923 (CVSS 5.5) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2946 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2946 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2980 (CVSS 5.5) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-2980 (CVSS 5.5) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-3037 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-3037 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-3094 (CVSS 6.5) (severity Moderate) found in component 'bind-libs' (version 32:9.11.36-5.el8_7.2.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-3094 (CVSS 6.5) (severity Moderate) found in component 'bind-libs-lite' (version 32:9.11.36-5.el8_7.2.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-3094 (CVSS 6.5) (severity Moderate) found in component 'bind-license' (version 32:9.11.36-5.el8_7.2.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-3094 (CVSS 6.5) (severity Moderate) found in component 'bind-utils' (version 32:9.11.36-5.el8_7.2.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-3094 (CVSS 6.5) (severity Moderate) found in component 'python3-bind' (version 32:9.11.36-5.el8_7.2.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-3153 (CVSS 6.1) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-3153 (CVSS 6.1) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-3219 (CVSS 6.2) (severity Low) found in component 'gnupg2' (version 2.2.20-3.el8_6.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-3234 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-3234 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-3235 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-3235 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-3256 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-3256 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-3296 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-3296 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-33070 (CVSS 3.1) (severity Low) found in component 'protobuf-c' (version 1.3.0-6.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-3352 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-3352 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-35252 (CVSS 3.1) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.3.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-36227 (CVSS 5.9) (severity Low) found in component 'bsdtar' (version 3.3.3-4.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-36227 (CVSS 5.9) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-3705 (CVSS 7) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-3705 (CVSS 7) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-41862 (CVSS 3.7) (severity Low) found in component 'libpq' (version 13.5-1.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-41862 (CVSS 3.7) (severity Low) found in component 'pgaudit' (version 1.4.0-6.module+el8.4.0+11288+c193d6d7.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-41862 (CVSS 3.7) (severity Low) found in component 'postgresql' (version 12.12-1.module+el8.6.0+16796+0abe6678.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-41862 (CVSS 3.7) (severity Low) found in component 'postgresql-contrib' (version 12.12-1.module+el8.6.0+16796+0abe6678.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-41862 (CVSS 3.7) (severity Low) found in component 'postgresql-server' (version 12.12-1.module+el8.6.0+16796+0abe6678.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-4292 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-4292 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-4293 (CVSS 5.5) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-4293 (CVSS 5.5) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-43552 (CVSS 5.9) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.3.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-45939 (CVSS 7.8) (severity Moderate) found in component 'emacs-filesystem' (version 1:26.1-7.el8.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-48337 (CVSS 7.3) (severity Moderate) found in component 'emacs-filesystem' (version 1:26.1-7.el8.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-48338 (CVSS 7.3) (severity Moderate) found in component 'emacs-filesystem' (version 1:26.1-7.el8.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-48339 (CVSS 7.3) (severity Moderate) found in component 'emacs-filesystem' (version 1:26.1-7.el8.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2022-4899 (CVSS 4.7) (severity Low) found in component 'libzstd' (version 1.4.4-1.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-0049 (CVSS 7.3) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-0049 (CVSS 7.3) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-0054 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-0054 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-0288 (CVSS 7.3) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-0288 (CVSS 7.3) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-0361 (CVSS 7.4) (severity Moderate) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-0433 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-0433 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-0464 (CVSS 5.9) (severity Low) found in component 'openssl' (version 1:1.1.1k-7.el8_6.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-0464 (CVSS 5.9) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-0465 (CVSS 3.7) (severity Low) found in component 'openssl' (version 1:1.1.1k-7.el8_6.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-0465 (CVSS 3.7) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-0466 (CVSS 3.7) (severity Low) found in component 'openssl' (version 1:1.1.1k-7.el8_6.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-0466 (CVSS 3.7) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-0512 (CVSS 7.8) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-0512 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc' (version 2.28-211.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc-common' (version 2.28-211.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc-langpack-en' (version 2.28-211.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc-locale-source' (version 2.28-211.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc-minimal-langpack' (version 2.28-211.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-1127 (CVSS 7.3) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-1127 (CVSS 7.3) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-1170 (CVSS 5.3) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-1170 (CVSS 5.3) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-1175 (CVSS 5.3) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-1175 (CVSS 5.3) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-1264 (CVSS 5.5) (severity Low) found in component 'vim-filesystem' (version 2:8.0.1763-19.el8_6.4.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-1264 (CVSS 5.5) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-1579 (CVSS 7) (severity Moderate) found in component 'gdb-gdbserver' (version 8.2-19.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-22745 (CVSS 6.4) (severity Low) found in component 'tpm2-tss' (version 2.3.2-4.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-24056 (CVSS 4.7) (severity Moderate) found in component 'libpkgconf' (version 1.4.2-1.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-24056 (CVSS 4.7) (severity Moderate) found in component 'pkgconf' (version 1.4.2-1.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-24056 (CVSS 4.7) (severity Moderate) found in component 'pkgconf-m4' (version 1.4.2-1.el8.noarch) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-24056 (CVSS 4.7) (severity Moderate) found in component 'pkgconf-pkg-config' (version 1.4.2-1.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-24329 (CVSS 7.5) (severity Important) found in component 'platform-python' (version 3.6.8-48.el8_7.1.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-24329 (CVSS 7.5) (severity Important) found in component 'python3-libs' (version 3.6.8-48.el8_7.1.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-24593 (CVSS 6.2) (severity Low) found in component 'glib2' (version 2.56.4-159.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-25180 (CVSS 6.2) (severity Low) found in component 'glib2' (version 2.56.4-159.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-25584 (CVSS 6.3) (severity Low) found in component 'gdb-gdbserver' (version 8.2-19.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-25585 (CVSS 4.7) (severity Low) found in component 'gdb-gdbserver' (version 8.2-19.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-25586 (CVSS 4.7) (severity Low) found in component 'gdb-gdbserver' (version 8.2-19.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-25587 (CVSS 7) (severity Moderate) found in component 'gdb-gdbserver' (version 8.2-19.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-25588 (CVSS 4.7) (severity Low) found in component 'gdb-gdbserver' (version 8.2-19.el8.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-26604 (CVSS 7.1) (severity Moderate) found in component 'systemd' (version 239-68.el8_7.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-26604 (CVSS 7.1) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-26604 (CVSS 7.1) (severity Moderate) found in component 'systemd-pam' (version 239-68.el8_7.4.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-27534 (CVSS 3.7) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.3.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-27535 (CVSS 5.9) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.3.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-27536 (CVSS 5.9) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.3.x86_64) in container 'db'"
+      },
+      {
+        "message": "CVE-2023-28617 (CVSS 7.8) (severity Important) found in component 'emacs-filesystem' (version 1:26.1-7.el8.noarch) in container 'db'"
+      },
+      {
+        "message": "RHSA-2023:1405 (CVSS 7.5) (severity Important) found in component 'openssl' (version 1:1.1.1k-7.el8_6.x86_64) in container 'db'"
+      },
+      {
+        "message": "RHSA-2023:1405 (CVSS 7.5) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'db'"
+      }
+    ],
+    "time": "2023-04-03T03:06:15.057483333Z",
+    "firstOccurred": "2023-04-03T03:06:15.057483333Z"
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "alert": {
+    "id": "e1736788-01d1-46a1-a0f6-745a914bc836",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T02:43:10.684115964Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-etcd",
+    "namespaceId": "59ee460c-e99e-45c8-ad64-c84e8024edf7",
+    "deployment": {
+      "id": "ebf69004-455e-4fd5-8295-f22e53ea6e55",
+      "name": "etcd-master1",
+      "type": "Pod",
+      "namespace": "openshift-etcd",
+      "namespaceId": "59ee460c-e99e-45c8-ad64-c84e8024edf7",
+      "labels": {
+        "app": "etcd",
+        "etcd": "true",
+        "k8s-app": "etcd",
+        "revision": "9"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:855c8f8bb59ce8824531ebd36b675263b4e03ba8c35efb4daa558989fa21d85b",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:855c8f8bb59ce8824531ebd36b675263b4e03ba8c35efb4daa558989fa21d85b"
+            }
+          },
+          "name": "etcd"
+        },
+        {
+          "image": {
+            "id": "sha256:855c8f8bb59ce8824531ebd36b675263b4e03ba8c35efb4daa558989fa21d85b",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:855c8f8bb59ce8824531ebd36b675263b4e03ba8c35efb4daa558989fa21d85b"
+            }
+          },
+          "name": "etcd-metrics"
+        },
+        {
+          "image": {
+            "id": "sha256:9127524ca74552ef18ee4a4d3095ead757b7c09573cab84fd34f2114cb6acc05",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:9127524ca74552ef18ee4a4d3095ead757b7c09573cab84fd34f2114cb6acc05"
+            }
+          },
+          "name": "etcd-readyz"
+        },
+        {
+          "image": {
+            "id": "sha256:855c8f8bb59ce8824531ebd36b675263b4e03ba8c35efb4daa558989fa21d85b",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:855c8f8bb59ce8824531ebd36b675263b4e03ba8c35efb4daa558989fa21d85b"
+            }
+          },
+          "name": "etcdctl"
+        }
+      ],
+      "annotations": {
+        "kubectl.kubernetes.io/default-container": "etcd",
+        "kubernetes.io/config.hash": "6bc9c4e9331ddfb6f6a9903329bd14d6",
+        "kubernetes.io/config.mirror": "6bc9c4e9331ddfb6f6a9903329bd14d6",
+        "kubernetes.io/config.seen": "2023-04-02T19:22:21.783752337Z",
+        "kubernetes.io/config.source": "file",
+        "target.workload.openshift.io/management": "{\"effect\": \"PreferredDuringScheduling\"}"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'etcd'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'etcd-metrics'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'etcd-readyz'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'etcdctl'"
+      }
+    ],
+    "time": "2023-04-03T02:43:12.167545649Z",
+    "firstOccurred": "2023-04-03T02:43:12.167545649Z"
+  }
+}

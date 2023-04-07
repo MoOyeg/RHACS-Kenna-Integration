@@ -1,0 +1,78 @@
+{
+  "alert": {
+    "id": "eff39718-b3a2-4634-9614-024a7dc3a361",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T02:43:10.684115964Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-marketplace",
+    "namespaceId": "5fb6b6de-80b1-4cd9-b822-fc9a609152d7",
+    "deployment": {
+      "id": "74133cbb-97c3-4694-bc4c-7d74404e9c1b",
+      "name": "marketplace-operator",
+      "type": "Deployment",
+      "namespace": "openshift-marketplace",
+      "namespaceId": "5fb6b6de-80b1-4cd9-b822-fc9a609152d7",
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:58af682101366c52a26c9d3f710b71087e2f1514dd50775b69dafcf6934ac6e0",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:58af682101366c52a26c9d3f710b71087e2f1514dd50775b69dafcf6934ac6e0"
+            }
+          },
+          "name": "marketplace-operator"
+        }
+      ],
+      "annotations": {
+        "capability.openshift.io/name": "marketplace",
+        "config.openshift.io/inject-proxy": "marketplace-operator",
+        "include.release.openshift.io/self-managed-high-availability": "true",
+        "include.release.openshift.io/single-node-developer": "true"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'marketplace-operator'"
+      }
+    ],
+    "time": "2023-04-03T02:43:10.882252619Z",
+    "firstOccurred": "2023-04-03T02:43:10.882252619Z"
+  }
+}

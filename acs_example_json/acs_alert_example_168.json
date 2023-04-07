@@ -1,0 +1,82 @@
+{
+  "alert": {
+    "id": "f49a2516-26e7-45ab-8828-30b83ec8c22a",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T02:43:10.684115964Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-machine-api",
+    "namespaceId": "64d97a90-b872-427c-ad06-26b9765a289f",
+    "deployment": {
+      "id": "c0bc1841-90ca-444b-956c-9aa0f8b99fb4",
+      "name": "ironic-proxy",
+      "type": "DaemonSet",
+      "namespace": "openshift-machine-api",
+      "namespaceId": "64d97a90-b872-427c-ad06-26b9765a289f",
+      "labels": {
+        "k8s-app": "metal3"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:739ab43be86f978f9b6ba0b0dae97c1aae4ad49ce398161765136d29b8348fa6",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:739ab43be86f978f9b6ba0b0dae97c1aae4ad49ce398161765136d29b8348fa6"
+            }
+          },
+          "name": "ironic-proxy"
+        }
+      ],
+      "annotations": {
+        "deprecated.daemonset.template.generation": "5",
+        "operator.openshift.io/spec-hash": "d981e844413311e20d6f5f73eabfb5cda5d378d0d80a0074029f534f7b37092d"
+      }
+    },
+    "violations": [
+      {
+        "message": "CVE-2021-20319 (CVSS 7.5) (severity Moderate) found in component 'coreos-installer' (version 0.16.1-1.rhaos4.12.el9.x86_64) in container 'ironic-proxy'"
+      },
+      {
+        "message": "CVE-2021-3917 (CVSS 5) (severity Moderate) found in component 'coreos-installer' (version 0.16.1-1.rhaos4.12.el9.x86_64) in container 'ironic-proxy'"
+      }
+    ],
+    "time": "2023-04-03T02:43:11.849882359Z",
+    "firstOccurred": "2023-04-03T02:43:11.849882359Z"
+  }
+}

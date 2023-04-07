@@ -1,0 +1,317 @@
+{
+  "alert": {
+    "id": "b2443f50-a621-48a4-94ac-f30c1da73ae7",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T03:06:14.877062758Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-ovn-kubernetes",
+    "namespaceId": "906e62eb-4505-4a2d-a0e0-9b387157aa02",
+    "deployment": {
+      "id": "ccb770f4-63e8-47eb-9e79-541feb7ef0ff",
+      "name": "ovnkube-node",
+      "type": "DaemonSet",
+      "namespace": "openshift-ovn-kubernetes",
+      "namespaceId": "906e62eb-4505-4a2d-a0e0-9b387157aa02",
+      "labels": {
+        "networkoperator.openshift.io/generates-operator-status": "stand-alone"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58"
+            }
+          },
+          "name": "kube-rbac-proxy"
+        },
+        {
+          "image": {
+            "id": "sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58"
+            }
+          },
+          "name": "kube-rbac-proxy-ovn-metrics"
+        },
+        {
+          "image": {
+            "id": "sha256:0c25f461a226caf8b03c1d5613f6f64fba68d799647ec6f60369fd99bf3701ca",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:0c25f461a226caf8b03c1d5613f6f64fba68d799647ec6f60369fd99bf3701ca"
+            }
+          },
+          "name": "ovn-acl-logging"
+        },
+        {
+          "image": {
+            "id": "sha256:0c25f461a226caf8b03c1d5613f6f64fba68d799647ec6f60369fd99bf3701ca",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:0c25f461a226caf8b03c1d5613f6f64fba68d799647ec6f60369fd99bf3701ca"
+            }
+          },
+          "name": "ovn-controller"
+        },
+        {
+          "image": {
+            "id": "sha256:0c25f461a226caf8b03c1d5613f6f64fba68d799647ec6f60369fd99bf3701ca",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:0c25f461a226caf8b03c1d5613f6f64fba68d799647ec6f60369fd99bf3701ca"
+            }
+          },
+          "name": "ovnkube-node"
+        }
+      ],
+      "annotations": {
+        "deprecated.daemonset.template.generation": "2",
+        "kubernetes.io/description": "This daemonset launches the ovn-kubernetes per node networking components.\n",
+        "networkoperator.openshift.io/ip-family-mode": "single-stack",
+        "release.openshift.io/version": "4.12.8"
+      }
+    },
+    "violations": [
+      {
+        "message": "CVE-2019-25076 (CVSS 5.8) (severity Moderate) found in component 'openvswitch2.17' (version 2.17.0-62.el8fdp.x86_64) in container 'ovn-acl-logging'"
+      },
+      {
+        "message": "CVE-2019-25076 (CVSS 5.8) (severity Moderate) found in component 'openvswitch2.17' (version 2.17.0-62.el8fdp.x86_64) in container 'ovn-controller'"
+      },
+      {
+        "message": "CVE-2019-25076 (CVSS 5.8) (severity Moderate) found in component 'openvswitch2.17' (version 2.17.0-62.el8fdp.x86_64) in container 'ovnkube-node'"
+      },
+      {
+        "message": "CVE-2019-25076 (CVSS 5.8) (severity Moderate) found in component 'openvswitch2.17-devel' (version 2.17.0-62.el8fdp.x86_64) in container 'ovn-acl-logging'"
+      },
+      {
+        "message": "CVE-2019-25076 (CVSS 5.8) (severity Moderate) found in component 'openvswitch2.17-devel' (version 2.17.0-62.el8fdp.x86_64) in container 'ovn-controller'"
+      },
+      {
+        "message": "CVE-2019-25076 (CVSS 5.8) (severity Moderate) found in component 'openvswitch2.17-devel' (version 2.17.0-62.el8fdp.x86_64) in container 'ovnkube-node'"
+      },
+      {
+        "message": "CVE-2019-25076 (CVSS 5.8) (severity Moderate) found in component 'openvswitch2.17-ipsec' (version 2.17.0-62.el8fdp.x86_64) in container 'ovn-acl-logging'"
+      },
+      {
+        "message": "CVE-2019-25076 (CVSS 5.8) (severity Moderate) found in component 'openvswitch2.17-ipsec' (version 2.17.0-62.el8fdp.x86_64) in container 'ovn-controller'"
+      },
+      {
+        "message": "CVE-2019-25076 (CVSS 5.8) (severity Moderate) found in component 'openvswitch2.17-ipsec' (version 2.17.0-62.el8fdp.x86_64) in container 'ovnkube-node'"
+      },
+      {
+        "message": "CVE-2019-25076 (CVSS 5.8) (severity Moderate) found in component 'python3-openvswitch2.17' (version 2.17.0-62.el8fdp.x86_64) in container 'ovn-acl-logging'"
+      },
+      {
+        "message": "CVE-2019-25076 (CVSS 5.8) (severity Moderate) found in component 'python3-openvswitch2.17' (version 2.17.0-62.el8fdp.x86_64) in container 'ovn-controller'"
+      },
+      {
+        "message": "CVE-2019-25076 (CVSS 5.8) (severity Moderate) found in component 'python3-openvswitch2.17' (version 2.17.0-62.el8fdp.x86_64) in container 'ovnkube-node'"
+      },
+      {
+        "message": "CVE-2021-20206 (CVSS 7.2) (severity Moderate) found in component 'containernetworking-plugins' (version 1.0.1-6.rhaos4.12.el8.x86_64) in container 'ovn-acl-logging'"
+      },
+      {
+        "message": "CVE-2021-20206 (CVSS 7.2) (severity Moderate) found in component 'containernetworking-plugins' (version 1.0.1-6.rhaos4.12.el8.x86_64) in container 'ovn-controller'"
+      },
+      {
+        "message": "CVE-2021-20206 (CVSS 7.2) (severity Moderate) found in component 'containernetworking-plugins' (version 1.0.1-6.rhaos4.12.el8.x86_64) in container 'ovnkube-node'"
+      },
+      {
+        "message": "CVE-2022-28199 (CVSS 6.5) (severity Moderate) found in component 'openvswitch2.17' (version 2.17.0-62.el8fdp.x86_64) in container 'ovn-acl-logging'"
+      },
+      {
+        "message": "CVE-2022-28199 (CVSS 6.5) (severity Moderate) found in component 'openvswitch2.17' (version 2.17.0-62.el8fdp.x86_64) in container 'ovn-controller'"
+      },
+      {
+        "message": "CVE-2022-28199 (CVSS 6.5) (severity Moderate) found in component 'openvswitch2.17' (version 2.17.0-62.el8fdp.x86_64) in container 'ovnkube-node'"
+      },
+      {
+        "message": "CVE-2022-41717 (CVSS 5.3) (severity Moderate) found in component 'containernetworking-plugins' (version 1.0.1-6.rhaos4.12.el8.x86_64) in container 'ovn-acl-logging'"
+      },
+      {
+        "message": "CVE-2022-41717 (CVSS 5.3) (severity Moderate) found in component 'containernetworking-plugins' (version 1.0.1-6.rhaos4.12.el8.x86_64) in container 'ovn-controller'"
+      },
+      {
+        "message": "CVE-2022-41717 (CVSS 5.3) (severity Moderate) found in component 'containernetworking-plugins' (version 1.0.1-6.rhaos4.12.el8.x86_64) in container 'ovnkube-node'"
+      },
+      {
+        "message": "CVE-2022-4337 (CVSS 9.8) (severity Moderate) found in component 'openvswitch2.17' (version 2.17.0-62.el8fdp.x86_64) in container 'ovn-acl-logging'"
+      },
+      {
+        "message": "CVE-2022-4337 (CVSS 9.8) (severity Moderate) found in component 'openvswitch2.17' (version 2.17.0-62.el8fdp.x86_64) in container 'ovn-controller'"
+      },
+      {
+        "message": "CVE-2022-4337 (CVSS 9.8) (severity Moderate) found in component 'openvswitch2.17' (version 2.17.0-62.el8fdp.x86_64) in container 'ovnkube-node'"
+      },
+      {
+        "message": "CVE-2022-4338 (CVSS 9.8) (severity Moderate) found in component 'openvswitch2.17' (version 2.17.0-62.el8fdp.x86_64) in container 'ovn-acl-logging'"
+      },
+      {
+        "message": "CVE-2022-4338 (CVSS 9.8) (severity Moderate) found in component 'openvswitch2.17' (version 2.17.0-62.el8fdp.x86_64) in container 'ovn-controller'"
+      },
+      {
+        "message": "CVE-2022-4338 (CVSS 9.8) (severity Moderate) found in component 'openvswitch2.17' (version 2.17.0-62.el8fdp.x86_64) in container 'ovnkube-node'"
+      },
+      {
+        "message": "RHSA-2023:0688 (CVSS 9.8) (severity Moderate) found in component 'openvswitch2.17' (version 2.17.0-62.el8fdp.x86_64) in container 'ovn-acl-logging'"
+      },
+      {
+        "message": "RHSA-2023:0688 (CVSS 9.8) (severity Moderate) found in component 'openvswitch2.17' (version 2.17.0-62.el8fdp.x86_64) in container 'ovn-controller'"
+      },
+      {
+        "message": "RHSA-2023:0688 (CVSS 9.8) (severity Moderate) found in component 'openvswitch2.17' (version 2.17.0-62.el8fdp.x86_64) in container 'ovnkube-node'"
+      },
+      {
+        "message": "RHSA-2023:0688 (CVSS 9.8) (severity Moderate) found in component 'openvswitch2.17-devel' (version 2.17.0-62.el8fdp.x86_64) in container 'ovn-acl-logging'"
+      },
+      {
+        "message": "RHSA-2023:0688 (CVSS 9.8) (severity Moderate) found in component 'openvswitch2.17-devel' (version 2.17.0-62.el8fdp.x86_64) in container 'ovn-controller'"
+      },
+      {
+        "message": "RHSA-2023:0688 (CVSS 9.8) (severity Moderate) found in component 'openvswitch2.17-devel' (version 2.17.0-62.el8fdp.x86_64) in container 'ovnkube-node'"
+      },
+      {
+        "message": "RHSA-2023:0688 (CVSS 9.8) (severity Moderate) found in component 'openvswitch2.17-ipsec' (version 2.17.0-62.el8fdp.x86_64) in container 'ovn-acl-logging'"
+      },
+      {
+        "message": "RHSA-2023:0688 (CVSS 9.8) (severity Moderate) found in component 'openvswitch2.17-ipsec' (version 2.17.0-62.el8fdp.x86_64) in container 'ovn-controller'"
+      },
+      {
+        "message": "RHSA-2023:0688 (CVSS 9.8) (severity Moderate) found in component 'openvswitch2.17-ipsec' (version 2.17.0-62.el8fdp.x86_64) in container 'ovnkube-node'"
+      },
+      {
+        "message": "RHSA-2023:0688 (CVSS 9.8) (severity Moderate) found in component 'python3-openvswitch2.17' (version 2.17.0-62.el8fdp.x86_64) in container 'ovn-acl-logging'"
+      },
+      {
+        "message": "RHSA-2023:0688 (CVSS 9.8) (severity Moderate) found in component 'python3-openvswitch2.17' (version 2.17.0-62.el8fdp.x86_64) in container 'ovn-controller'"
+      },
+      {
+        "message": "RHSA-2023:0688 (CVSS 9.8) (severity Moderate) found in component 'python3-openvswitch2.17' (version 2.17.0-62.el8fdp.x86_64) in container 'ovnkube-node'"
+      },
+      {
+        "message": "RHSA-2023:1369 (CVSS 7.5) (severity Important) found in component 'nss' (version 3.79.0-10.el8_6.x86_64) in container 'ovn-acl-logging'"
+      },
+      {
+        "message": "RHSA-2023:1369 (CVSS 7.5) (severity Important) found in component 'nss' (version 3.79.0-10.el8_6.x86_64) in container 'ovn-controller'"
+      },
+      {
+        "message": "RHSA-2023:1369 (CVSS 7.5) (severity Important) found in component 'nss' (version 3.79.0-10.el8_6.x86_64) in container 'ovnkube-node'"
+      },
+      {
+        "message": "RHSA-2023:1369 (CVSS 7.5) (severity Important) found in component 'nss-softokn' (version 3.79.0-10.el8_6.x86_64) in container 'ovn-acl-logging'"
+      },
+      {
+        "message": "RHSA-2023:1369 (CVSS 7.5) (severity Important) found in component 'nss-softokn' (version 3.79.0-10.el8_6.x86_64) in container 'ovn-controller'"
+      },
+      {
+        "message": "RHSA-2023:1369 (CVSS 7.5) (severity Important) found in component 'nss-softokn' (version 3.79.0-10.el8_6.x86_64) in container 'ovnkube-node'"
+      },
+      {
+        "message": "RHSA-2023:1369 (CVSS 7.5) (severity Important) found in component 'nss-softokn-freebl' (version 3.79.0-10.el8_6.x86_64) in container 'ovn-acl-logging'"
+      },
+      {
+        "message": "RHSA-2023:1369 (CVSS 7.5) (severity Important) found in component 'nss-softokn-freebl' (version 3.79.0-10.el8_6.x86_64) in container 'ovn-controller'"
+      },
+      {
+        "message": "RHSA-2023:1369 (CVSS 7.5) (severity Important) found in component 'nss-softokn-freebl' (version 3.79.0-10.el8_6.x86_64) in container 'ovnkube-node'"
+      },
+      {
+        "message": "RHSA-2023:1369 (CVSS 7.5) (severity Important) found in component 'nss-sysinit' (version 3.79.0-10.el8_6.x86_64) in container 'ovn-acl-logging'"
+      },
+      {
+        "message": "RHSA-2023:1369 (CVSS 7.5) (severity Important) found in component 'nss-sysinit' (version 3.79.0-10.el8_6.x86_64) in container 'ovn-controller'"
+      },
+      {
+        "message": "RHSA-2023:1369 (CVSS 7.5) (severity Important) found in component 'nss-sysinit' (version 3.79.0-10.el8_6.x86_64) in container 'ovnkube-node'"
+      },
+      {
+        "message": "RHSA-2023:1369 (CVSS 7.5) (severity Important) found in component 'nss-tools' (version 3.79.0-10.el8_6.x86_64) in container 'ovn-acl-logging'"
+      },
+      {
+        "message": "RHSA-2023:1369 (CVSS 7.5) (severity Important) found in component 'nss-tools' (version 3.79.0-10.el8_6.x86_64) in container 'ovn-controller'"
+      },
+      {
+        "message": "RHSA-2023:1369 (CVSS 7.5) (severity Important) found in component 'nss-tools' (version 3.79.0-10.el8_6.x86_64) in container 'ovnkube-node'"
+      },
+      {
+        "message": "RHSA-2023:1369 (CVSS 7.5) (severity Important) found in component 'nss-util' (version 3.79.0-10.el8_6.x86_64) in container 'ovn-acl-logging'"
+      },
+      {
+        "message": "RHSA-2023:1369 (CVSS 7.5) (severity Important) found in component 'nss-util' (version 3.79.0-10.el8_6.x86_64) in container 'ovn-controller'"
+      },
+      {
+        "message": "RHSA-2023:1369 (CVSS 7.5) (severity Important) found in component 'nss-util' (version 3.79.0-10.el8_6.x86_64) in container 'ovnkube-node'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl' (version 1:1.1.1k-7.el8_6.x86_64) in container 'ovn-acl-logging'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl' (version 1:1.1.1k-7.el8_6.x86_64) in container 'ovn-controller'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl' (version 1:1.1.1k-7.el8_6.x86_64) in container 'ovnkube-node'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'kube-rbac-proxy'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'kube-rbac-proxy-ovn-metrics'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'ovn-acl-logging'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'ovn-controller'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'ovnkube-node'"
+      }
+    ],
+    "time": "2023-04-03T03:06:16.300292440Z",
+    "firstOccurred": "2023-04-03T03:06:16.300292440Z"
+  }
+}

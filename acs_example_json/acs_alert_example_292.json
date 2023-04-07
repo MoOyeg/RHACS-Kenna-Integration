@@ -1,0 +1,93 @@
+{
+  "alert": {
+    "id": "40cdf9bf-474e-42bd-8ce6-0b0ef8d461aa",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T03:06:14.877062758Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-monitoring",
+    "namespaceId": "2043c5a0-2118-4ef7-b8da-7605c55c796e",
+    "deployment": {
+      "id": "99071cf5-6733-4f32-a539-30e168a2a841",
+      "name": "prometheus-operator",
+      "type": "Deployment",
+      "namespace": "openshift-monitoring",
+      "namespaceId": "2043c5a0-2118-4ef7-b8da-7605c55c796e",
+      "labels": {
+        "app.kubernetes.io/component": "controller",
+        "app.kubernetes.io/managed-by": "cluster-monitoring-operator",
+        "app.kubernetes.io/name": "prometheus-operator",
+        "app.kubernetes.io/part-of": "openshift-monitoring",
+        "app.kubernetes.io/version": "0.60.1"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58"
+            }
+          },
+          "name": "kube-rbac-proxy"
+        },
+        {
+          "image": {
+            "id": "sha256:65d3a0a6473bf4e5a703827b6c6e2b5ae5cfa2cfc4a0012bc23116aa52685ae5",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:65d3a0a6473bf4e5a703827b6c6e2b5ae5cfa2cfc4a0012bc23116aa52685ae5"
+            }
+          },
+          "name": "prometheus-operator"
+        }
+      ]
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'kube-rbac-proxy'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'prometheus-operator'"
+      }
+    ],
+    "time": "2023-04-03T03:06:15.573231882Z",
+    "firstOccurred": "2023-04-03T03:06:15.573231882Z"
+  }
+}

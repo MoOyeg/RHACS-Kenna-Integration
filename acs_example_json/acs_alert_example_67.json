@@ -1,0 +1,79 @@
+{
+  "alert": {
+    "id": "8b8d51e2-c45d-41cc-916c-2d0443cabc05",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T02:43:10.684115964Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-console",
+    "namespaceId": "38eea152-c8f8-475a-8cf0-cbcd0360da4c",
+    "deployment": {
+      "id": "876b05df-8a6c-41d7-817d-254c30a8f7b1",
+      "name": "downloads",
+      "type": "Deployment",
+      "namespace": "openshift-console",
+      "namespaceId": "38eea152-c8f8-475a-8cf0-cbcd0360da4c",
+      "labels": {
+        "app": "console",
+        "component": "downloads"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:06592273fafed3615a12d4c605af84bfb73985d5acb1f410c0c53fe190ab303f",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:06592273fafed3615a12d4c605af84bfb73985d5acb1f410c0c53fe190ab303f"
+            }
+          },
+          "name": "download-server"
+        }
+      ],
+      "annotations": {
+        "operator.openshift.io/spec-hash": "de933c459698adec89129b6f978eca6aecf7fb9ff0c82af613d4111b3e5ce328"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'download-server'"
+      }
+    ],
+    "time": "2023-04-03T02:43:11.048961358Z",
+    "firstOccurred": "2023-04-03T02:43:11.048961358Z"
+  }
+}

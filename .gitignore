@@ -3,3 +3,4 @@ __pycache__/*
 app/__pycache__/*
 kde_output_json/*
 .vscode/launch.json
+.venv/*

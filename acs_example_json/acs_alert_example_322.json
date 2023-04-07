@@ -1,0 +1,77 @@
+{
+  "alert": {
+    "id": "205a5e63-98f0-4ffe-b10f-e5666a54c4f5",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T03:06:14.877062758Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-cluster-storage-operator",
+    "namespaceId": "9ff09b74-b89c-4208-84e3-73c7fac8a5de",
+    "deployment": {
+      "id": "f1790c94-f63e-424f-bd9d-39efbf906ddc",
+      "name": "cluster-storage-operator",
+      "type": "Deployment",
+      "namespace": "openshift-cluster-storage-operator",
+      "namespaceId": "9ff09b74-b89c-4208-84e3-73c7fac8a5de",
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:9f075b481aa6fb8ff4048e4e153a604c35aea57113e30e4c58e2d36d7c6d5f37",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:9f075b481aa6fb8ff4048e4e153a604c35aea57113e30e4c58e2d36d7c6d5f37"
+            }
+          },
+          "name": "cluster-storage-operator"
+        }
+      ],
+      "annotations": {
+        "capability.openshift.io/name": "Storage",
+        "include.release.openshift.io/self-managed-high-availability": "true",
+        "include.release.openshift.io/single-node-developer": "true"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'cluster-storage-operator'"
+      }
+    ],
+    "time": "2023-04-03T03:06:16.019969665Z",
+    "firstOccurred": "2023-04-03T03:06:16.019969665Z"
+  }
+}

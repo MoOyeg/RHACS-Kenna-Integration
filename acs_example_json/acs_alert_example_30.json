@@ -1,0 +1,79 @@
+{
+  "alert": {
+    "id": "e9fbdd9d-c56b-4ce6-8d90-a7078ec8712e",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T02:43:10.684115964Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-insights",
+    "namespaceId": "8872a4d7-ca2c-4e3e-b952-4ccdb9b13d0b",
+    "deployment": {
+      "id": "ef3d0974-e7b5-4e77-bfc6-bc16eef1801c",
+      "name": "insights-operator",
+      "type": "Deployment",
+      "namespace": "openshift-insights",
+      "namespaceId": "8872a4d7-ca2c-4e3e-b952-4ccdb9b13d0b",
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:5a1e8f25d2d8298112e4b35201e39208c019dbe43cf9095f751f6ffcc6b71567",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:5a1e8f25d2d8298112e4b35201e39208c019dbe43cf9095f751f6ffcc6b71567"
+            }
+          },
+          "name": "insights-operator"
+        }
+      ],
+      "annotations": {
+        "capability.openshift.io/name": "Insights",
+        "config.openshift.io/inject-proxy": "insights-operator",
+        "exclude.release.openshift.io/internal-openshift-hosted": "true",
+        "include.release.openshift.io/self-managed-high-availability": "true",
+        "include.release.openshift.io/single-node-developer": "true"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'insights-operator'"
+      }
+    ],
+    "time": "2023-04-03T02:43:10.748006644Z",
+    "firstOccurred": "2023-04-03T02:43:10.748006644Z"
+  }
+}

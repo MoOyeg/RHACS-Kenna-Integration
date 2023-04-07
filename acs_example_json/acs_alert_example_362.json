@@ -1,0 +1,96 @@
+{
+  "alert": {
+    "id": "e2eebfd5-92d0-4b02-a767-4ff7189b64df",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T03:06:14.877062758Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-kni-infra",
+    "namespaceId": "f137a69a-d7e6-48d6-8eb2-ca3c847c4d66",
+    "deployment": {
+      "id": "9092f813-ca16-4008-ab45-9d7e3901f690",
+      "name": "haproxy-master0",
+      "type": "Pod",
+      "namespace": "openshift-kni-infra",
+      "namespaceId": "f137a69a-d7e6-48d6-8eb2-ca3c847c4d66",
+      "labels": {
+        "app": "kni-infra-api-lb"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:7bc1c378acc4c3c7b6e12b98cbe1f069d88b3b3eb9780acbf938003f289ab055",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:7bc1c378acc4c3c7b6e12b98cbe1f069d88b3b3eb9780acbf938003f289ab055"
+            }
+          },
+          "name": "haproxy"
+        },
+        {
+          "image": {
+            "id": "sha256:3fa61361bcdc5050078b87d373d9abd0c4cd55db734442bf3dfbf93d2a9b1907",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:3fa61361bcdc5050078b87d373d9abd0c4cd55db734442bf3dfbf93d2a9b1907"
+            }
+          },
+          "name": "haproxy-monitor"
+        }
+      ],
+      "annotations": {
+        "kubernetes.io/config.hash": "eb86f01cc681918ce97c94eb510ec3cc",
+        "kubernetes.io/config.mirror": "eb86f01cc681918ce97c94eb510ec3cc",
+        "kubernetes.io/config.seen": "2023-04-02T18:50:48.727056776Z",
+        "kubernetes.io/config.source": "file",
+        "openshift.io/scc": "privileged"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'haproxy'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'haproxy-monitor'"
+      }
+    ],
+    "time": "2023-04-03T03:06:16.332418253Z",
+    "firstOccurred": "2023-04-03T03:06:16.332418253Z"
+  }
+}

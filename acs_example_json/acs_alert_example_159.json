@@ -1,0 +1,84 @@
+{
+  "alert": {
+    "id": "39b0ee61-f04b-4304-b856-b6c831457136",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T02:43:10.684115964Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-marketplace",
+    "namespaceId": "5fb6b6de-80b1-4cd9-b822-fc9a609152d7",
+    "deployment": {
+      "id": "24766208-cadb-411f-97d0-3df115628bfc",
+      "name": "community-operators-fpz9z",
+      "type": "Pod",
+      "namespace": "openshift-marketplace",
+      "namespaceId": "5fb6b6de-80b1-4cd9-b822-fc9a609152d7",
+      "labels": {
+        "catalogsource.operators.coreos.com/update": "",
+        "olm.catalogSource": "community-operators",
+        "olm.pod-spec-hash": "6d65549b75"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:4bfd976315169bc5acdd9bc05f9707b07655d1a39d4a2dc4b6398f03467933ae",
+            "name": {
+              "registry": "registry.redhat.io",
+              "remote": "redhat/community-operator-index",
+              "tag": "v4.12",
+              "fullName": "registry.redhat.io/redhat/community-operator-index:v4.12"
+            }
+          },
+          "name": "registry-server"
+        }
+      ],
+      "annotations": {
+        "cluster-autoscaler.kubernetes.io/safe-to-evict": "true",
+        "openshift.io/scc": "restricted-v2",
+        "operatorframework.io/managed-by": "marketplace-operator",
+        "seccomp.security.alpha.kubernetes.io/pod": "runtime/default"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'registry-server'"
+      }
+    ],
+    "time": "2023-04-03T02:43:11.759204604Z",
+    "firstOccurred": "2023-04-03T02:43:11.759204604Z"
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "alert": {
+    "id": "20de6194-6108-418c-b178-0d970eb0990f",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T03:06:14.877062758Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-kube-apiserver",
+    "namespaceId": "380aec83-b3d8-494f-ba3c-3c89a467f2c7",
+    "deployment": {
+      "id": "ff785ac8-b05a-4eaf-b621-646d77085032",
+      "name": "kube-apiserver-master0",
+      "type": "Pod",
+      "namespace": "openshift-kube-apiserver",
+      "namespaceId": "380aec83-b3d8-494f-ba3c-3c89a467f2c7",
+      "labels": {
+        "apiserver": "true",
+        "app": "openshift-kube-apiserver",
+        "revision": "7"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:2513cea30c6ee755c4be76e5281cd3955bcf959297000c3891e8c162fb490107",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:2513cea30c6ee755c4be76e5281cd3955bcf959297000c3891e8c162fb490107"
+            }
+          },
+          "name": "kube-apiserver"
+        },
+        {
+          "image": {
+            "id": "sha256:87317b5b7f1670e170c7c771b8a7fa071b90c0fec42d351aef145c46607b35e2",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:87317b5b7f1670e170c7c771b8a7fa071b90c0fec42d351aef145c46607b35e2"
+            }
+          },
+          "name": "kube-apiserver-cert-regeneration-controller"
+        },
+        {
+          "image": {
+            "id": "sha256:87317b5b7f1670e170c7c771b8a7fa071b90c0fec42d351aef145c46607b35e2",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:87317b5b7f1670e170c7c771b8a7fa071b90c0fec42d351aef145c46607b35e2"
+            }
+          },
+          "name": "kube-apiserver-cert-syncer"
+        },
+        {
+          "image": {
+            "id": "sha256:87317b5b7f1670e170c7c771b8a7fa071b90c0fec42d351aef145c46607b35e2",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:87317b5b7f1670e170c7c771b8a7fa071b90c0fec42d351aef145c46607b35e2"
+            }
+          },
+          "name": "kube-apiserver-check-endpoints"
+        },
+        {
+          "image": {
+            "id": "sha256:87317b5b7f1670e170c7c771b8a7fa071b90c0fec42d351aef145c46607b35e2",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:87317b5b7f1670e170c7c771b8a7fa071b90c0fec42d351aef145c46607b35e2"
+            }
+          },
+          "name": "kube-apiserver-insecure-readyz"
+        }
+      ],
+      "annotations": {
+        "kubectl.kubernetes.io/default-container": "kube-apiserver",
+        "kubernetes.io/config.hash": "6bbf715aea2fb3abeb6fe143074bccbd",
+        "kubernetes.io/config.mirror": "6bbf715aea2fb3abeb6fe143074bccbd",
+        "kubernetes.io/config.seen": "2023-04-02T19:25:00.787246874Z",
+        "kubernetes.io/config.source": "file",
+        "target.workload.openshift.io/management": "{\"effect\": \"PreferredDuringScheduling\"}"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'kube-apiserver'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'kube-apiserver-cert-regeneration-controller'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'kube-apiserver-cert-syncer'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'kube-apiserver-check-endpoints'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'kube-apiserver-insecure-readyz'"
+      }
+    ],
+    "time": "2023-04-03T03:06:15.778605840Z",
+    "firstOccurred": "2023-04-03T03:06:15.778605840Z"
+  }
+}

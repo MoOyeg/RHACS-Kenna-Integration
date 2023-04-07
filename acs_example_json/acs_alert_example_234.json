@@ -1,0 +1,113 @@
+{
+  "alert": {
+    "id": "6320e0f9-ce0d-4ed7-bc44-5cb6bf4c9c27",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T03:06:14.877062758Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-kube-scheduler",
+    "namespaceId": "a6ac0558-16e8-4c98-a488-b9c571b1891a",
+    "deployment": {
+      "id": "7d8464f5-2ef5-4cbe-989e-85ae7f19010f",
+      "name": "openshift-kube-scheduler-master1",
+      "type": "Pod",
+      "namespace": "openshift-kube-scheduler",
+      "namespaceId": "a6ac0558-16e8-4c98-a488-b9c571b1891a",
+      "labels": {
+        "app": "openshift-kube-scheduler",
+        "revision": "7",
+        "scheduler": "true"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:2513cea30c6ee755c4be76e5281cd3955bcf959297000c3891e8c162fb490107",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:2513cea30c6ee755c4be76e5281cd3955bcf959297000c3891e8c162fb490107"
+            }
+          },
+          "name": "kube-scheduler"
+        },
+        {
+          "image": {
+            "id": "sha256:b79bb9955f3137bb31d4c306bd01bd278ca749d5e28805fa4f23f77d2d02406e",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:b79bb9955f3137bb31d4c306bd01bd278ca749d5e28805fa4f23f77d2d02406e"
+            }
+          },
+          "name": "kube-scheduler-cert-syncer"
+        },
+        {
+          "image": {
+            "id": "sha256:b79bb9955f3137bb31d4c306bd01bd278ca749d5e28805fa4f23f77d2d02406e",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:b79bb9955f3137bb31d4c306bd01bd278ca749d5e28805fa4f23f77d2d02406e"
+            }
+          },
+          "name": "kube-scheduler-recovery-controller"
+        }
+      ],
+      "annotations": {
+        "kubectl.kubernetes.io/default-container": "kube-scheduler",
+        "kubernetes.io/config.hash": "0d6eb68e58aaaa4d797004d7f9c328ed",
+        "kubernetes.io/config.mirror": "0d6eb68e58aaaa4d797004d7f9c328ed",
+        "kubernetes.io/config.seen": "2023-04-02T19:06:50.914420793Z",
+        "kubernetes.io/config.source": "file",
+        "target.workload.openshift.io/management": "{\"effect\": \"PreferredDuringScheduling\"}"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'kube-scheduler'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'kube-scheduler-cert-syncer'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'kube-scheduler-recovery-controller'"
+      }
+    ],
+    "time": "2023-04-03T03:06:15.125067979Z",
+    "firstOccurred": "2023-04-03T03:06:15.125067979Z"
+  }
+}

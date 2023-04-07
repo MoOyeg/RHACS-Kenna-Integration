@@ -1,0 +1,78 @@
+{
+  "alert": {
+    "id": "b9fcc66a-c506-4e35-9f5f-92bfac9dac02",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T03:06:14.877062758Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-kube-storage-version-migrator",
+    "namespaceId": "cda157cd-6793-46a4-924e-41686fa2955a",
+    "deployment": {
+      "id": "849d757d-89ae-4640-8667-95fbaf5188ec",
+      "name": "migrator",
+      "type": "Deployment",
+      "namespace": "openshift-kube-storage-version-migrator",
+      "namespaceId": "cda157cd-6793-46a4-924e-41686fa2955a",
+      "labels": {
+        "app": "migrator"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:318c1c207d776f19bd9259fb62082ca68c04949c91a3778d3a2920b705cd41cd",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:318c1c207d776f19bd9259fb62082ca68c04949c91a3778d3a2920b705cd41cd"
+            }
+          },
+          "name": "migrator"
+        }
+      ],
+      "annotations": {
+        "operator.openshift.io/spec-hash": "ff376cc1aef1bd5da6d5c454247b653588a14dc09296291dcedf9cf2274df3ca"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'migrator'"
+      }
+    ],
+    "time": "2023-04-03T03:06:15.042207618Z",
+    "firstOccurred": "2023-04-03T03:06:15.042207618Z"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "alert": {
+    "id": "902bcf9a-8685-421c-bf78-49e97e39b947",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-03T03:06:14.877062758Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-cloud-controller-manager-operator",
+    "namespaceId": "3c0056ef-b8f0-4d11-8924-8ebb50727e50",
+    "deployment": {
+      "id": "01adc076-6dd1-4f5a-bbaf-06ce91cbf009",
+      "name": "cluster-cloud-controller-manager-operator",
+      "type": "Deployment",
+      "namespace": "openshift-cloud-controller-manager-operator",
+      "namespaceId": "3c0056ef-b8f0-4d11-8924-8ebb50727e50",
+      "labels": {
+        "k8s-app": "cloud-manager-operator"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:b5a4b857974d3d90d17a5696ff89673f7799779a894ee1f9f6bee5c47cbe92ae",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:b5a4b857974d3d90d17a5696ff89673f7799779a894ee1f9f6bee5c47cbe92ae"
+            }
+          },
+          "name": "cluster-cloud-controller-manager"
+        },
+        {
+          "image": {
+            "id": "sha256:b5a4b857974d3d90d17a5696ff89673f7799779a894ee1f9f6bee5c47cbe92ae",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:b5a4b857974d3d90d17a5696ff89673f7799779a894ee1f9f6bee5c47cbe92ae"
+            }
+          },
+          "name": "config-sync-controllers"
+        }
+      ],
+      "annotations": {
+        "include.release.openshift.io/self-managed-high-availability": "true",
+        "include.release.openshift.io/single-node-developer": "true"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'cluster-cloud-controller-manager'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'config-sync-controllers'"
+      }
+    ],
+    "time": "2023-04-03T03:06:15.685998831Z",
+    "firstOccurred": "2023-04-03T03:06:15.685998831Z"
+  }
+}

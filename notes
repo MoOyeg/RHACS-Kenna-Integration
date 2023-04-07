@@ -1,0 +1,9 @@
+clusterid -> file , append redhat to clusterid
+tags capture from clusterid...team will help confirm
+cve number to scanner_identifier
+
+
+"vulns": [ { "scanner_identifier": "CVE-2022-29143", "scanner_type": "Redhat", "last_seen_at": "2023-01-17T08:32:31Z", "status": "open" } ]
+
+
+ 
