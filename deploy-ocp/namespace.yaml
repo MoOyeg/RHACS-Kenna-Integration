@@ -1,0 +1,8 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: rhacs-kenna-tool
+  labels:
+    kubernetes.io/metadata.name: rhacs-kenna-tool
+    app: rhacs-kenna-tool
+spec: {}

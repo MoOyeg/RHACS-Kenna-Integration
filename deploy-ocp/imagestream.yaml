@@ -1,0 +1,20 @@
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: main
+    app.openshift.io/vcs-uri: 'https://github.com/MoOyeg/RHACS-Kenna-Integration.git'
+  name: rhacs-kenna-tool
+  namespace: rhacs-kenna-tool
+  labels:
+    app: rhacs-kenna-tool
+    app.kubernetes.io/component: rhacs-kenna-tool
+    app.kubernetes.io/instance: rhacs-kenna-tool
+    app.kubernetes.io/name: rhacs-kenna-tool
+    app.kubernetes.io/part-of: rhacs-kenna-tool
+spec:
+  lookupPolicy:
+    local: false
+status:
+  dockerImageRepository: >-
+    image-registry.openshift-image-registry.svc:5000/rhacs-kenna-tool/rhacs-kenna-tool

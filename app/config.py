@@ -6,9 +6,8 @@ from dotenv import load_dotenv  # pylint: disable=import-error
 basedir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(basedir, '.env'))
 
-
 class Settings(BaseSettings):
-    """Generate """
+    """Application Settings """
     #Presently aggregate output at cluster level - TODO Support aggregation at namespace level
     aggregation_logic = os.environ.get('AGGREGATION_LOGIC') or 'cluster_level'
     

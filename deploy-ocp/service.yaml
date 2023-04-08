@@ -1,0 +1,29 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: rhacs-kenna-tool
+  namespace: rhacs-kenna-tool
+  labels:
+    app: rhacs-kenna-tool
+    app.kubernetes.io/component: rhacs-kenna-tool
+    app.kubernetes.io/instance: rhacs-kenna-tool
+    app.kubernetes.io/name: rhacs-kenna-tool
+    app.kubernetes.io/part-of: rhacs-kenna-tool
+  annotations:
+    app.openshift.io/vcs-ref: main
+    app.openshift.io/vcs-uri: 'https://github.com/MoOyeg/RHACS-Kenna-Integration.git'
+spec:
+  ipFamilies:
+    - IPv4
+  ports:
+    - name: 8080-tcp
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  internalTrafficPolicy: Cluster
+  type: ClusterIP
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  selector:
+    app: rhacs-kenna-tool
+    deployment: rhacs-kenna-tool
