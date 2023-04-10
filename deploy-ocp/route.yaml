@@ -1,0 +1,23 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: rhacs-kenna-tool
+  namespace: rhacs-kenna-tool
+  labels:
+    app: rhacs-kenna-tool
+    app-name: rhacs-kenna-tool
+    app.kubernetes.io/component: rhacs-kenna-tool
+    app.kubernetes.io/instance: rhacs-kenna-tool
+    app.kubernetes.io/name: rhacs-kenna-tool
+    app.kubernetes.io/part-of: rhacs-kenna-tool
+spec:
+  to:
+    kind: Service
+    name: rhacs-kenna-tool
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None
