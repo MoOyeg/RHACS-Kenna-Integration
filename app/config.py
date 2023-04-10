@@ -24,7 +24,7 @@ class Settings(BaseSettings):
     rox_api_url:str = os.environ.get('ROX_API_URL') or ""
     rox_api_url_insecure:bool = os.environ.get('ROX_API_URL_INSECURE') or True
     #This timer is used to determine how often we should poll the API for updated information on vulnerabilities i.e if set to 3600, we will poll the API every hour for updated information
-    rox_api_polling_timer:int = os.environ.get('ROX_API_POLLING_TIMER') or 60
+    rox_api_polling_timer:int = os.environ.get('ROX_API_POLLING_TIMER') or 43200
     #This timer exists to avoid hitting the API too frequently. This is a timer to wait between each API call.
     rox_api_polling_spacer_timer = os.environ.get('ROX_API_POLLING_SPACER_TIMER') or 5
     
@@ -36,7 +36,7 @@ class Settings(BaseSettings):
     #By default, we will merge vulnerability information for all alerts on each asset(deployment)
     #If enabled - we will overwrite the vulnerability information for each asset(deployment) with the latest alert information
     acs_auto_overwrite_enabled:bool = os.environ.get('ACS_AUTOCLOSE_ENABLED') or False
-    acs_auto_overwrite_timer:int = os.environ.get('ACS_AUTO_OVERWRITE_TIMER') or 60  
+    acs_auto_overwrite_timer:int = os.environ.get('ACS_AUTO_OVERWRITE_TIMER') or 300  
 
     #TODO - Use Mongo for Storage and Syncing
     #monogodb_uri = os.environ.get('MONGODB_URI') or 'mongodb://localhost:27017'
