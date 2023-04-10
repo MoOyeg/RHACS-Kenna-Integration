@@ -1,0 +1,3402 @@
+{
+  "alert": {
+    "id": "6acb62ce-9410-4ffd-bc84-c1cdbeeb569e",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-09T19:19:32.235073479Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "multicluster-engine",
+    "namespaceId": "4b3fc227-ecdc-48fe-ac6e-e4f2869f4ef7",
+    "deployment": {
+      "id": "a611606c-b3e8-4d97-be6f-57327c05208a",
+      "name": "cluster-proxy-addon-manager",
+      "type": "Deployment",
+      "namespace": "multicluster-engine",
+      "namespaceId": "4b3fc227-ecdc-48fe-ac6e-e4f2869f4ef7",
+      "labels": {
+        "backplaneconfig.name": "multiclusterengine",
+        "chart": "cluster-proxy-addon-2.1.0",
+        "component": "cluster-proxy-addon-manager"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:31a270f93e3222016e35ebc4a4b13e661d067fe3d96717fdb9db30cd459e86a7",
+            "name": {
+              "registry": "registry.redhat.io",
+              "remote": "multicluster-engine/cluster-proxy-rhel8",
+              "fullName": "registry.redhat.io/multicluster-engine/cluster-proxy-rhel8@sha256:31a270f93e3222016e35ebc4a4b13e661d067fe3d96717fdb9db30cd459e86a7"
+            }
+          },
+          "name": "manager"
+        }
+      ]
+    },
+    "violations": [
+      {
+        "message": "CVE-2018-1000654 (CVSS 4) (severity Low) found in component 'libtasn1' (version 4.13-4.el8_7.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2018-1000879 (CVSS 3.3) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2018-1000880 (CVSS 3.3) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2018-19211 (CVSS 4.7) (severity Low) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'manager'"
+      },
+      {
+        "message": "CVE-2018-19211 (CVSS 4.7) (severity Low) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2018-19217 (CVSS 4.7) (severity Low) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'manager'"
+      },
+      {
+        "message": "CVE-2018-19217 (CVSS 4.7) (severity Low) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2018-20657 (CVSS 3.3) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2018-20657 (CVSS 3.3) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2018-20839 (CVSS 6.4) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2019-12900 (CVSS 4) (severity Low) found in component 'bzip2-libs' (version 1.0.6-26.el8.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2019-12904 (CVSS 5.9) (severity Moderate) found in component 'libgcrypt' (version 1.8.5-7.el8_6.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2019-14250 (CVSS 3.3) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2019-14250 (CVSS 3.3) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2019-17543 (CVSS 8.1) (severity Moderate) found in component 'lz4-libs' (version 1.8.3-3.el8_4.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2019-19244 (CVSS 7.5) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2019-8905 (CVSS 4.4) (severity Low) found in component 'file-libs' (version 5.33-21.el8.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2019-8906 (CVSS 4.4) (severity Low) found in component 'file-libs' (version 5.33-21.el8.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2019-9936 (CVSS 3.3) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2019-9937 (CVSS 3.3) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2020-17049 (CVSS 7.2) (severity Moderate) found in component 'krb5-libs' (version 1.18.2-22.el8_7.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2020-21674 (CVSS 7.5) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2021-24032 (CVSS 5.5) (severity Low) found in component 'libzstd' (version 1.4.4-1.el8.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2021-35937 (CVSS 6.3) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2021-35937 (CVSS 6.3) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2021-35938 (CVSS 6.5) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2021-35938 (CVSS 6.5) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2021-35939 (CVSS 6.5) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2021-35939 (CVSS 6.5) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'manager'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2021-3997 (CVSS 5.5) (severity Low) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2021-4209 (CVSS 6.5) (severity Low) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2021-43618 (CVSS 6.2) (severity Low) found in component 'gmp' (version 1:6.1.2-10.el8.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2021-44568 (CVSS 6.3) (severity Low) found in component 'libsolv' (version 0.7.20-4.el8_7.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2022-3219 (CVSS 6.2) (severity Low) found in component 'gnupg2' (version 2.2.20-3.el8_6.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2022-35252 (CVSS 3.1) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2022-35252 (CVSS 3.1) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2022-36227 (CVSS 5.9) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2022-43552 (CVSS 5.9) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2022-43552 (CVSS 5.9) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2022-4899 (CVSS 4.7) (severity Low) found in component 'libzstd' (version 1.4.4-1.el8.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2023-0464 (CVSS 5.9) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2023-0465 (CVSS 3.7) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2023-0466 (CVSS 3.7) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc' (version 2.28-211.el8.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc-common' (version 2.28-211.el8.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc-minimal-langpack' (version 2.28-211.el8.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2023-24593 (CVSS 6.2) (severity Low) found in component 'glib2' (version 2.56.4-159.el8.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2023-25180 (CVSS 6.2) (severity Low) found in component 'glib2' (version 2.56.4-159.el8.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2023-26604 (CVSS 7.1) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2023-27534 (CVSS 3.7) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2023-27534 (CVSS 3.7) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2023-27535 (CVSS 5.9) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2023-27535 (CVSS 5.9) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2023-27536 (CVSS 5.9) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'manager'"
+      },
+      {
+        "message": "CVE-2023-27536 (CVSS 5.9) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'manager'"
+      },
+      {
+        "message": "RHSA-2023:1140 (CVSS 6.5) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'manager'"
+      },
+      {
+        "message": "RHSA-2023:1140 (CVSS 6.5) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'manager'"
+      },
+      {
+        "message": "RHSA-2023:1405 (CVSS 7.5) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'manager'"
+      },
+      {
+        "message": "RHSA-2023:1569 (CVSS 7.4) (severity Moderate) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'manager'"
+      }
+    ],
+    "time": "2023-04-09T19:19:33.252642568Z",
+    "firstOccurred": "2023-04-09T19:19:33.252642568Z"
+  }
+}{
+  "alert": {
+    "id": "566df753-c8ae-412d-bdd6-51bc0274d67b",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-09T19:19:32.235073479Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "open-cluster-management",
+    "namespaceId": "3bc111b9-2034-40d8-bf7d-6053ef0309ee",
+    "deployment": {
+      "id": "9273fbf3-636c-4c39-a060-1ee7db01e49c",
+      "name": "klusterlet-addon-controller-v2",
+      "type": "Deployment",
+      "namespace": "open-cluster-management",
+      "namespaceId": "3bc111b9-2034-40d8-bf7d-6053ef0309ee",
+      "labels": {
+        "app": "klusterlet-addon-controller-v2",
+        "app.kubernetes.io/name": "klusterlet-addon-controller",
+        "component": "klusterlet-addon-controller",
+        "installer.name": "multiclusterhub",
+        "installer.namespace": "open-cluster-management"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:e16960f8b144c91a29f40e3b5c74dbc8b2c8691657ad8000434d510e172ee169",
+            "name": {
+              "registry": "registry.redhat.io",
+              "remote": "rhacm2/klusterlet-addon-controller-rhel8",
+              "fullName": "registry.redhat.io/rhacm2/klusterlet-addon-controller-rhel8@sha256:e16960f8b144c91a29f40e3b5c74dbc8b2c8691657ad8000434d510e172ee169"
+            }
+          },
+          "name": "klusterlet-addon-controller"
+        }
+      ]
+    },
+    "violations": [
+      {
+        "message": "CVE-2018-1000654 (CVSS 4) (severity Low) found in component 'libtasn1' (version 4.13-4.el8_7.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2018-1000879 (CVSS 3.3) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2018-1000880 (CVSS 3.3) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2018-19211 (CVSS 4.7) (severity Low) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2018-19211 (CVSS 4.7) (severity Low) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2018-19217 (CVSS 4.7) (severity Low) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2018-19217 (CVSS 4.7) (severity Low) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2018-20657 (CVSS 3.3) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2018-20657 (CVSS 3.3) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2018-20839 (CVSS 6.4) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2019-12900 (CVSS 4) (severity Low) found in component 'bzip2-libs' (version 1.0.6-26.el8.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2019-12904 (CVSS 5.9) (severity Moderate) found in component 'libgcrypt' (version 1.8.5-7.el8_6.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2019-14250 (CVSS 3.3) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2019-14250 (CVSS 3.3) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2019-17543 (CVSS 8.1) (severity Moderate) found in component 'lz4-libs' (version 1.8.3-3.el8_4.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2019-19244 (CVSS 7.5) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2019-8905 (CVSS 4.4) (severity Low) found in component 'file-libs' (version 5.33-21.el8.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2019-8906 (CVSS 4.4) (severity Low) found in component 'file-libs' (version 5.33-21.el8.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2019-9936 (CVSS 3.3) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2019-9937 (CVSS 3.3) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2020-17049 (CVSS 7.2) (severity Moderate) found in component 'krb5-libs' (version 1.18.2-22.el8_7.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2020-21674 (CVSS 7.5) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2021-24032 (CVSS 5.5) (severity Low) found in component 'libzstd' (version 1.4.4-1.el8.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2021-35937 (CVSS 6.3) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2021-35937 (CVSS 6.3) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2021-35938 (CVSS 6.5) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2021-35938 (CVSS 6.5) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2021-35939 (CVSS 6.5) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2021-35939 (CVSS 6.5) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2021-3997 (CVSS 5.5) (severity Low) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2021-4209 (CVSS 6.5) (severity Low) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2021-43618 (CVSS 6.2) (severity Low) found in component 'gmp' (version 1:6.1.2-10.el8.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2021-44568 (CVSS 6.3) (severity Low) found in component 'libsolv' (version 0.7.20-4.el8_7.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2022-3219 (CVSS 6.2) (severity Low) found in component 'gnupg2' (version 2.2.20-3.el8_6.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2022-35252 (CVSS 3.1) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2022-35252 (CVSS 3.1) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2022-36227 (CVSS 5.9) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2022-43552 (CVSS 5.9) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2022-43552 (CVSS 5.9) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2022-4899 (CVSS 4.7) (severity Low) found in component 'libzstd' (version 1.4.4-1.el8.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2023-0464 (CVSS 5.9) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2023-0465 (CVSS 3.7) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2023-0466 (CVSS 3.7) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc' (version 2.28-211.el8.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc-common' (version 2.28-211.el8.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc-minimal-langpack' (version 2.28-211.el8.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2023-24593 (CVSS 6.2) (severity Low) found in component 'glib2' (version 2.56.4-159.el8.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2023-25180 (CVSS 6.2) (severity Low) found in component 'glib2' (version 2.56.4-159.el8.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2023-26604 (CVSS 7.1) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2023-27534 (CVSS 3.7) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2023-27534 (CVSS 3.7) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2023-27535 (CVSS 5.9) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2023-27535 (CVSS 5.9) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2023-27536 (CVSS 5.9) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "CVE-2023-27536 (CVSS 5.9) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "RHSA-2023:1140 (CVSS 6.5) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "RHSA-2023:1140 (CVSS 6.5) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "RHSA-2023:1405 (CVSS 7.5) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'klusterlet-addon-controller'"
+      },
+      {
+        "message": "RHSA-2023:1569 (CVSS 7.4) (severity Moderate) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'klusterlet-addon-controller'"
+      }
+    ],
+    "time": "2023-04-09T19:19:32.885429394Z",
+    "firstOccurred": "2023-04-09T19:19:32.885429394Z"
+  }
+}{
+  "alert": {
+    "id": "12e0b65d-21dc-41b9-ab68-46d7d2feebc5",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-09T19:19:32.235073479Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "open-cluster-management-agent",
+    "namespaceId": "77f884a2-d1f2-4305-95c1-91fbda802ce1",
+    "deployment": {
+      "id": "2a120564-d6c3-4f51-a465-78ee2601e4ae",
+      "name": "klusterlet",
+      "type": "Deployment",
+      "namespace": "open-cluster-management-agent",
+      "namespaceId": "77f884a2-d1f2-4305-95c1-91fbda802ce1",
+      "labels": {
+        "app": "klusterlet"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:0beb21b8e2217e9541d915c86147ea3d4b9a42b90fb195a126d82ec00758e81c",
+            "name": {
+              "registry": "registry.redhat.io",
+              "remote": "multicluster-engine/registration-operator-rhel8",
+              "fullName": "registry.redhat.io/multicluster-engine/registration-operator-rhel8@sha256:0beb21b8e2217e9541d915c86147ea3d4b9a42b90fb195a126d82ec00758e81c"
+            }
+          },
+          "name": "klusterlet"
+        }
+      ],
+      "annotations": {
+        "operator.openshift.io/spec-hash": "85c45511d0b7533dbd0c621e71bd75341e2789300351c90691fac476d3ebfde8"
+      }
+    },
+    "violations": [
+      {
+        "message": "CVE-2018-1000654 (CVSS 4) (severity Low) found in component 'libtasn1' (version 4.13-4.el8_7.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2018-1000879 (CVSS 3.3) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2018-1000880 (CVSS 3.3) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2018-19211 (CVSS 4.7) (severity Low) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2018-19211 (CVSS 4.7) (severity Low) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2018-19217 (CVSS 4.7) (severity Low) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2018-19217 (CVSS 4.7) (severity Low) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2018-20657 (CVSS 3.3) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2018-20657 (CVSS 3.3) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2018-20839 (CVSS 6.4) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2019-12900 (CVSS 4) (severity Low) found in component 'bzip2-libs' (version 1.0.6-26.el8.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2019-12904 (CVSS 5.9) (severity Moderate) found in component 'libgcrypt' (version 1.8.5-7.el8_6.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2019-14250 (CVSS 3.3) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2019-14250 (CVSS 3.3) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2019-17543 (CVSS 8.1) (severity Moderate) found in component 'lz4-libs' (version 1.8.3-3.el8_4.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2019-19244 (CVSS 7.5) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2019-8905 (CVSS 4.4) (severity Low) found in component 'file-libs' (version 5.33-21.el8.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2019-8906 (CVSS 4.4) (severity Low) found in component 'file-libs' (version 5.33-21.el8.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2019-9936 (CVSS 3.3) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2019-9937 (CVSS 3.3) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2020-17049 (CVSS 7.2) (severity Moderate) found in component 'krb5-libs' (version 1.18.2-22.el8_7.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2020-21674 (CVSS 7.5) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2021-24032 (CVSS 5.5) (severity Low) found in component 'libzstd' (version 1.4.4-1.el8.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2021-35937 (CVSS 6.3) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2021-35937 (CVSS 6.3) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2021-35938 (CVSS 6.5) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2021-35938 (CVSS 6.5) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2021-35939 (CVSS 6.5) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2021-35939 (CVSS 6.5) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2021-3997 (CVSS 5.5) (severity Low) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2021-4209 (CVSS 6.5) (severity Low) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2021-43618 (CVSS 6.2) (severity Low) found in component 'gmp' (version 1:6.1.2-10.el8.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2021-44568 (CVSS 6.3) (severity Low) found in component 'libsolv' (version 0.7.20-4.el8_7.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2022-3219 (CVSS 6.2) (severity Low) found in component 'gnupg2' (version 2.2.20-3.el8_6.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2022-35252 (CVSS 3.1) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2022-35252 (CVSS 3.1) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2022-36227 (CVSS 5.9) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2022-43552 (CVSS 5.9) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2022-43552 (CVSS 5.9) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2022-4899 (CVSS 4.7) (severity Low) found in component 'libzstd' (version 1.4.4-1.el8.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2023-0464 (CVSS 5.9) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2023-0465 (CVSS 3.7) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2023-0466 (CVSS 3.7) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc' (version 2.28-211.el8.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc-common' (version 2.28-211.el8.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc-minimal-langpack' (version 2.28-211.el8.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2023-24593 (CVSS 6.2) (severity Low) found in component 'glib2' (version 2.56.4-159.el8.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2023-25180 (CVSS 6.2) (severity Low) found in component 'glib2' (version 2.56.4-159.el8.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2023-26604 (CVSS 7.1) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2023-27534 (CVSS 3.7) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2023-27534 (CVSS 3.7) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2023-27535 (CVSS 5.9) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2023-27535 (CVSS 5.9) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2023-27536 (CVSS 5.9) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "CVE-2023-27536 (CVSS 5.9) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "RHSA-2023:1140 (CVSS 6.5) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "RHSA-2023:1140 (CVSS 6.5) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "RHSA-2023:1405 (CVSS 7.5) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'klusterlet'"
+      },
+      {
+        "message": "RHSA-2023:1569 (CVSS 7.4) (severity Moderate) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'klusterlet'"
+      }
+    ],
+    "time": "2023-04-09T19:19:33.092366493Z",
+    "firstOccurred": "2023-04-09T19:19:33.092366493Z"
+  }
+}{
+  "alert": {
+    "id": "8766bb6e-e893-48e8-af53-8e819d58095e",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-09T19:19:32.235073479Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "open-cluster-management-agent-addon",
+    "namespaceId": "e0c5da00-1ada-4a8c-b98d-bf77bcc80bd6",
+    "deployment": {
+      "id": "5747cca3-67a3-4416-ab99-31f1180814ab",
+      "name": "klusterlet-addon-workmgr",
+      "type": "Deployment",
+      "namespace": "open-cluster-management-agent-addon",
+      "namespaceId": "e0c5da00-1ada-4a8c-b98d-bf77bcc80bd6",
+      "labels": {
+        "addon.open-cluster-management.io/hosted-manifest-location": "hosting",
+        "component": "work-manager"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:154445c95fcb479208743f296e4a2be063b5f60b87c72d938c33e5f4d65a045b",
+            "name": {
+              "registry": "registry.redhat.io",
+              "remote": "multicluster-engine/multicloud-manager-rhel8",
+              "fullName": "registry.redhat.io/multicluster-engine/multicloud-manager-rhel8@sha256:154445c95fcb479208743f296e4a2be063b5f60b87c72d938c33e5f4d65a045b"
+            }
+          },
+          "name": "acm-agent"
+        }
+      ]
+    },
+    "violations": [
+      {
+        "message": "CVE-2018-1000654 (CVSS 4) (severity Low) found in component 'libtasn1' (version 4.13-4.el8_7.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2018-1000879 (CVSS 3.3) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2018-1000880 (CVSS 3.3) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2018-19211 (CVSS 4.7) (severity Low) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2018-19211 (CVSS 4.7) (severity Low) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2018-19217 (CVSS 4.7) (severity Low) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2018-19217 (CVSS 4.7) (severity Low) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2018-20657 (CVSS 3.3) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2018-20657 (CVSS 3.3) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2018-20839 (CVSS 6.4) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2019-12900 (CVSS 4) (severity Low) found in component 'bzip2-libs' (version 1.0.6-26.el8.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2019-12904 (CVSS 5.9) (severity Moderate) found in component 'libgcrypt' (version 1.8.5-7.el8_6.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2019-14250 (CVSS 3.3) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2019-14250 (CVSS 3.3) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2019-17543 (CVSS 8.1) (severity Moderate) found in component 'lz4-libs' (version 1.8.3-3.el8_4.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2019-19244 (CVSS 7.5) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2019-8905 (CVSS 4.4) (severity Low) found in component 'file-libs' (version 5.33-21.el8.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2019-8906 (CVSS 4.4) (severity Low) found in component 'file-libs' (version 5.33-21.el8.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2019-9936 (CVSS 3.3) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2019-9937 (CVSS 3.3) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2020-17049 (CVSS 7.2) (severity Moderate) found in component 'krb5-libs' (version 1.18.2-22.el8_7.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2020-21674 (CVSS 7.5) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2021-24032 (CVSS 5.5) (severity Low) found in component 'libzstd' (version 1.4.4-1.el8.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2021-35937 (CVSS 6.3) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2021-35937 (CVSS 6.3) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2021-35938 (CVSS 6.5) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2021-35938 (CVSS 6.5) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2021-35939 (CVSS 6.5) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2021-35939 (CVSS 6.5) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2021-3997 (CVSS 5.5) (severity Low) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2021-4209 (CVSS 6.5) (severity Low) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2021-43618 (CVSS 6.2) (severity Low) found in component 'gmp' (version 1:6.1.2-10.el8.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2021-44568 (CVSS 6.3) (severity Low) found in component 'libsolv' (version 0.7.20-4.el8_7.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2022-3219 (CVSS 6.2) (severity Low) found in component 'gnupg2' (version 2.2.20-3.el8_6.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2022-35252 (CVSS 3.1) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2022-35252 (CVSS 3.1) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2022-36227 (CVSS 5.9) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2022-43552 (CVSS 5.9) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2022-43552 (CVSS 5.9) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2022-4899 (CVSS 4.7) (severity Low) found in component 'libzstd' (version 1.4.4-1.el8.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2023-0464 (CVSS 5.9) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2023-0465 (CVSS 3.7) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2023-0466 (CVSS 3.7) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc' (version 2.28-211.el8.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc-common' (version 2.28-211.el8.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc-minimal-langpack' (version 2.28-211.el8.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2023-24593 (CVSS 6.2) (severity Low) found in component 'glib2' (version 2.56.4-159.el8.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2023-25180 (CVSS 6.2) (severity Low) found in component 'glib2' (version 2.56.4-159.el8.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2023-26604 (CVSS 7.1) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2023-27534 (CVSS 3.7) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2023-27534 (CVSS 3.7) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2023-27535 (CVSS 5.9) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2023-27535 (CVSS 5.9) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2023-27536 (CVSS 5.9) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "CVE-2023-27536 (CVSS 5.9) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "RHSA-2023:1140 (CVSS 6.5) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "RHSA-2023:1140 (CVSS 6.5) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "RHSA-2023:1405 (CVSS 7.5) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'acm-agent'"
+      },
+      {
+        "message": "RHSA-2023:1569 (CVSS 7.4) (severity Moderate) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'acm-agent'"
+      }
+    ],
+    "time": "2023-04-09T19:19:32.667034558Z",
+    "firstOccurred": "2023-04-09T19:19:32.667034558Z"
+  }
+}{
+  "alert": {
+    "id": "c2dee0a6-346a-41ae-82dc-7119dbe01740",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-09T19:19:32.235073479Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "multicluster-engine",
+    "namespaceId": "4b3fc227-ecdc-48fe-ac6e-e4f2869f4ef7",
+    "deployment": {
+      "id": "7a8a84ac-6ca3-4a33-a628-cb9ce583645f",
+      "name": "cluster-manager",
+      "type": "Deployment",
+      "namespace": "multicluster-engine",
+      "namespaceId": "4b3fc227-ecdc-48fe-ac6e-e4f2869f4ef7",
+      "labels": {
+        "backplaneconfig.name": "multiclusterengine"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:0beb21b8e2217e9541d915c86147ea3d4b9a42b90fb195a126d82ec00758e81c",
+            "name": {
+              "registry": "registry.redhat.io",
+              "remote": "multicluster-engine/registration-operator-rhel8",
+              "fullName": "registry.redhat.io/multicluster-engine/registration-operator-rhel8@sha256:0beb21b8e2217e9541d915c86147ea3d4b9a42b90fb195a126d82ec00758e81c"
+            }
+          },
+          "name": "registration-operator"
+        }
+      ]
+    },
+    "violations": [
+      {
+        "message": "CVE-2018-1000654 (CVSS 4) (severity Low) found in component 'libtasn1' (version 4.13-4.el8_7.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2018-1000879 (CVSS 3.3) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2018-1000880 (CVSS 3.3) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2018-19211 (CVSS 4.7) (severity Low) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2018-19211 (CVSS 4.7) (severity Low) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2018-19217 (CVSS 4.7) (severity Low) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2018-19217 (CVSS 4.7) (severity Low) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2018-20657 (CVSS 3.3) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2018-20657 (CVSS 3.3) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2018-20839 (CVSS 6.4) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2019-12900 (CVSS 4) (severity Low) found in component 'bzip2-libs' (version 1.0.6-26.el8.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2019-12904 (CVSS 5.9) (severity Moderate) found in component 'libgcrypt' (version 1.8.5-7.el8_6.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2019-14250 (CVSS 3.3) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2019-14250 (CVSS 3.3) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2019-17543 (CVSS 8.1) (severity Moderate) found in component 'lz4-libs' (version 1.8.3-3.el8_4.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2019-19244 (CVSS 7.5) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2019-8905 (CVSS 4.4) (severity Low) found in component 'file-libs' (version 5.33-21.el8.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2019-8906 (CVSS 4.4) (severity Low) found in component 'file-libs' (version 5.33-21.el8.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2019-9936 (CVSS 3.3) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2019-9937 (CVSS 3.3) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2020-17049 (CVSS 7.2) (severity Moderate) found in component 'krb5-libs' (version 1.18.2-22.el8_7.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2020-21674 (CVSS 7.5) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2021-24032 (CVSS 5.5) (severity Low) found in component 'libzstd' (version 1.4.4-1.el8.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2021-35937 (CVSS 6.3) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2021-35937 (CVSS 6.3) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2021-35938 (CVSS 6.5) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2021-35938 (CVSS 6.5) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2021-35939 (CVSS 6.5) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2021-35939 (CVSS 6.5) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2021-3997 (CVSS 5.5) (severity Low) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2021-4209 (CVSS 6.5) (severity Low) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2021-43618 (CVSS 6.2) (severity Low) found in component 'gmp' (version 1:6.1.2-10.el8.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2021-44568 (CVSS 6.3) (severity Low) found in component 'libsolv' (version 0.7.20-4.el8_7.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2022-3219 (CVSS 6.2) (severity Low) found in component 'gnupg2' (version 2.2.20-3.el8_6.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2022-35252 (CVSS 3.1) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2022-35252 (CVSS 3.1) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2022-36227 (CVSS 5.9) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2022-43552 (CVSS 5.9) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2022-43552 (CVSS 5.9) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2022-4899 (CVSS 4.7) (severity Low) found in component 'libzstd' (version 1.4.4-1.el8.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2023-0464 (CVSS 5.9) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2023-0465 (CVSS 3.7) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2023-0466 (CVSS 3.7) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc' (version 2.28-211.el8.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc-common' (version 2.28-211.el8.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc-minimal-langpack' (version 2.28-211.el8.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2023-24593 (CVSS 6.2) (severity Low) found in component 'glib2' (version 2.56.4-159.el8.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2023-25180 (CVSS 6.2) (severity Low) found in component 'glib2' (version 2.56.4-159.el8.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2023-26604 (CVSS 7.1) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2023-27534 (CVSS 3.7) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2023-27534 (CVSS 3.7) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2023-27535 (CVSS 5.9) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2023-27535 (CVSS 5.9) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2023-27536 (CVSS 5.9) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "CVE-2023-27536 (CVSS 5.9) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "RHSA-2023:1140 (CVSS 6.5) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "RHSA-2023:1140 (CVSS 6.5) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "RHSA-2023:1405 (CVSS 7.5) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'registration-operator'"
+      },
+      {
+        "message": "RHSA-2023:1569 (CVSS 7.4) (severity Moderate) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'registration-operator'"
+      }
+    ],
+    "time": "2023-04-09T19:19:32.677498048Z",
+    "firstOccurred": "2023-04-09T19:19:32.677498048Z"
+  }
+}{
+  "alert": {
+    "id": "e41f2d07-f705-4558-87cc-c4302d7ec205",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-09T19:19:32.235073479Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-machine-api",
+    "namespaceId": "64d97a90-b872-427c-ad06-26b9765a289f",
+    "deployment": {
+      "id": "da6fff77-7067-47f8-b41a-f791616f0823",
+      "name": "metal3-image-customization",
+      "type": "Deployment",
+      "namespace": "openshift-machine-api",
+      "namespaceId": "64d97a90-b872-427c-ad06-26b9765a289f",
+      "labels": {
+        "baremetal.openshift.io/cluster-baremetal-operator": "metal3-image-customization-service",
+        "k8s-app": "metal3"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:7a005843530d9087b22e8dd4b6c37dc23ddbbcee9600fdf3b6028bf5eb9528e0",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:7a005843530d9087b22e8dd4b6c37dc23ddbbcee9600fdf3b6028bf5eb9528e0"
+            }
+          },
+          "name": "machine-image-customization-controller"
+        }
+      ],
+      "annotations": {
+        "operator.openshift.io/spec-hash": "1a3e5e2ef85278f7b8d6b16f189c8dd88d901e0e856f545dd10ca7be18d678d6"
+      }
+    },
+    "violations": [
+      {
+        "message": "CVE-2014-125042 (CVSS 7.5) (severity Moderate) found in component 'NetworkManager' (version 1:1.36.0-12.el8_6.x86_64) in container 'machine-image-customization-controller'"
+      },
+      {
+        "message": "CVE-2014-125043 (CVSS 5.5) (severity Moderate) found in component 'NetworkManager' (version 1:1.36.0-12.el8_6.x86_64) in container 'machine-image-customization-controller'"
+      },
+      {
+        "message": "CVE-2021-20297 (CVSS 5.5) (severity Moderate) found in component 'NetworkManager' (version 1:1.36.0-12.el8_6.x86_64) in container 'machine-image-customization-controller'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'machine-image-customization-controller'"
+      }
+    ],
+    "time": "2023-04-09T19:19:32.850747301Z",
+    "firstOccurred": "2023-04-09T19:19:32.850747301Z"
+  }
+}{
+  "alert": {
+    "id": "58f8954e-5977-4f94-ab2e-60c28f45f40d",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-09T19:19:32.235073479Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "multicluster-engine",
+    "namespaceId": "4b3fc227-ecdc-48fe-ac6e-e4f2869f4ef7",
+    "deployment": {
+      "id": "76de736b-a78d-4217-9f3e-0cc0bdda4b67",
+      "name": "multicluster-engine-operator",
+      "type": "Deployment",
+      "namespace": "multicluster-engine",
+      "namespaceId": "4b3fc227-ecdc-48fe-ac6e-e4f2869f4ef7",
+      "labels": {
+        "control-plane": "backplane-operator",
+        "olm.deployment-spec-hash": "5d669cfbcc",
+        "olm.owner": "multicluster-engine.v2.2.2",
+        "olm.owner.kind": "ClusterServiceVersion",
+        "olm.owner.namespace": "multicluster-engine",
+        "operators.coreos.com/multicluster-engine.multicluster-engine": ""
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:33cc6571a12a026abf3f6589a8ac8d8f3c737207c98ca3c53ec98e15372614e8",
+            "name": {
+              "registry": "registry.redhat.io",
+              "remote": "multicluster-engine/backplane-rhel8-operator",
+              "fullName": "registry.redhat.io/multicluster-engine/backplane-rhel8-operator@sha256:33cc6571a12a026abf3f6589a8ac8d8f3c737207c98ca3c53ec98e15372614e8"
+            }
+          },
+          "name": "backplane-operator"
+        }
+      ]
+    },
+    "violations": [
+      {
+        "message": "CVE-2018-1000654 (CVSS 4) (severity Low) found in component 'libtasn1' (version 4.13-4.el8_7.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2018-1000879 (CVSS 3.3) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2018-1000880 (CVSS 3.3) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2018-19211 (CVSS 4.7) (severity Low) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2018-19211 (CVSS 4.7) (severity Low) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2018-19217 (CVSS 4.7) (severity Low) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2018-19217 (CVSS 4.7) (severity Low) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2018-20657 (CVSS 3.3) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2018-20657 (CVSS 3.3) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2018-20839 (CVSS 6.4) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2019-12900 (CVSS 4) (severity Low) found in component 'bzip2-libs' (version 1.0.6-26.el8.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2019-12904 (CVSS 5.9) (severity Moderate) found in component 'libgcrypt' (version 1.8.5-7.el8_6.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2019-14250 (CVSS 3.3) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2019-14250 (CVSS 3.3) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2019-17543 (CVSS 8.1) (severity Moderate) found in component 'lz4-libs' (version 1.8.3-3.el8_4.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2019-19244 (CVSS 7.5) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2019-8905 (CVSS 4.4) (severity Low) found in component 'file-libs' (version 5.33-21.el8.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2019-8906 (CVSS 4.4) (severity Low) found in component 'file-libs' (version 5.33-21.el8.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2019-9936 (CVSS 3.3) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2019-9937 (CVSS 3.3) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2020-17049 (CVSS 7.2) (severity Moderate) found in component 'krb5-libs' (version 1.18.2-22.el8_7.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2020-21674 (CVSS 7.5) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2021-24032 (CVSS 5.5) (severity Low) found in component 'libzstd' (version 1.4.4-1.el8.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2021-35937 (CVSS 6.3) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2021-35937 (CVSS 6.3) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2021-35938 (CVSS 6.5) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2021-35938 (CVSS 6.5) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2021-35939 (CVSS 6.5) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2021-35939 (CVSS 6.5) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2021-3997 (CVSS 5.5) (severity Low) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2021-4209 (CVSS 6.5) (severity Low) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2021-43618 (CVSS 6.2) (severity Low) found in component 'gmp' (version 1:6.1.2-10.el8.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2021-44568 (CVSS 6.3) (severity Low) found in component 'libsolv' (version 0.7.20-4.el8_7.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2022-3219 (CVSS 6.2) (severity Low) found in component 'gnupg2' (version 2.2.20-3.el8_6.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2022-35252 (CVSS 3.1) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2022-35252 (CVSS 3.1) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2022-36227 (CVSS 5.9) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2022-43552 (CVSS 5.9) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2022-43552 (CVSS 5.9) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2022-4899 (CVSS 4.7) (severity Low) found in component 'libzstd' (version 1.4.4-1.el8.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2023-0464 (CVSS 5.9) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2023-0465 (CVSS 3.7) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2023-0466 (CVSS 3.7) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc' (version 2.28-211.el8.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc-common' (version 2.28-211.el8.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc-minimal-langpack' (version 2.28-211.el8.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2023-24593 (CVSS 6.2) (severity Low) found in component 'glib2' (version 2.56.4-159.el8.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2023-25180 (CVSS 6.2) (severity Low) found in component 'glib2' (version 2.56.4-159.el8.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2023-26604 (CVSS 7.1) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2023-27534 (CVSS 3.7) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2023-27534 (CVSS 3.7) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2023-27535 (CVSS 5.9) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2023-27535 (CVSS 5.9) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2023-27536 (CVSS 5.9) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "CVE-2023-27536 (CVSS 5.9) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "RHSA-2023:1140 (CVSS 6.5) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "RHSA-2023:1140 (CVSS 6.5) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "RHSA-2023:1405 (CVSS 7.5) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'backplane-operator'"
+      },
+      {
+        "message": "RHSA-2023:1569 (CVSS 7.4) (severity Moderate) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'backplane-operator'"
+      }
+    ],
+    "time": "2023-04-09T19:19:33.149984599Z",
+    "firstOccurred": "2023-04-09T19:19:33.149984599Z"
+  }
+}{
+  "alert": {
+    "id": "a935b31c-29c6-461f-8687-fb22cc98a071",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-09T19:19:32.235073479Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-insights",
+    "namespaceId": "8872a4d7-ca2c-4e3e-b952-4ccdb9b13d0b",
+    "deployment": {
+      "id": "ef3d0974-e7b5-4e77-bfc6-bc16eef1801c",
+      "name": "insights-operator",
+      "type": "Deployment",
+      "namespace": "openshift-insights",
+      "namespaceId": "8872a4d7-ca2c-4e3e-b952-4ccdb9b13d0b",
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:5a1e8f25d2d8298112e4b35201e39208c019dbe43cf9095f751f6ffcc6b71567",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:5a1e8f25d2d8298112e4b35201e39208c019dbe43cf9095f751f6ffcc6b71567"
+            }
+          },
+          "name": "insights-operator"
+        }
+      ],
+      "annotations": {
+        "capability.openshift.io/name": "Insights",
+        "config.openshift.io/inject-proxy": "insights-operator",
+        "exclude.release.openshift.io/internal-openshift-hosted": "true",
+        "include.release.openshift.io/self-managed-high-availability": "true",
+        "include.release.openshift.io/single-node-developer": "true"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'insights-operator'"
+      }
+    ],
+    "time": "2023-04-09T19:19:32.876954847Z",
+    "firstOccurred": "2023-04-09T19:19:32.876954847Z"
+  }
+}{
+  "alert": {
+    "id": "c9dce6a2-c567-4cde-a3e6-5f05e91f65e8",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-09T19:19:32.235073479Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-machine-api",
+    "namespaceId": "64d97a90-b872-427c-ad06-26b9765a289f",
+    "deployment": {
+      "id": "2ee70486-73d0-43fa-bf67-6205aec734ff",
+      "name": "machine-api-operator",
+      "type": "Deployment",
+      "namespace": "openshift-machine-api",
+      "namespaceId": "64d97a90-b872-427c-ad06-26b9765a289f",
+      "labels": {
+        "k8s-app": "machine-api-operator"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58"
+            }
+          },
+          "name": "kube-rbac-proxy"
+        },
+        {
+          "image": {
+            "id": "sha256:f4682b41a33496af8b7ddec325f3593ac760bafc92f379ef4c211e50031a87f2",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:f4682b41a33496af8b7ddec325f3593ac760bafc92f379ef4c211e50031a87f2"
+            }
+          },
+          "name": "machine-api-operator"
+        }
+      ],
+      "annotations": {
+        "exclude.release.openshift.io/internal-openshift-hosted": "true",
+        "include.release.openshift.io/self-managed-high-availability": "true",
+        "include.release.openshift.io/single-node-developer": "true"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'kube-rbac-proxy'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'machine-api-operator'"
+      }
+    ],
+    "time": "2023-04-09T19:19:32.944901613Z",
+    "firstOccurred": "2023-04-09T19:19:32.944901613Z"
+  }
+}{
+  "alert": {
+    "id": "e78e2094-fce2-4e12-842a-28a3a135f389",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-09T19:19:32.235073479Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-monitoring",
+    "namespaceId": "2043c5a0-2118-4ef7-b8da-7605c55c796e",
+    "deployment": {
+      "id": "99071cf5-6733-4f32-a539-30e168a2a841",
+      "name": "prometheus-operator",
+      "type": "Deployment",
+      "namespace": "openshift-monitoring",
+      "namespaceId": "2043c5a0-2118-4ef7-b8da-7605c55c796e",
+      "labels": {
+        "app.kubernetes.io/component": "controller",
+        "app.kubernetes.io/managed-by": "cluster-monitoring-operator",
+        "app.kubernetes.io/name": "prometheus-operator",
+        "app.kubernetes.io/part-of": "openshift-monitoring",
+        "app.kubernetes.io/version": "0.60.1"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58"
+            }
+          },
+          "name": "kube-rbac-proxy"
+        },
+        {
+          "image": {
+            "id": "sha256:65d3a0a6473bf4e5a703827b6c6e2b5ae5cfa2cfc4a0012bc23116aa52685ae5",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:65d3a0a6473bf4e5a703827b6c6e2b5ae5cfa2cfc4a0012bc23116aa52685ae5"
+            }
+          },
+          "name": "prometheus-operator"
+        }
+      ]
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'kube-rbac-proxy'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'prometheus-operator'"
+      }
+    ],
+    "time": "2023-04-09T19:19:33.221312898Z",
+    "firstOccurred": "2023-04-09T19:19:33.221312898Z"
+  }
+}{
+  "alert": {
+    "id": "0ed5b7e6-2d3a-4cc1-ae5c-22e1f0d266f5",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-09T19:19:32.235073479Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-kni-infra",
+    "namespaceId": "f137a69a-d7e6-48d6-8eb2-ca3c847c4d66",
+    "deployment": {
+      "id": "5bf30a80-68cf-4bb9-9f0c-9bbbabf7794c",
+      "name": "coredns-master0",
+      "type": "Pod",
+      "namespace": "openshift-kni-infra",
+      "namespaceId": "f137a69a-d7e6-48d6-8eb2-ca3c847c4d66",
+      "labels": {
+        "app": "kni-infra-coredns"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:cd5d25974e32c1b9f79be13d1034e4f21916f46b9d7eaf7b7d20ea2a75bfbd23",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:cd5d25974e32c1b9f79be13d1034e4f21916f46b9d7eaf7b7d20ea2a75bfbd23"
+            }
+          },
+          "name": "coredns"
+        },
+        {
+          "image": {
+            "id": "sha256:3fa61361bcdc5050078b87d373d9abd0c4cd55db734442bf3dfbf93d2a9b1907",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:3fa61361bcdc5050078b87d373d9abd0c4cd55db734442bf3dfbf93d2a9b1907"
+            }
+          },
+          "name": "coredns-monitor"
+        }
+      ],
+      "annotations": {
+        "kubernetes.io/config.hash": "c563f7f8c3bca553f5e419cf62ee1d97",
+        "kubernetes.io/config.mirror": "c563f7f8c3bca553f5e419cf62ee1d97",
+        "kubernetes.io/config.seen": "2023-04-02T18:50:48.727036776Z",
+        "kubernetes.io/config.source": "file",
+        "openshift.io/scc": "privileged"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'coredns'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'coredns-monitor'"
+      }
+    ],
+    "time": "2023-04-09T19:19:33.206197766Z",
+    "firstOccurred": "2023-04-09T19:19:33.206197766Z"
+  }
+}{
+  "alert": {
+    "id": "6218eac8-8c8d-4eb2-9d7e-2b7357a79a33",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-09T19:19:32.235073479Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-cluster-storage-operator",
+    "namespaceId": "9ff09b74-b89c-4208-84e3-73c7fac8a5de",
+    "deployment": {
+      "id": "477bb7d5-af9c-481e-8aa9-7a65d05d391f",
+      "name": "csi-snapshot-controller-operator",
+      "type": "Deployment",
+      "namespace": "openshift-cluster-storage-operator",
+      "namespaceId": "9ff09b74-b89c-4208-84e3-73c7fac8a5de",
+      "labels": {
+        "app": "csi-snapshot-controller-operator"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:0a7a5ad1d3c97c0c7d68d808868d137bffc7d6bcd6e02607ef52cb3f3c0c1166",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:0a7a5ad1d3c97c0c7d68d808868d137bffc7d6bcd6e02607ef52cb3f3c0c1166"
+            }
+          },
+          "name": "csi-snapshot-controller-operator"
+        }
+      ],
+      "annotations": {
+        "capability.openshift.io/name": "CSISnapshot",
+        "include.release.openshift.io/self-managed-high-availability": "true",
+        "include.release.openshift.io/single-node-developer": "true"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'csi-snapshot-controller-operator'"
+      }
+    ],
+    "time": "2023-04-09T19:19:33.479809132Z",
+    "firstOccurred": "2023-04-09T19:19:33.479809132Z"
+  }
+}{
+  "alert": {
+    "id": "28f19f00-6978-4398-aa85-72eb556913f6",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-09T19:19:32.235073479Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-dns-operator",
+    "namespaceId": "d99b090b-4fb5-4f5c-9b30-d8f276ef54ae",
+    "deployment": {
+      "id": "669f9590-9383-4fe8-b494-0ea3aaafdf8e",
+      "name": "dns-operator",
+      "type": "Deployment",
+      "namespace": "openshift-dns-operator",
+      "namespaceId": "d99b090b-4fb5-4f5c-9b30-d8f276ef54ae",
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:5fd0ec74100a271d08ee1830e7a0b81e46608825b1dd7ca8cc97df03089fb6c8",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:5fd0ec74100a271d08ee1830e7a0b81e46608825b1dd7ca8cc97df03089fb6c8"
+            }
+          },
+          "name": "dns-operator"
+        },
+        {
+          "image": {
+            "id": "sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58"
+            }
+          },
+          "name": "kube-rbac-proxy"
+        }
+      ],
+      "annotations": {
+        "include.release.openshift.io/self-managed-high-availability": "true",
+        "include.release.openshift.io/single-node-developer": "true"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'dns-operator'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'kube-rbac-proxy'"
+      }
+    ],
+    "time": "2023-04-09T19:19:33.431423528Z",
+    "firstOccurred": "2023-04-09T19:19:33.431423528Z"
+  }
+}{
+  "alert": {
+    "id": "8fafff9a-3824-4b72-baef-31368b438c97",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-09T19:19:32.235073479Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "open-cluster-management",
+    "namespaceId": "3bc111b9-2034-40d8-bf7d-6053ef0309ee",
+    "deployment": {
+      "id": "9a214bb3-bb9e-40a6-8b17-4e9d684fdadf",
+      "name": "insights-client",
+      "type": "Deployment",
+      "namespace": "open-cluster-management",
+      "namespaceId": "3bc111b9-2034-40d8-bf7d-6053ef0309ee",
+      "labels": {
+        "installer.name": "multiclusterhub",
+        "installer.namespace": "open-cluster-management"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:063a5f265f60eea11fff77877d9cc7e4fffc50d986df70967cda3822e3e2a124",
+            "name": {
+              "registry": "registry.redhat.io",
+              "remote": "rhacm2/insights-client-rhel8",
+              "fullName": "registry.redhat.io/rhacm2/insights-client-rhel8@sha256:063a5f265f60eea11fff77877d9cc7e4fffc50d986df70967cda3822e3e2a124"
+            }
+          },
+          "name": "client"
+        }
+      ]
+    },
+    "violations": [
+      {
+        "message": "CVE-2018-1000654 (CVSS 4) (severity Low) found in component 'libtasn1' (version 4.13-4.el8_7.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2018-1000879 (CVSS 3.3) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2018-1000880 (CVSS 3.3) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2018-19211 (CVSS 4.7) (severity Low) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'client'"
+      },
+      {
+        "message": "CVE-2018-19211 (CVSS 4.7) (severity Low) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2018-19217 (CVSS 4.7) (severity Low) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'client'"
+      },
+      {
+        "message": "CVE-2018-19217 (CVSS 4.7) (severity Low) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2018-20657 (CVSS 3.3) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2018-20657 (CVSS 3.3) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2018-20786 (CVSS 5.3) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2018-20839 (CVSS 6.4) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2019-12900 (CVSS 4) (severity Low) found in component 'bzip2-libs' (version 1.0.6-26.el8.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2019-12904 (CVSS 5.9) (severity Moderate) found in component 'libgcrypt' (version 1.8.5-7.el8_6.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2019-14250 (CVSS 3.3) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2019-14250 (CVSS 3.3) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2019-17543 (CVSS 8.1) (severity Moderate) found in component 'lz4-libs' (version 1.8.3-3.el8_4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2019-19244 (CVSS 7.5) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2019-8905 (CVSS 4.4) (severity Low) found in component 'file-libs' (version 5.33-21.el8.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2019-8906 (CVSS 4.4) (severity Low) found in component 'file-libs' (version 5.33-21.el8.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2019-9936 (CVSS 3.3) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2019-9937 (CVSS 3.3) (severity Low) found in component 'sqlite-libs' (version 3.26.0-17.el8_7.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2020-17049 (CVSS 7.2) (severity Moderate) found in component 'krb5-libs' (version 1.18.2-22.el8_7.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2020-21674 (CVSS 7.5) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2021-24032 (CVSS 5.5) (severity Low) found in component 'libzstd' (version 1.4.4-1.el8.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2021-35937 (CVSS 6.3) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2021-35937 (CVSS 6.3) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2021-35938 (CVSS 6.5) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2021-35938 (CVSS 6.5) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2021-35939 (CVSS 6.5) (severity Moderate) found in component 'rpm' (version 4.14.3-24.el8_7.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2021-35939 (CVSS 6.5) (severity Moderate) found in component 'rpm-libs' (version 4.14.3-24.el8_7.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2021-3927 (CVSS 7.3) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-base' (version 6.1-9.20180224.el8.noarch) in container 'client'"
+      },
+      {
+        "message": "CVE-2021-39537 (CVSS 5.5) (severity Moderate) found in component 'ncurses-libs' (version 6.1-9.20180224.el8.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2021-3974 (CVSS 2.9) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2021-3997 (CVSS 5.5) (severity Low) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2021-4166 (CVSS 7.1) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2021-4209 (CVSS 6.5) (severity Low) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2021-42694 (CVSS 8.5) (severity Moderate) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2021-43618 (CVSS 6.2) (severity Low) found in component 'gmp' (version 1:6.1.2-10.el8.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2021-44568 (CVSS 6.3) (severity Low) found in component 'libsolv' (version 0.7.20-4.el8_7.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-0351 (CVSS 6.6) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-1619 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-1720 (CVSS 6.1) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2124 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2125 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2126 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2129 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2175 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2182 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2183 (CVSS 3.3) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2206 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2207 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2208 (CVSS 3.3) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2210 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2284 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2285 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2286 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2287 (CVSS 7.1) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2343 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2344 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2345 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2522 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libgcc' (version 8.5.0-16.el8_7.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-27943 (CVSS 5.5) (severity Low) found in component 'libstdc++' (version 8.5.0-16.el8_7.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2819 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2845 (CVSS 2.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2849 (CVSS 2.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2923 (CVSS 5.5) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2946 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-2980 (CVSS 5.5) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-3037 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-3153 (CVSS 6.1) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-3219 (CVSS 6.2) (severity Low) found in component 'gnupg2' (version 2.2.20-3.el8_6.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-3234 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-3235 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-3256 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-3296 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-3352 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-35252 (CVSS 3.1) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-35252 (CVSS 3.1) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-36227 (CVSS 5.9) (severity Low) found in component 'libarchive' (version 3.3.3-4.el8.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-3705 (CVSS 7) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-4292 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-4293 (CVSS 5.5) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-43552 (CVSS 5.9) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-43552 (CVSS 5.9) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2022-4899 (CVSS 4.7) (severity Low) found in component 'libzstd' (version 1.4.4-1.el8.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-0049 (CVSS 7.3) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-0054 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-0288 (CVSS 7.3) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-0433 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-0464 (CVSS 5.9) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-0465 (CVSS 3.7) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-0466 (CVSS 3.7) (severity Low) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-0512 (CVSS 7.8) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc' (version 2.28-211.el8.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc-common' (version 2.28-211.el8.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-0687 (CVSS 4.6) (severity Moderate) found in component 'glibc-minimal-langpack' (version 2.28-211.el8.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-1127 (CVSS 7.3) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-1170 (CVSS 5.3) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-1175 (CVSS 5.3) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-1264 (CVSS 5.5) (severity Low) found in component 'vim-minimal' (version 2:8.0.1763-19.el8_6.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-24593 (CVSS 6.2) (severity Low) found in component 'glib2' (version 2.56.4-159.el8.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-25180 (CVSS 6.2) (severity Low) found in component 'glib2' (version 2.56.4-159.el8.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-26604 (CVSS 7.1) (severity Moderate) found in component 'systemd-libs' (version 239-68.el8_7.4.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-27534 (CVSS 3.7) (severity Low) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-27534 (CVSS 3.7) (severity Low) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-27535 (CVSS 5.9) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-27535 (CVSS 5.9) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-27536 (CVSS 5.9) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'client'"
+      },
+      {
+        "message": "CVE-2023-27536 (CVSS 5.9) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'client'"
+      },
+      {
+        "message": "RHSA-2023:1140 (CVSS 6.5) (severity Moderate) found in component 'curl' (version 7.61.1-25.el8_7.2.x86_64) in container 'client'"
+      },
+      {
+        "message": "RHSA-2023:1140 (CVSS 6.5) (severity Moderate) found in component 'libcurl' (version 7.61.1-25.el8_7.2.x86_64) in container 'client'"
+      },
+      {
+        "message": "RHSA-2023:1405 (CVSS 7.5) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'client'"
+      },
+      {
+        "message": "RHSA-2023:1569 (CVSS 7.4) (severity Moderate) found in component 'gnutls' (version 3.6.16-5.el8_6.x86_64) in container 'client'"
+      }
+    ],
+    "time": "2023-04-09T19:19:32.894489655Z",
+    "firstOccurred": "2023-04-09T19:19:32.894489655Z"
+  }
+}{
+  "alert": {
+    "id": "ee158c6a-d42f-4ff6-812f-cf6e1acb446c",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-09T19:19:32.235073479Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-cloud-credential-operator",
+    "namespaceId": "173314ff-8019-4f2f-9b83-84ce674bbd32",
+    "deployment": {
+      "id": "5448611f-5400-45ce-8022-3a63d655c7ba",
+      "name": "cloud-credential-operator",
+      "type": "Deployment",
+      "namespace": "openshift-cloud-credential-operator",
+      "namespaceId": "173314ff-8019-4f2f-9b83-84ce674bbd32",
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:8b00b19eaa20b00e263a9f344fc6e3ea4700c38d4c25638bc585d4b41ae0d9fd",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:8b00b19eaa20b00e263a9f344fc6e3ea4700c38d4c25638bc585d4b41ae0d9fd"
+            }
+          },
+          "name": "cloud-credential-operator"
+        },
+        {
+          "image": {
+            "id": "sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58"
+            }
+          },
+          "name": "kube-rbac-proxy"
+        }
+      ],
+      "annotations": {
+        "config.openshift.io/inject-proxy": "cloud-credential-operator",
+        "exclude.release.openshift.io/internal-openshift-hosted": "true",
+        "include.release.openshift.io/self-managed-high-availability": "true"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'cloud-credential-operator'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'kube-rbac-proxy'"
+      }
+    ],
+    "time": "2023-04-09T19:19:33.203560459Z",
+    "firstOccurred": "2023-04-09T19:19:33.203560459Z"
+  }
+}{
+  "alert": {
+    "id": "ab502aa1-df18-451b-9fb1-70a87385b52c",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-09T19:19:32.235073479Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-kni-infra",
+    "namespaceId": "f137a69a-d7e6-48d6-8eb2-ca3c847c4d66",
+    "deployment": {
+      "id": "c2ea2ad6-f813-416d-91c4-c516195ab0c0",
+      "name": "haproxy-master1",
+      "type": "Pod",
+      "namespace": "openshift-kni-infra",
+      "namespaceId": "f137a69a-d7e6-48d6-8eb2-ca3c847c4d66",
+      "labels": {
+        "app": "kni-infra-api-lb"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:7bc1c378acc4c3c7b6e12b98cbe1f069d88b3b3eb9780acbf938003f289ab055",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:7bc1c378acc4c3c7b6e12b98cbe1f069d88b3b3eb9780acbf938003f289ab055"
+            }
+          },
+          "name": "haproxy"
+        },
+        {
+          "image": {
+            "id": "sha256:3fa61361bcdc5050078b87d373d9abd0c4cd55db734442bf3dfbf93d2a9b1907",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:3fa61361bcdc5050078b87d373d9abd0c4cd55db734442bf3dfbf93d2a9b1907"
+            }
+          },
+          "name": "haproxy-monitor"
+        }
+      ],
+      "annotations": {
+        "kubernetes.io/config.hash": "83136e6dec0f9841b95e090dc3d6aff0",
+        "kubernetes.io/config.mirror": "83136e6dec0f9841b95e090dc3d6aff0",
+        "kubernetes.io/config.seen": "2023-04-02T18:51:25.042892636Z",
+        "kubernetes.io/config.source": "file",
+        "openshift.io/scc": "privileged"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'haproxy'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'haproxy-monitor'"
+      }
+    ],
+    "time": "2023-04-09T19:19:32.923079777Z",
+    "firstOccurred": "2023-04-09T19:19:32.923079777Z"
+  }
+}{
+  "alert": {
+    "id": "9b8d7e63-e7de-4a4d-8ea8-8aff73fef0e2",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-09T19:19:32.235073479Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-cluster-samples-operator",
+    "namespaceId": "b6aab1db-e859-428c-a061-c241ec73d6d8",
+    "deployment": {
+      "id": "1fa3426c-f9dc-4cac-a130-3df03d494632",
+      "name": "cluster-samples-operator",
+      "type": "Deployment",
+      "namespace": "openshift-cluster-samples-operator",
+      "namespaceId": "b6aab1db-e859-428c-a061-c241ec73d6d8",
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:f95d33cc44cc74af0aa093e54eefa2f82eef700e224b7024ac6425ca9fd28a24",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:f95d33cc44cc74af0aa093e54eefa2f82eef700e224b7024ac6425ca9fd28a24"
+            }
+          },
+          "name": "cluster-samples-operator"
+        },
+        {
+          "image": {
+            "id": "sha256:f95d33cc44cc74af0aa093e54eefa2f82eef700e224b7024ac6425ca9fd28a24",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:f95d33cc44cc74af0aa093e54eefa2f82eef700e224b7024ac6425ca9fd28a24"
+            }
+          },
+          "name": "cluster-samples-operator-watch"
+        }
+      ],
+      "annotations": {
+        "capability.openshift.io/name": "openshift-samples",
+        "include.release.openshift.io/self-managed-high-availability": "true"
+      }
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'cluster-samples-operator'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'cluster-samples-operator-watch'"
+      }
+    ],
+    "time": "2023-04-09T19:19:33.115302186Z",
+    "firstOccurred": "2023-04-09T19:19:33.115302186Z"
+  }
+}{
+  "alert": {
+    "id": "e509d794-97f2-425f-89cc-4386164129ee",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-09T19:19:32.235073479Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-etcd",
+    "namespaceId": "59ee460c-e99e-45c8-ad64-c84e8024edf7",
+    "deployment": {
+      "id": "00e7b27e-c3bc-4afe-a456-652a57944ba8",
+      "name": "etcd-guard-master2",
+      "type": "Pod",
+      "namespace": "openshift-etcd",
+      "namespaceId": "59ee460c-e99e-45c8-ad64-c84e8024edf7",
+      "labels": {
+        "app": "guard"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:9127524ca74552ef18ee4a4d3095ead757b7c09573cab84fd34f2114cb6acc05",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:9127524ca74552ef18ee4a4d3095ead757b7c09573cab84fd34f2114cb6acc05"
+            }
+          },
+          "name": "guard"
+        }
+      ]
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'guard'"
+      }
+    ],
+    "time": "2023-04-09T19:19:33.060382118Z",
+    "firstOccurred": "2023-04-09T19:19:33.060382118Z"
+  }
+}{
+  "alert": {
+    "id": "6b8e10dd-f97b-4bdc-88fa-252a0a3df8db",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-09T19:19:32.235073479Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-monitoring",
+    "namespaceId": "2043c5a0-2118-4ef7-b8da-7605c55c796e",
+    "deployment": {
+      "id": "dbfa2046-1927-4046-ae40-dde44a9971cd",
+      "name": "telemeter-client",
+      "type": "Deployment",
+      "namespace": "openshift-monitoring",
+      "namespaceId": "2043c5a0-2118-4ef7-b8da-7605c55c796e",
+      "labels": {
+        "app.kubernetes.io/component": "telemetry-metrics-collector",
+        "app.kubernetes.io/managed-by": "cluster-monitoring-operator",
+        "app.kubernetes.io/name": "telemeter-client",
+        "app.kubernetes.io/part-of": "openshift-monitoring"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58"
+            }
+          },
+          "name": "kube-rbac-proxy"
+        },
+        {
+          "image": {
+            "id": "sha256:750f84c91d2663034762286c79526382c758d3ac75afe048ce5880e0c763c123",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:750f84c91d2663034762286c79526382c758d3ac75afe048ce5880e0c763c123"
+            }
+          },
+          "name": "reload"
+        },
+        {
+          "image": {
+            "id": "sha256:35b5c1d74f7aa0f959138fd8ea36393e05a7b49a379301b9098c572c705433d4",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:35b5c1d74f7aa0f959138fd8ea36393e05a7b49a379301b9098c572c705433d4"
+            }
+          },
+          "name": "telemeter-client"
+        }
+      ]
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'kube-rbac-proxy'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'reload'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'telemeter-client'"
+      }
+    ],
+    "time": "2023-04-09T19:19:33.042541858Z",
+    "firstOccurred": "2023-04-09T19:19:33.042541858Z"
+  }
+}{
+  "alert": {
+    "id": "84d6602a-98b0-4c24-a865-786fcbfbe7b4",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-09T19:19:32.235073479Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-machine-api",
+    "namespaceId": "64d97a90-b872-427c-ad06-26b9765a289f",
+    "deployment": {
+      "id": "c0bc1841-90ca-444b-956c-9aa0f8b99fb4",
+      "name": "ironic-proxy",
+      "type": "DaemonSet",
+      "namespace": "openshift-machine-api",
+      "namespaceId": "64d97a90-b872-427c-ad06-26b9765a289f",
+      "labels": {
+        "k8s-app": "metal3"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:739ab43be86f978f9b6ba0b0dae97c1aae4ad49ce398161765136d29b8348fa6",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:739ab43be86f978f9b6ba0b0dae97c1aae4ad49ce398161765136d29b8348fa6"
+            }
+          },
+          "name": "ironic-proxy"
+        }
+      ],
+      "annotations": {
+        "deprecated.daemonset.template.generation": "6",
+        "operator.openshift.io/spec-hash": "7df813d0b838cf8a662f6f38976bb1dcdec4232510652ebc1430a316be38681e"
+      }
+    },
+    "violations": [
+      {
+        "message": "CVE-2021-20319 (CVSS 7.5) (severity Moderate) found in component 'coreos-installer' (version 0.16.1-1.rhaos4.12.el9.x86_64) in container 'ironic-proxy'"
+      },
+      {
+        "message": "CVE-2021-3917 (CVSS 5) (severity Moderate) found in component 'coreos-installer' (version 0.16.1-1.rhaos4.12.el9.x86_64) in container 'ironic-proxy'"
+      }
+    ],
+    "time": "2023-04-09T19:19:33.217754714Z",
+    "firstOccurred": "2023-04-09T19:19:33.217754714Z"
+  }
+}{
+  "alert": {
+    "id": "a1a1620e-1aed-417b-8345-5c7367e89fa6",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-09T19:19:32.235073479Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-kube-apiserver",
+    "namespaceId": "380aec83-b3d8-494f-ba3c-3c89a467f2c7",
+    "deployment": {
+      "id": "31429f24-a61b-4fe2-9481-91607842c642",
+      "name": "kube-apiserver-guard-master2",
+      "type": "Pod",
+      "namespace": "openshift-kube-apiserver",
+      "namespaceId": "380aec83-b3d8-494f-ba3c-3c89a467f2c7",
+      "labels": {
+        "app": "guard"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:87317b5b7f1670e170c7c771b8a7fa071b90c0fec42d351aef145c46607b35e2",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:87317b5b7f1670e170c7c771b8a7fa071b90c0fec42d351aef145c46607b35e2"
+            }
+          },
+          "name": "guard"
+        }
+      ]
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'guard'"
+      }
+    ],
+    "time": "2023-04-09T19:19:33.320705145Z",
+    "firstOccurred": "2023-04-09T19:19:33.320705145Z"
+  }
+}{
+  "alert": {
+    "id": "4a8e7e2f-f7a0-46d8-9ab4-77d419b26bd4",
+    "policy": {
+      "id": "b686a335-3dff-4137-9d96-1adbcc2a5b59",
+      "name": "policy_vuln",
+      "categories": [
+        "Vulnerability Management"
+      ],
+      "lifecycleStages": [
+        "BUILD",
+        "DEPLOY"
+      ],
+      "severity": "LOW_SEVERITY",
+      "notifiers": [
+        "24c6dc5d-8996-44b2-9e15-1ded4c27f3cc"
+      ],
+      "lastUpdated": "2023-04-09T19:19:32.235073479Z",
+      "SORTName": "policy_vuln",
+      "SORTLifecycleStage": "BUILD,DEPLOY",
+      "policyVersion": "1.1",
+      "policySections": [
+        {
+          "sectionName": "Policy Section 1",
+          "policyGroups": [
+            {
+              "fieldName": "CVSS",
+              "values": [
+                {
+                  "value": ">0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+    "clusterName": "local-cluster",
+    "namespace": "openshift-monitoring",
+    "namespaceId": "2043c5a0-2118-4ef7-b8da-7605c55c796e",
+    "deployment": {
+      "id": "cb731953-647d-4eae-aabf-a30bd4a5b4e6",
+      "name": "thanos-querier",
+      "type": "Deployment",
+      "namespace": "openshift-monitoring",
+      "namespaceId": "2043c5a0-2118-4ef7-b8da-7605c55c796e",
+      "labels": {
+        "app.kubernetes.io/component": "query-layer",
+        "app.kubernetes.io/instance": "thanos-querier",
+        "app.kubernetes.io/managed-by": "cluster-monitoring-operator",
+        "app.kubernetes.io/name": "thanos-query",
+        "app.kubernetes.io/part-of": "openshift-monitoring",
+        "app.kubernetes.io/version": "0.28.1"
+      },
+      "clusterId": "1d8b71f9-d851-42a4-8641-591e15744f36",
+      "clusterName": "local-cluster",
+      "containers": [
+        {
+          "image": {
+            "id": "sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58"
+            }
+          },
+          "name": "kube-rbac-proxy"
+        },
+        {
+          "image": {
+            "id": "sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58"
+            }
+          },
+          "name": "kube-rbac-proxy-metrics"
+        },
+        {
+          "image": {
+            "id": "sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:b30aa7fc1920751620828d3c9aa38cc5f65c107b0f99de6d8f0565ad51ce4d58"
+            }
+          },
+          "name": "kube-rbac-proxy-rules"
+        },
+        {
+          "image": {
+            "id": "sha256:9c0cf8f4d56f16d74534c21a67cab0bbc524da3ef38a84116c4080bdc00e46ca",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:9c0cf8f4d56f16d74534c21a67cab0bbc524da3ef38a84116c4080bdc00e46ca"
+            }
+          },
+          "name": "oauth-proxy"
+        },
+        {
+          "image": {
+            "id": "sha256:e033dad1a4cc8cac2408add3c3a27ebc699247085c13da1f3970d50f68371a82",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:e033dad1a4cc8cac2408add3c3a27ebc699247085c13da1f3970d50f68371a82"
+            }
+          },
+          "name": "prom-label-proxy"
+        },
+        {
+          "image": {
+            "id": "sha256:028c6fcd18761908aaeaa2d99ad4975fd89fbcb26e31365858ad39d582553701",
+            "name": {
+              "registry": "quay.io",
+              "remote": "openshift-release-dev/ocp-v4.0-art-dev",
+              "fullName": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:028c6fcd18761908aaeaa2d99ad4975fd89fbcb26e31365858ad39d582553701"
+            }
+          },
+          "name": "thanos-query"
+        }
+      ]
+    },
+    "violations": [
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'kube-rbac-proxy'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'kube-rbac-proxy-metrics'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'kube-rbac-proxy-rules'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'oauth-proxy'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'prom-label-proxy'"
+      },
+      {
+        "message": "RHSA-2023:1441 (CVSS 7.4) (severity Important) found in component 'openssl-libs' (version 1:1.1.1k-7.el8_6.x86_64) in container 'thanos-query'"
+      }
+    ],
+    "time": "2023-04-09T19:19:33.231403005Z",
+    "firstOccurred": "2023-04-09T19:19:33.231403005Z"
+  }
+}

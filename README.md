@@ -9,6 +9,12 @@ Repo provides an example python application that will recieve a [Red Hat Advance
 ### How does it work
 Application is written with the [FastApi framework](https://fastapi.tiangolo.com/).Application will run as an async non-blocking loop, recieveing violations from RHACS and converting to KDE Json Files(At present one file per cluster).Please see [config file](./app/config.py) to see settings that change application behaviour. At present application has to maintain vulnerability state in memory so a restart can lead to temporary inconsistencies until new alerts are recieved from RHACS.
 
+ - Important Configuration Options
+   - Alert Overwrite - Since there is no guaranty that all the information about a deployment will come in a single alert by default app will merge alert information for a given deployment. To make sure that we don't keep merging information from outdated alerts you can set ```acs_auto_overwrite_enabled``` in the config.When enabled alerts recieved within the ```acs_auto_overwrite_timer``` time window in seconds will be merged and if not the new alert will overwrite all info from the older alert.
+
+   - Poll RHACS API - I do not belive ACS sends updates when an alert violation is closed. To that end it might be necessary to poll the ACS API to get information on alerts. When ```rox_api_polling_enabled``` is enabled the app will poll the ACS API from information on alerts it has. And ```rox_api_polling_timer``` controls how often it the app will try to poll for updates on all the alerts it has recieved. ```rox_api_polling_spacer_timer``` is used to insert a spacer between conseccutive calls to the API so as not to overwhelm it.
+
+
 ### What is not included
 - Application does not handle horizontal scaling at the moment.
 

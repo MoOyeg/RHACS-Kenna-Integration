@@ -7,9 +7,11 @@ from asyncio import get_event_loop, create_task, Lock as AsyncLock, sleep as Asy
 from collections import OrderedDict
 from logging import getLogger, config
 from os import getenv
+from requests.exceptions import HTTPError, ConnectionError,Timeout
 from typing import Union, TypeVar, Generic  # pylint: disable=import-error
 from pydantic import BaseModel, Extra  # pylint: disable=import-error
-from fastapi import FastAPI, Request, Body, Response, BackgroundTasks  # pylint: disable=import-error
+from fastapi import FastAPI, Request, Body, Response, BackgroundTasks,status  # pylint: disable=import-error
+from starlette.background import BackgroundTasks as StarletteBackgroundTasks
 from fastapi.responses import JSONResponse
 from pathlib import Path, _ignore_error as pathlib_ignore_error
 from fastapi.encoders import jsonable_encoder
@@ -19,8 +21,10 @@ from aiofiles import os as async_os, open as async_open
 from .config import settings
 import json
 import re
+import copy
 from dateutil import parser as dateutil_parser
 from datetime import timezone, timedelta, datetime
+from .acs_alert_request import get_acs_alert, get_rhacs_health
 
 
 # Class Definitions
@@ -190,8 +194,8 @@ class ACSPolicy(BaseModel):
     scope: list | None
     categories: list[str] | None
     severity: str | None
-    enforcementActions: str | None
-    mitreAttackVectors: str | None
+    enforcementActions: list | None
+    mitreAttackVectors: list | None
     criteriaLocked: str | None
     mitreVectorsLocked: str | None
     isDefault: str | None
@@ -229,7 +233,7 @@ class KDEClusterMemory():
     store_asset_hash_to_asset_value_map = {}
     # Dict that stores the mapping KDE Assets(Deployment) using their hash(asset+cluster_id) to to a list of which alert_ids they were recieved from
     store_asset_hash_to_alert_id_list_map = {}
-    #Dict that stores alert_id to asset_hash match
+    #Dict that stores alert_id to asset_hash match i.e alert_id to assets they provided us with
     store_alert_id_to_asset_hash_map={}
     # Dict that stores the last time we recieved a particular alert_id
     store_alert_id_to_lasttime_map = {}
@@ -257,11 +261,22 @@ class KDEClusterMemory():
         return True
     
     @classmethod
-    async def update_store_alert_id_to_asset_hash_map(cls,acsalert_id: str, input_asset_hash: str) -> bool:
+    async def update_store_alert_id_to_asset_hash_map(cls,acsalert_id: str, input_asset_hash: str,action:str=None) -> bool:
         """Update Alert_ID to the list of Alert Hashes it provided"""
         
         if not cls._lock.locked():
             raise Exception("update_store_alert_id_to_asset_hash_map() - Lock not locked, Function should only be called from within the lock")        
+        
+        if action == "remove".lower():
+            logger.debug("update_store_alert_id_to_asset_hash_map() - Removing asset_hash from store_alert_id_to_asset_hash_map")
+            try:
+                if acsalert_id in cls.store_alert_id_to_asset_hash_map.keys():
+                    cls.store_alert_id_to_asset_hash_map[acsalert_id].remove(input_asset_hash)
+            except Exception as e:
+                logger.error("update_store_alert_id_to_asset_hash_map() - Error removing asset_hash from store_alert_id_to_asset_hash_map: {e}")
+                return False
+            logger.debug("update_store_alert_id_to_asset_hash_map() - Removed asset_hash from store_alert_id_to_asset_hash_map")
+            return True
         
         try:
             if acsalert_id in cls.store_alert_id_to_asset_hash_map.keys():
@@ -294,11 +309,23 @@ class KDEClusterMemory():
         return True
             
     @classmethod
-    async def update_store_asset_hash_to_alert_id_list_map(cls, input_asset_hash: str, acsalert_id: str) -> bool:
+    async def update_store_asset_hash_to_alert_id_list_map(cls, input_asset_hash: str, acsalert_id: str,action: str=None) -> bool:
         """Update the asset_hash to alert_id list map"""
         if not cls._lock.locked():
             raise Exception("update_store_asset_hash_to_alert_id_list_map() - Lock not locked, Function should only be called from within the lock")
         logger.debug(f"update_store_asset_hash_to_alert_id_list_map({input_asset_hash},{acsalert_id})")
+        
+        if action == "remove".lower():
+            logger.debug("update_store_asset_hash_to_alert_id_list_map() - Removing alert_id from store_asset_hash_to_alert_id_list_map")
+            try:
+                cls.store_asset_hash_to_alert_id_list_map[input_asset_hash].remove(acsalert_id)
+                if len(cls.store_asset_hash_to_alert_id_list_map[input_asset_hash]) == 0:
+                    del cls.store_asset_hash_to_alert_id_list_map[input_asset_hash]
+            except Exception as e:
+                logger.error("update_store_asset_hash_to_alert_id_list_map() - Error removing alert_id from store_asset_hash_to_alert_id_list_map: {e}")
+                return False
+            return True
+        
         try:
             if input_asset_hash in cls.store_asset_hash_to_alert_id_list_map.keys():
                 cls.store_asset_hash_to_alert_id_list_map[input_asset_hash].append(acsalert_id)
@@ -312,12 +339,36 @@ class KDEClusterMemory():
         return True
     
     @classmethod
-    async def update_store_cluster_id_to_kde_json_output_map(cls, cluster_id: str, kdeinput: KDEJsonv2=None,asset: KDEAsset=None) -> bool:
+    async def update_store_cluster_id_to_kde_json_output_map(cls, cluster_id: str, kdeinput: KDEJsonv2=None,asset: KDEAsset=None,action:str =None) -> bool:
         """Update the cluster_id to kde_input"""
         if not cls._lock.locked():
             raise Exception("update_store_cluster_id_to_kde_json_output_map() - Lock not locked, Function should only be called from within the lock")
         
         logger.debug(f"update_store_cluster_id_to_kde_json_output_map({cluster_id},{kdeinput})")
+        
+        if action == "remove".lower():
+            if asset is not None:
+                asset_hash = await cls.return_asset_hash(asset, cluster_id)
+                logger.debug(f"update_store_cluster_id_to_kde_json_output_map() - Removing asset from kdeinput - asset_hash:{asset_hash} in cluster_id{cluster_id}")
+                if await cls.return_asset_exists_by_hash(asset_hash):
+                    try:
+                        cls.store_cluster_id_to_kde_json_output_map[cluster_id].assets.remove(asset)
+                    except Exception as e:
+                        logger.error(f"update_store_cluster_id_to_kde_json_output_map({cluster_id},{asset_hash}) - Error removing asset from kdeinput: {e}")
+                        return False   
+                    logger.debug(f"update_store_cluster_id_to_kde_json_output_map() - Removed asset from kdeinput - asset_hash:{asset_hash} in cluster_id{cluster_id}")
+                    return True
+                    
+            elif kdeinput is not None:
+                logger.debug(f"update_store_cluster_id_to_kde_json_output_map() - Removing kdeinput - cluster_id{cluster_id}")
+                if cluster_id in cls.store_cluster_id_to_kde_json_output_map.keys():
+                    try:
+                        del cls.store_cluster_id_to_kde_json_output_map[cluster_id]
+                    except Exception as e:
+                        logger.error(f"update_store_cluster_id_to_kde_json_output_map({cluster_id},{kdeinput}) - Error removing kdeinput: {e}")
+                        return False   
+                    logger.debug(f"update_store_cluster_id_to_kde_json_output_map() - Removed kdeinput - cluster_id{cluster_id}")
+                    return True
         
         #If asset is not None, then add the asset to the kdeinput
         if asset is not None:
@@ -345,11 +396,22 @@ class KDEClusterMemory():
         return True
 
     @classmethod
-    async def update_store_asset_hash_to_asset_value_map(cls, input_asset_hash: str, asset: KDEAsset) -> bool:
+    async def update_store_asset_hash_to_asset_value_map(cls, input_asset_hash: str, asset: KDEAsset,action:str=None) -> bool:
         """Update the asset_hash to asset_value map"""
         if not cls._lock.locked():
             raise Exception("update_store_asset_hash_to_asset_value_map() - Lock not locked, Function should only be called from within the lock")
         
+        if action == "remove".lower():
+            logger.debug(f"update_store_asset_hash_to_asset_value_map() - Removing asset from asset_hash map - asset_hash:{input_asset_hash}")
+            if await cls.return_asset_exists_by_hash(input_asset_hash):
+                try:
+                    del cls.store_asset_hash_to_asset_value_map[input_asset_hash]
+                except Exception as e:
+                    logger.error(f"update_store_asset_hash_to_asset_value_map({input_asset_hash},{asset}) - Error removing asset from asset_hash map: {e}")
+                    return False
+                logger.debug(f"update_store_asset_hash_to_asset_value_map() - Removed asset from asset_hash map - asset_hash:{input_asset_hash}")
+                return True
+            
         logger.debug(f"update_store_asset_hash_to_asset_value_map({input_asset_hash})")        
         try:
             if input_asset_hash not in cls.store_asset_hash_to_asset_value_map.keys():
@@ -434,32 +496,6 @@ class KDEClusterMemory():
         return cls.store_asset_hash_to_alert_id_list_map.get(asset_hash)
 
     @classmethod
-    async def can_be_autoclosed(cls, asset_hash: str) -> bool:
-        logger.debug(
-            f"can_be_autoclosed - Checking if we need to autoclose {asset_hash}")
-        if asset_hash in cls.store_asset_hash_to_alert_id_list_map.keys():
-            # Get the most recent alert from RHACS for this asset
-            try:
-                alert_id_list = cls.store_asset_hash_to_alert_id_list_map[asset_hash]
-                most_recent_alert_id = ""
-                alert_id_lasttime = ""
-                # In case more than one alerts are present for the same asset, we will use the most recent one
-                for alert_id in alert_id_list:
-                    if most_recent_alert_id == "":
-                        most_recent_alert_id = alert_id
-                    elif cls.store_alert_id_to_lasttime_map[most_recent_alert_id] < cls.store_alert_id_to_lasttime_map[alert_id]:
-                        most_recent_alert_id = alert_id
-                    alert_id_lasttime = cls.store_alert_id_to_lasttime_map[most_recent_alert_id]
-
-                if int((datetime.now(tz=None)-alert_id_lasttime).total_seconds()) > settings.acs_auto_overwrite_timer:
-                    logger.debug(
-                        f"can_be_autoclosed - Autoclose logic should be applied for asset {asset_hash}")
-                    return True
-            except ValueError:
-                logger.error("can_be_autoclosed - Could not apply autoclose logic")
-        return False
-
-    @classmethod
     async def add_new_kde_by_cluster_id(cls, acsalert: ACSAlert, kdeinput: KDEJsonv2):
         """Add a new kde_json by cluster_id because it does not exist"""
         logger.debug(f"add_new_kde_by_cluster_id({acsalert.clusterId})")
@@ -508,25 +544,6 @@ class KDEClusterMemory():
                 f"add_new_kde_by_cluster_id({acsalert.clusterId}) - kde_json already exists")
 
     @classmethod
-    async def delete_asset_by_hash_cluster_id(cls, asset_hash: str, cluster_id: str):
-        """Delete an asset from the store_asset_hash_to_alert_id_list_map"""
-        logger.debug(f"delete_asset_by_hash_cluster_id({asset_hash}, {cluster_id})")
-        async with cls._lock:
-            logger.debug(
-                f"delete_asset_by_hash_cluster_id({asset_hash}, {cluster_id}) - got lock")
-            if asset_hash in cls.store_asset_hash_to_asset_value_map.keys():
-                asset=cls.store_asset_hash_to_asset_value_map[asset_hash]
-                cls.store_cluster_id_to_kde_json_output_map[cluster_id].assets.remove(asset)                
-                del cls.store_asset_hash_to_asset_value_map[asset_hash]
-            if asset_hash in cls.store_asset_hash_to_alert_id_list_map.keys():                
-                del cls.store_asset_hash_to_alert_id_list_map[asset_hash]
-            if cluster_id in cls.store_cluster_id_to_asset_hash_list_map.keys():
-                if asset_hash in cls.store_cluster_id_to_asset_hash_list_map[cluster_id]:
-                    cls.store_cluster_id_to_asset_hash_list_map[cluster_id].remove(asset_hash)
-        logger.debug(
-            f"delete_asset_by_hash_cluster_id({asset_hash}, {cluster_id}) - released lock")
-
-    @classmethod
     async def update_existing_asset_by_alert(cls, asset: KDEAsset, acsalert: ACSAlert) ->None:
         """Update an existing asset by asset_hash because it already exists"""
         asset_hash = await cls.return_asset_hash(asset, acsalert.clusterId)
@@ -567,7 +584,7 @@ class KDEClusterMemory():
 
         if not await cls.return_asset_exists_by_hash(asset_hash):
             async with cls._lock:
-                # Add the new asset First
+                # Add the new asset to Main KDE ClusterID Asset List
                 logger.debug(f"add_new_asset_by_hash({asset_hash}) - got lock")
                 await cls.update_store_cluster_id_to_kde_json_output_map(acsalert.clusterId,None,asset)
                 
@@ -576,7 +593,9 @@ class KDEClusterMemory():
                 
                 await cls.update_store_cluster_id_to_asset_hash_list_map(acsalert.clusterId,asset_hash)
                 
-                await cls.update_store_alert_id_to_asset_hash_map(acsalert.clusterId,asset_hash)               
+                await cls.update_store_alert_id_to_asset_hash_map(acsalert.id,asset_hash)  
+                
+                await cls.update_store_asset_hash_to_alert_id_list_map(asset_hash,acsalert.id)             
 
                 logger.debug(
                     f"add_new_asset_by_hash({asset_hash}) - Added new asset")
@@ -593,9 +612,93 @@ class KDEClusterMemory():
             await cls.update_existing_asset_by_alert(asset, acsalert)
 
     @classmethod
+    async def can_be_overwritten_previous_alert(cls, acsalert:ACSAlert) -> bool:
+        logger.debug(
+            f"can_be_overwritten_previous_alert - Checking if we need to overwrite {acsalert.id}")
+        
+        #Check when alert with same alert_id was last seen
+        if acsalert.id in cls.store_alert_id_to_lasttime_map.keys():
+            # Get the most recent alert from RHACS for this asset
+            try:
+                most_recent_alert_id = cls.store_alert_id_to_lasttime_map[acsalert.id]
+                if int((datetime.now(tz=None)-most_recent_alert_id).total_seconds()) > settings.acs_auto_overwrite_timer:
+                    logger.debug(
+                        f"can_be_overwritten_previous_alert - Overwrite logic should be applied for alert_id {acsalert.id}")
+                    return True
+            except ValueError:
+                logger.error("can_be_overwritten_previous_alert - Could not apply overwrite logic")
+        return False
+
+    @classmethod
+    async def remove_previous_alert_information_by_alert(cls, acsalert: ACSAlert):
+        """Delete from our information store the previous alert information"""
+        logger.debug(f"remove_previous_alert_information {acsalert.id}")
+        
+        async with cls._lock:
+            logger.debug("remove_previous_alert_information - got lock")
+            logger.debug("remove_previous_alert_information - Taking a copy of the asset_hashes for alert_id {acsalert.id}")
+            temp_asset_hash_list = copy.deepcopy(cls.store_alert_id_to_asset_hash_map[acsalert.id])
+            
+            for asset_hash in temp_asset_hash_list:
+                logger.debug(f"remove_previous_alert_information for {acsalert.id}- Removing asset {asset_hash}")
+                asset = cls.store_asset_hash_to_asset_value_map[asset_hash]
+                
+                ##Remove the asset from Main KDE ClusterID Asset List
+                if await cls.update_store_cluster_id_to_kde_json_output_map(acsalert.clusterId,None,asset,"remove"):
+                    logger.debug(f"remove_previous_alert_information for {acsalert.id}- Removed asset {asset_hash} from kde_json")     
+                                            
+                    if await cls.update_store_cluster_id_to_asset_hash_list_map(acsalert.clusterId,asset_hash,"remove"):
+                        logger.debug(f"remove_previous_alert_information for {acsalert.id}- Removed asset {asset_hash} from cluster_id_to_asset_hash_list_map")
+                    
+                    if await cls.update_store_alert_id_to_asset_hash_map(acsalert.id,asset_hash,"remove"):
+                        logger.debug(f"remove_previous_alert_information for {acsalert.id}- Removed asset {asset_hash} from alert_id_to_asset_hash_map")
+
+                    if await cls.update_store_asset_hash_to_alert_id_list_map(asset_hash,acsalert.id,"remove"):
+                        logger.debug(f"remove_previous_alert_information for {acsalert.id}- Removed asset {asset_hash} from asset_hash_to_alert_id_list_map")
+
+                    if await cls.update_store_asset_hash_to_asset_value_map(asset_hash, asset,"remove"):
+                        logger.debug(f"remove_previous_alert_information for {acsalert.id}- Removed asset {asset_hash} from asset_hash_to_asset_value_map")
+                                                
+        logger.debug("remove_previous_alert_information - released lock")
+    
+    @classmethod
     async def receive_kdejson(cls, kdeinput: KDEJsonv2, acsalert: ACSAlert) -> None:
         """Add a new KDEJsonv2 Object to the container from outside the class"""
         logger.debug(f"receive_kdejson({acsalert.id})")
+        should_we_overwrite_previous_info = False
+    
+        #If this alert is resolved, we should remove previous alert information and return
+        try:
+            if acsalert.state is not None:
+                if str.lower(acsalert.state) == "resolved":
+                    logger.debug("receive_kdejson - Alert is resolved, we should remove previous alert information for alert {}".format(acsalert.id))
+                    await cls.remove_previous_alert_information_by_alert(acsalert)
+                    return None
+        except Exception as e:
+            logger.error(f"receive_kdejson - Error checking if we should remove previous alert information {e}")
+            
+        #Let's Check Reasons why we might need to overwrite previous alert information
+        try:
+            if settings.acs_auto_overwrite_enabled:
+                if await cls.can_be_overwritten_previous_alert(acsalert):
+                    logger.debug("receive_kdejson - Overwrite logic should be applied")
+                    should_we_overwrite_previous_info = True
+        except Exception as e:
+            logger.error(f"receive_kdejson - Error checking if we should overwrite previous alert information {e}")
+            
+        #Check if we our instance is the same as the one that generated the alert i.e App retrieved alert from RHACS
+        try:
+            if acsalert.acs_instance_ip == instance_hostname:
+                logger.debug("receive_kdejson - Alert was generated from this instance, we should overwrite previous alert information")
+                should_we_overwrite_previous_info = True
+        except Exception as e:
+            logger.error(f"receive_kdejson - Error checking if we should overwrite previous alert information {e}")
+
+        #Check if autoclose logic is enabled and if we should autoclase a previous alert with the same alert_id
+        if should_we_overwrite_previous_info:              
+            #Remove all the assets from the previous alert
+            logger.debug("receive_kdejson - Removing previous alert from store for {acsalert.id}")
+            await cls.remove_previous_alert_information_by_alert(acsalert)            
 
         # Check if the cluster_id already exists
         if await cls.return_kde_exists_by_cluster_id(acsalert.clusterId):
@@ -603,12 +706,8 @@ class KDEClusterMemory():
                 f"KDEJsonv2 for cluster {acsalert.clusterId} already exists will update")
 
             # Temp lists to hold the assets we need to add, remove, and update
-            temp_autoclose_add_assets = []
-            temp_autoclose_remove_assets = []
             temp_input_assets = []
-            temp_tomerge_assets = []
             temp_new_assets = []
-            temp_kde_vuln_defs = []
 
             # Parse the assets from the alert
             check_empty_assets = True
@@ -619,7 +718,6 @@ class KDEClusterMemory():
                     # This means there is an already existing asset that matches the one we are trying to add
                     logger.debug(f"Found matching asset {input_asset}")
                     temp_input_assets.append(input_asset)
-                    # temp_tomerge_assets.append(previous_asset)
                 else:
                     # This means there is no existing asset that matches the one we are trying to add
                     logger.debug(
@@ -627,20 +725,9 @@ class KDEClusterMemory():
                     temp_new_assets.append(input_asset)
 
             if check_empty_assets:
-                # There were no assets we parsed from the alert, really should not happen
+                # There were no assets we parsed from the alert, really should not happen, our parse might be broken
                 logger.warning(
                     f"receive_kdejson({acsalert.id}) - No assets found in kdeinput")
-
-                # Filter though Vulnerability Definitions
-                # if len(kdeinput.vuln_defs) > 0:
-                #     for vuln_def in kdeinput.vuln_defs:
-                #         new_vuln=True
-                #         for previous_vuln_def in previous_kde.vuln_defs:
-                #             if vuln_def.name == previous_vuln_def.name:
-                #                 #Don't add vuln def if it already exists
-                #                 new_vuln=False
-                #         if not new_vuln:
-                #             temp_kde_vuln_defs.append(vuln_def)
 
             # Decide how to handle the asset
             # Add new assets
@@ -659,15 +746,12 @@ class KDEClusterMemory():
                 logger.debug(
                     f"receive_kdejson({acsalert.id}) - Updated asset {input_asset}")
 
-                # #Add New Vuln Defs
-                # for vuln_def in temp_kde_vuln_defs:
-                #     previous_kde.vuln_defs.append(vuln_def)
-
         # Cluster_id does not exist so add it
         else:
             logger.info(
                 f"KDEJsonv2 for cluster {acsalert.clusterId} does not exist will create")
             await cls.add_new_kde_by_cluster_id(acsalert, kdeinput)
+
 
 # ------------------------------------------------------------------------------------------------
 
@@ -691,13 +775,17 @@ full_acs_output = path.join(parent_dir, acs_output)
 scanner_type = "redhat_rhacs_scanner"
 bulk_count_alerts = 0
 count_alerts = 0
-continous_loop_task = None
+continous_kde_loop_task = None
+continous_poll_acs_loop_task = None
+startup_status = False
 
 # Declare App as a FastApi Object
 app = FastAPI()
 
 # Instance Hostname is global
 instance_hostname = ""
+
+
 # ------------------------------------------------------------------------------------------------
 # Methods and Routes
 # ------------------------------------------------------------------------------------------------
@@ -851,8 +939,6 @@ async def initiate_kde_conversion(acsalert: ACSAlert):
             acsalert.deployment.id))
 
         await KDEClusterMemory.receive_kdejson(new_kdejson, acsalert)
-        # for item in KDEClusterMemory.store_cluster_id_to_kde_json_output_map.items():
-        #     await async_write_file(f"{full_kde_output}/{item[0]}",object=item[1],content=None,mode="w")
         logger.debug("Added KDE Json for Deployment {} to Container".format(
             acsalert.deployment.id))
 
@@ -866,15 +952,79 @@ async def continous_kde_output():
             await async_write_file(f"{full_kde_output}/{item[0]}", object=item[1], content=None, mode="w")
         await AsyncSleep(settings.kde_output_timer)
 
+async def continous_poll_acs_alert_by_alertid():
+    '''Continuous Polling of ACS Alerts'''
+    
+    #Don't run loop if not enabled
+    if settings.rox_api_polling_enabled and settings.rox_api_secret is not None:
+        #Since we are enabled we will start and continue to run the loop
+        logger.info("Starting Continously running ACS Polling Loop - that will connect and poll ACS for Alerts")
+        
+        while True:
+            logger.debug("Running another ACS Alert Polling Loop")
+            alert_dict = copy.deepcopy(KDEClusterMemory.store_alert_id_to_lasttime_map)
+                
+            for alert_id in alert_dict.keys():
+                #TODO: Clean up this logic
+                logger.debug("Starting ACS Alert Polling Loop for {}".format(alert_id))
+                headers={"Authorization": f"Bearer {settings.rox_api_secret}",
+                            "Content-Type": "application/json"}
+                
+                #Set SSL Verification
+                if settings.rox_api_url_insecure:
+                    verify_ssl = False
+                    logger.debug("ACS API SSL Verification is Disabled")
+                else:
+                    verify_ssl = True
+                    logger.debug("ACS API SSL Verification is Enabled")
+                
+                #Get Alert Information from RHACS
+                try:
+                    logger.debug("Getting ACS Alert {}".format(alert_id))
+                    response_dict = await get_acs_alert(settings.rox_api_url,alert_id,verify_ssl,headers)       
+                    if response_dict["error_object"] is not None:
+                        logger.error("Failed to get ACS Alert {}- error was {}".format(alert_id,response_dict["error_object"]))
+                        continue
+                except Exception as e:
+                    logger.error("Failed to get ACS Alert {}- exception was {}".format(alert_id,e))
+                    continue
+
+                #Load Alert Information into JSON 
+                try:
+                    jsonacsalert = json.loads(response_dict["response_object"].text)
+                    if "error" in jsonacsalert.keys():
+                        #If RHACS does not know about this alert we will remove it from our memory
+                        logger.error("RHACS does not seem to be aware of this alert,we will remove it from our memory")
+                        acsalert=ACSAlert.parse_obj(jsonacsalert)
+                        await KDEClusterMemory.remove_previous_alert_information_by_alert(acsalert)
+                except Exception as e:
+                    logger.error("Failed to parse ACS Alert {} - exception was {}".format(alert_id,e))
+                    continue
+                
+                #Parse JSON into Pydantic Model and feed into determine_metadata start loop
+                try:                 
+                    acsalert=ACSAlert.parse_obj(jsonacsalert)
+                    acsalert.acs_instance_ip = instance_hostname
+                    await initiate_kde_conversion(acsalert)
+                except Exception as e:
+                    logger.error("Failed to parse ACS Alert {} - exception was {}".format(alert_id,e))
+                    continue      
+                
+                await AsyncSleep(settings.rox_api_polling_spacer_timer)
+                logger.debug("Finished ACS Alert Polling for {}".format(alert_id))
+            logger.info("Finished ACS Alert Polling Loop,")
+
+            await AsyncSleep(settings.rox_api_polling_timer)
+        
 # Get Startup Information
-
-
 @app.on_event("startup")
 async def startup_event():
     '''Startup Function'''
     logger.info("Starting up ACS/Kenna Integration Service")
     global instance_hostname  # pylint: disable=global-statement
-    global continous_loop_task  # pylint: disable=global-statement
+    global continous_kde_loop_task  # pylint: disable=global-statement
+    global continous_poll_acs_loop_task # pylint: disable=global-statement
+    global startup_status  # pylint: disable=global-statement
 
     instance_hostname = getenv('HOSTNAME')
     logger.info("Instance Hostname: {}".format(instance_hostname))
@@ -901,20 +1051,49 @@ async def startup_event():
             logger.error(
                 f"ACS Example Output Directory - {full_acs_output} could not be created, please create it manually")
             exit(1)
-
-    # Start Continous KDE Output
-    continous_loop_task = create_task(continous_kde_output())
-
     logger.debug(f"ACS Example Output Directory - {full_acs_output} exists")
+    
+    #Checking if we can poll ACS
+    if settings.rox_api_polling_enabled and not settings.rox_api_secret is None:
+        logger.info("Polling ACS API for Alerts is Enabled,will attempt to connect to ACS API")
+        headers={"Authorization": f"Bearer {settings.rox_api_secret}",
+                 "Content-Type": "application/json"}
+        
+        if settings.rox_api_url_insecure:
+            verify_ssl = False
+            logger.debug("ACS API SSL Verification is Disabled")
+        else:
+            verify_ssl = True
+            logger.debug("ACS API SSL Verification is Enabled")
+        
+        try:
+            response_dict = await get_rhacs_health(settings.rox_api_url,verify_ssl,headers)
+            if response_dict["response_object"].status_code == 200:
+                logger.info("ACS API Connection Successful")
+                if settings.storage_type.lower() == "memory":
+                    logger.info("Since we can poll ACS API, we will start an ACS API Polling Loop for Alerts in Memory")
+                    continous_poll_acs_loop_task = create_task(continous_poll_acs_alert_by_alertid())
+            else:
+                logger.error("ACS API Connection Failed, will continue without ACS API Polling")
+                settings.rox_api_polling_enabled = False 
+        except Exception as e:
+            logger.error("ACS API Connection Failed, will continue without ACS API Polling - exception was {}")
+            settings.rox_api_polling_enabled = False
+            
+    #Start Continous KDE Output
+    logger.debug("Starting Continous KDE Output Loop which will update the KDE Output Directory every {} seconds".format(settings.kde_output_timer))
+    continous_kde_loop_task = create_task(continous_kde_output())
+    logger.info("Continous KDE Output Loop Started")
+    
+    #Startup Complete
+    startup_status = True
     logger.info("Startup Complete")
-
 
 @app.get("/")
 async def root():
     '''Application'''
     logger.info("Root Url '/' was Called")
-    return {"Application": "Integration Service for Red Hat Advanced Cluster Security Service"}
-
+    return {"Application": "Integration Service for Red Hat Advanced Cluster Security Service with Kenna Security"}
 
 @app.get("/health")
 async def health():
@@ -922,6 +1101,18 @@ async def health():
     logger.debug("Health Url '/health' was Called")
     return {"status": "OK"}
 
+@app.get("/ready")
+async def ready():
+    '''Application Readiness URL'''
+    global startup_status  # pylint: disable=global-statement
+    
+    logger.debug("Health Url '/ready' was Called")
+    if startup_status:
+        logger.debug("Application is Ready")
+        return {"status": "OK"}
+    else:
+        logger.debug("Application is Not Ready")
+        return JSONResponse(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, content={"status": "Not Ready"})
 
 @app.post("/load_bulk_acs_alerts")
 async def determine_metadata_bulk(request: Request):
@@ -941,8 +1132,17 @@ async def determine_metadata_bulk(request: Request):
 async def determine_metadata(background_tasks: BackgroundTasks, response: Response, request: Request, return_flag: str = None, alert: ACSAlert = Body(embed=True)):
     logger.info("Recieved Alert with ID: {}".format(alert.id))
     global count_alerts  # pylint: disable=global-statement
-    alert.acs_instance_ip = request.client.host
-    logger.debug("Alert with ID: {} was received from IP: {}".format(
+    
+    try:
+        alert.acs_instance_ip = request.client.host
+    except AttributeError as error:
+        if "object has no attribute 'client'" in error.args[0]:
+            logger.debug("This means the request was made from the same server")
+            alert.acs_instance_ip = instance_hostname
+        else:
+            logger.error("Unable to get IP Address of ACS Instance")
+            alert.acs_instance_ip = "Unknown"
+    logger.info("Alert with ID: {} was received from IP: {}".format(
         alert.id, alert.acs_instance_ip))
     count_alerts += 1
 
